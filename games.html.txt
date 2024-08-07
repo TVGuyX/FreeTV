@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - Unblocked Games 24</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Unblocked Games 24</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="tvshows.html">TV Shows</a>
+            <a href="music.html">Music</a>
+            <a href="musicvideos.html">Music Videos</a>
+            <a href="games.html">Games</a>
+            <a href="ebooks.html">Ebooks</a>
+            <a href="livetv.html">Live TV</a>
+        </nav>
+        <input type="text" id="search" placeholder="Search...">
+    </header>
+    <main>
+        <section id="games">
+            <h2>Games</h2>
+            <div class="row">
+                <article>
+                    <h3>Among Us</h3>
+                    <img src="img/games/amongus.jpg" alt="Among Us">
+                    <button onclick="playGame('amongus.html')">Play Now</button>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Unblocked Games 24</p>
+    </footer>
+    <div id="player">
+        <video id="videoPlayer" controls></video>
+        <div id="player-controls">
+            <button onclick="pauseVideo()">Pause</button>
+            <button onclick="rewindVideo()">Rewind</button>
+            <button onclick="stopVideo()">Stop</button>
+        </div>
+    </div>
+</body>
+</html>

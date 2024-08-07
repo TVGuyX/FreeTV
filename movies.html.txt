@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - Unblocked Games 24</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Unblocked Games 24</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="tvshows.html">TV Shows</a>
+            <a href="music.html">Music</a>
+            <a href="musicvideos.html">Music Videos</a>
+            <a href="games.html">Games</a>
+            <a href="ebooks.html">Ebooks</a>
+            <a href="livetv.html">Live TV</a>
+        </nav>
+        <input type="text" id="search" placeholder="Search...">
+    </header>
+    <main>
+        <section id="movies">
+            <h2>Movies</h2>
+            <div class="row">
+                <article>
+                    <h3>Inception</h3>
+                    <img src="img/movies/poster/inception.jpg" alt="Inception Poster">
+                    <p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.</p>
+                    <button onclick="playMovie('inception.mp4')">Watch Now</button>
+                </article>
+                <article>
+                    <h3>Beetlejuice (1988)</h3>
+                    <img src="https://github.com/Rhinopro122/Unblocked-Games-24/blob/main/IMG/Movies/Poster/Beetlejuice%20(1988).jpg?raw=true" alt="Beetlejuice Poster">
+                    <p>A recently deceased couple becomes ghosts haunting their former home and hires a devious poltergeist named Beetlejuice to scare away the new inhabitants.</p>
+                    <button onclick="playMovie('beetlejuice.mp4')">Watch Now</button>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Unblocked Games 24</p>
+    </footer>
+    <div id="player">
+        <video id="videoPlayer" controls></video>
+        <div id="player-controls">
+            <button onclick="pauseVideo()">Pause</button>
+            <button onclick="rewindVideo()">Rewind</button>
+            <button onclick="stopVideo()">Stop</button>
+        </div>
+    </div>
+</body>
+</html>
