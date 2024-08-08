@@ -11,6 +11,86 @@
     <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
     <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
     <script src="scripts.js" defer></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        #search {
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #games {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .row article {
+            flex: 1 0 30%;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .row img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .row button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .row button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -47,18 +127,27 @@
                     <button onclick="window.location.href='Embed/Games/Minecraft.html'">Play Now</button>
                 </article>
             </div>
+            <div class="row">
+                <article>
+                    <h3>Among Us</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Among%20Us.jpeg?raw=true" alt="Among Us">
+                    <button onclick="window.location.href='Embed/Games/Among Us.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Bitlife</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
+                    <button onclick="window.location.href='Embed/Games/Bitlife.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>8 Ball Pool</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/8%20Ball%20Pool.jpg?raw=true" alt="8 Ball Pool">
+                    <button onclick="window.location.href='Embed/Games/8 Ball Pool.html'">Play Now</button>
+                </article>
+            </div>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Unblocked Games 24</p>
     </footer>
-    <div id="player">
-        <video id="videoPlayer" controls></video>
-        <div id="player-controls">
-            <button onclick="pauseVideo()">Pause</button>
-            <button onclick="rewindVideo()">Rewind</button>
-            <button onclick="stopVideo()">Stop</button>
-        </div>
-    </div>
 </body>
 </html>
