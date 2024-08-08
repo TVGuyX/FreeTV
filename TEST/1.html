@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Video</title>
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <title>Embedded Video Test</title>
     <style>
         body, html {
             margin: 0;
@@ -13,58 +12,53 @@
             height: 100%;
             background-color: #000;
         }
-
-        #player {
+        #video-container {
             width: 100vw;
             height: 100vh;
+            position: relative;
         }
-
-        #backButton {
-            position: fixed;
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #back-button {
+            position: absolute;
             top: 10px;
             left: 10px;
-            z-index: 9999;
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
-            padding: 10px 20px;
+            padding: 10px;
             border: none;
             cursor: pointer;
             transition: opacity 0.5s ease;
         }
-        
-        #backButton.hidden {
-            opacity: 0;
-        }
     </style>
 </head>
 <body>
-    <button id="backButton" onclick="window.location.href='index.html'">Back to Home</button>
-    
-    <video id="player" controls crossorigin playsinline>
-        <source src="https://archive.org/download/Test-files-stuff-no-worries-hi-person/BBS3E3THAMME93.mkv.mkv" type="video/x-matroska">
-    </video>
+    <div id="video-container">
+        <button id="back-button" onclick="window.location.href='index.html';">Back to Home</button>
+        <iframe src="https://drive.google.com/file/d/1kPXndrE945d_14Mr5SSRzS2VjTdIIe36/preview" allowfullscreen></iframe>
+    </div>
 
-    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
     <script>
-        const player = new Plyr('#player');
-        const backButton = document.getElementById('backButton');
-        
+        let backButton = document.getElementById('back-button');
         let timeout;
 
         function hideButton() {
-            backButton.classList.add('hidden');
+            backButton.style.opacity = '0';
         }
 
         function showButton() {
-            backButton.classList.remove('hidden');
+            backButton.style.opacity = '1';
             clearTimeout(timeout);
             timeout = setTimeout(hideButton, 5000);
         }
 
-        document.body.addEventListener('mousemove', showButton);
-        document.body.addEventListener('touchstart', showButton);
+        document.addEventListener('mousemove', showButton);
+        document.addEventListener('touchstart', showButton);
 
-        // Start hiding the button after 5 seconds initially
+        // Initial hide after 5 seconds
         timeout = setTimeout(hideButton, 5000);
     </script>
 </body>
