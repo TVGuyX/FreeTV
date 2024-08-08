@@ -80,6 +80,24 @@
             background-color: #555;
         }
 
+        .view-more {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .view-more:hover {
+            background-color: #0056b3;
+        }
+
         footer {
             text-align: center;
             padding: 10px;
@@ -128,6 +146,7 @@
                     <button onclick="window.location.href='Embed/Games/Among Us.html'">Play Now</button>
                 </article>
             </div>
+            <a class="view-more" href="games.html">View More Games</a>
         </section>
         <section>
             <h2>NEW Movies</h2>
@@ -139,7 +158,7 @@
                 </article>
                 <article>
                     <h3>Godzilla x Kong The New Empire</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Deadpool & Wolverine">
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Godzilla x Kong The New Empire">
                     <button onclick="window.location.href='Embed/Movies/Godzilla x Kong The New Empire (2024).html'">Watch Now</button>
                 </article>
                 <article>
@@ -153,6 +172,7 @@
                     <button onclick="window.location.href='Embed/Movies/If (2024).html'">Watch Now</button>
                 </article>
             </div>
+            <a class="view-more" href="movies.html">View More Movies</a>
         </section>
         <section>
             <h2>Popular TV Shows</h2>
@@ -164,6 +184,7 @@
                 </article>
                 <!-- Add more TV shows as needed -->
             </div>
+            <a class="view-more" href="tvshows.html">View More TV Shows</a>
         </section>
         <section>
             <h2>Top Music Albums</h2>
@@ -175,6 +196,7 @@
                 </article>
                 <!-- Add more music albums as needed -->
             </div>
+            <a class="view-more" href="music.html">View More Music Albums</a>
         </section>
         <section>
             <h2>Music Videos</h2>
@@ -186,6 +208,7 @@
                 </article>
                 <!-- Add more music videos as needed -->
             </div>
+            <a class="view-more" href="musicvideos.html">View More Music Videos</a>
         </section>
         <section>
             <h2>Books</h2>
@@ -197,6 +220,7 @@
                 </article>
                 <!-- Add more books as needed -->
             </div>
+            <a class="view-more" href="ebooks.html">View More Books</a>
         </section>
         <section>
             <h2>Live TV</h2>
@@ -208,19 +232,8 @@
                 </article>
                 <!-- Add more live TV channels as needed -->
             </div>
+            <a class="view-more" href="livetv.html">View More Live TV</a>
         </section>
     </main>
-    <div id="player">
-        <h3 id="player-title"></h3>
-        <p id="player-quality"></p>
-        <video id="player-video" controls></video>
-        <div id="player-controls">
-            <button id="play">Play</button>
-            <button id="pause">Pause</button>
-            <button id="stop">Stop</button>
-            <button id="rewind">Rewind</button>
-            <button id="fastforward">Fast Forward</button>
-        </div>
-    </div>
 </body>
 </html>
