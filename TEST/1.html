@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Video</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            background-color: #000;
+        }
+
+        #player {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #backButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+        
+        #backButton.hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="backButton" onclick="window.location.href='index.html'">Back to Home</button>
+    
+    <video id="player" controls crossorigin playsinline>
+        <source src="https://archive.org/download/Test-files-stuff-no-worries-hi-person/BBS3E3THAMME93.mkv.mkv" type="video/x-matroska">
+    </video>
+
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    <script>
+        const player = new Plyr('#player');
+        const backButton = document.getElementById('backButton');
+        
+        let timeout;
+
+        function hideButton() {
+            backButton.classList.add('hidden');
+        }
+
+        function showButton() {
+            backButton.classList.remove('hidden');
+            clearTimeout(timeout);
+            timeout = setTimeout(hideButton, 5000);
+        }
+
+        document.body.addEventListener('mousemove', showButton);
+        document.body.addEventListener('touchstart', showButton);
+
+        // Start hiding the button after 5 seconds initially
+        timeout = setTimeout(hideButton, 5000);
+    </script>
+</body>
+</html>
