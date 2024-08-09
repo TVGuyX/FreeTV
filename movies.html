@@ -3,43 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <title>Movies - Unblocked Games 24</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Watch Movie</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <script src="scripts.js" defer></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        #search {
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #games {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .row article {
+            flex: 1 0 30%;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .row img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .row button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .row button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <div id="player" class="player-container">
-        <div id="player-header">
-            <h2 id="player-title">Movie Title</h2>
-            <h3 id="player-quality">HD</h3>
-        </div>
-        <video id="player-video" class="plyr" controls autoplay></video>
-    </div>
+    <header>
+        <h1>Unblocked Games 24</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="tvshows.html">TV Shows</a>
+            <a href="music.html">Music</a>
+            <a href="musicvideos.html">Music Videos</a>
+            <a href="games.html">Games</a>
+            <a href="ebooks.html">Ebooks</a>
+            <a href="livetv.html">Live TV</a>
+        </nav>
+        <input type="text" id="search" placeholder="Search...">
+    </header>
+    <main>
+        <section id="games">
+            <h2>NEW Movies</h2>
+            <div class="row">
+                <article>
+                    <h3>Bad Boys: Ride or Die</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Bad%20Boys%20Ride%20or%20Die%20(2024).jpg?raw=true" alt="Bad Boys: Ride or Die">
+                    <button onclick="window.location.href='Embed/Movies/Bad Boys Ride or Die (2024).html'">Watch Now</button>
+                </article>
+                <article>
+                    <h3>Godzilla x Kong The New Empire</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Godzilla x Kong The New Empire">
+                    <button onclick="window.location.href='Embed/Movies/Godzilla x Kong The New Empire (2024).html'">Watch Now</button>
+                </article>
+                <article>
+                    <h3>Ghostbusters: Frozen Empire</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Ghostbusters%20Frozen%20Empire%20(2024).jpeg?raw=true" alt="Ghostbusters: Frozen Empire">
+                    <button onclick="window.location.href='Embed/Movies/Ghostbusters Frozen Empire (2024).html'">Watch Now</button>
+                </article>
+                <article>
+                    <h3>If</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/If%20(2024).jpg?raw=true" alt="If">
+                    <button onclick="window.location.href='Embed/Movies/If (2024).html'">Watch Now</button>
+                </article>
+            </div>
+        </section>
 
-    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const player = new Plyr('#player-video');
-            const urlParams = new URLSearchParams(window.location.search);
-            const title = urlParams.get('title');
-            const videoUrls = {
-                'Beetlejuice': 'https://drive.google.com/uc?id=YOUR_FILE_ID&autoplay=1',
-                'BadBoysRideOrDie': 'https://drive.google.com/uc?id=YOUR_FILE_ID&autoplay=1'
-                // Add other movies as needed
-            };
-
-            document.getElementById('player-title').innerText = title;
-            player.source = {
-                type: 'video',
-                sources: [
-                    {
-                        src: videoUrls[title],
-                        type: 'video/mp4'
-                    }
-                ]
-            };
-            player.play();
-        });
-    </script>
+        <section id="games">
+            <h2>ALL Movies</h2>
+            <div class="row">
+                <article>
+                    <h3>Avengers Endgame</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Avengers%20Endgame%20(2019).jpg?raw=true" alt="Avengers Endgame">
+                    <button onclick="window.location.href='Embed/Movies/Avengers Endgame.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Cocaine Bear</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Cocaine%20Bear%20(2023).jpg?raw=true" alt="Cocaine Bear">
+                    <button onclick="window.location.href='Embed/Movies/Cocaine Bear.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Game Night</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Game%20Night%20(2018).jpg?raw=true" alt="Game Night">
+                    <button onclick="window.location.href='Embed/Movies/Game Night.html'">Play Now</button>
+                </article>
+            </div>
+            <div class="row">
+                <article>
+                    <h3>Good Boys</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Good%20Boys%20(2019).jpg?raw=true" alt="Good Boys">
+                    <button onclick="window.location.href='Embed/Movies/Good Boys.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Deadpool</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Deadpool%20(2016).png?raw=true" alt="Deadpool">
+                    <button onclick="window.location.href='Embed/Movies/Deadpool.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Jackass 4.5</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Jackass%204.5%20(2022).jpg?raw=true" alt="Jackass 4.5">
+                    <button onclick="window.location.href='Embed/Movies/Jackass 4.5.html'">Play Now</button>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Unblocked Games 24</p>
+    </footer>
 </body>
 </html>
