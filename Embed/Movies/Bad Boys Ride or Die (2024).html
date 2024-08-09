@@ -62,6 +62,22 @@
             background-color: #333;
             color: #fff;
         }
+        #notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 16px;
+            z-index: 1001;
+            border-bottom: 2px solid #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
         .modal {
             display: none;
             position: fixed;
@@ -104,6 +120,8 @@
     </style>
 </head>
 <body>
+    <div id="notification">Movie may not load and if so please talk to the person who gave you access to this app</div>
+
     <div id="movie-container">
         <iframe src="https://drive.google.com/file/d/1kPXndrE945d_14Mr5SSRzS2VjTdIIe36/preview" allowfullscreen></iframe>
     </div>
@@ -115,13 +133,22 @@
             <button>More Movies</button>
         </a>
         <button id="report-button">Report This Movie</button>
+        <button id="request-button">Request Movie</button>
     </div>
     
-    <!-- Modal Structure -->
+    <!-- Report Modal -->
     <div id="report-modal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" id="report-close">&times;</span>
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfmIYn-izudAVwNw-lis-pCePB6Niw3ahLhAPH39wxzga2Tqg/viewform?embedded=true"></iframe>
+        </div>
+    </div>
+
+    <!-- Request Modal -->
+    <div id="request-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="request-close">&times;</span>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfM_dNUA7Pq2wF7JWb1F9Zj6ETnffAQ9yTmbpNOM-1pWeM_7Q/viewform?embedded=true"></iframe>
         </div>
     </div>
 
@@ -138,29 +165,52 @@
             document.getElementById('bottom-bar').classList.add('hidden');
         }
 
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
         document.addEventListener('mousemove', showBar);
         document.addEventListener('touchstart', showBar);
 
         window.onload = () => {
             hideBarTimeout = setTimeout(hideBar, 5000);
+            showNotification();
         }
 
         // Modal handling
         const reportButton = document.getElementById('report-button');
-        const modal = document.getElementById('report-modal');
-        const closeModal = document.querySelector('.close');
+        const requestButton = document.getElementById('request-button');
+        const reportModal = document.getElementById('report-modal');
+        const requestModal = document.getElementById('request-modal');
+        const reportClose = document.getElementById('report-close');
+        const requestClose = document.getElementById('request-close');
 
         reportButton.onclick = () => {
-            modal.style.display = 'flex';
+            reportModal.style.display = 'flex';
         }
 
-        closeModal.onclick = () => {
-            modal.style.display = 'none';
+        requestButton.onclick = () => {
+            requestModal.style.display = 'flex';
+        }
+
+        reportClose.onclick = () => {
+            reportModal.style.display = 'none';
+        }
+
+        requestClose.onclick = () => {
+            requestModal.style.display = 'none';
         }
 
         window.onclick = (event) => {
-            if (event.target == modal) {
-                modal.style.display = 'none';
+            if (event.target == reportModal) {
+                reportModal.style.display = 'none';
+            }
+            if (event.target == requestModal) {
+                requestModal.style.display = 'none';
             }
         }
     </script>
