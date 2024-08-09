@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies - Unblocked Games 24</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
-    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
     <script src="scripts.js" defer></script>
+    <title>Unblocked Games 24</title>
     <style>
         body, html {
             margin: 0;
@@ -84,6 +80,24 @@
             background-color: #555;
         }
 
+        .view-more {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .view-more:hover {
+            background-color: #0056b3;
+        }
+
         footer {
             text-align: center;
             padding: 10px;
@@ -108,7 +122,33 @@
         <input type="text" id="search" placeholder="Search...">
     </header>
     <main>
-        <section id="games">
+        <section>
+            <h2>Featured Games</h2>
+            <div class="row">
+                <article>
+                    <h3>Subway Surfers</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+                    <button onclick="window.location.href='Embed/Games/Subway Surfers.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Geometry Dash</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
+                    <button onclick="window.location.href='Embed/Games/Geometry Dash.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Minecraft</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Minecraft.webp" alt="Minecraft">
+                    <button onclick="window.location.href='Embed/Games/Minecraft.html'">Play Now</button>
+                </article>
+                <article>
+                    <h3>Among Us</h3>
+                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Among Us.jpeg?raw=true" alt="Among Us">
+                    <button onclick="window.location.href='Embed/Games/Among Us.html'">Play Now</button>
+                </article>
+            </div>
+            <a class="view-more" href="games.html">View More Games</a>
+        </section>
+        <section>
             <h2>NEW Movies</h2>
             <div class="row">
                 <article>
@@ -132,48 +172,68 @@
                     <button onclick="window.location.href='Embed/Movies/If (2024).html'">Watch Now</button>
                 </article>
             </div>
+            <a class="view-more" href="movies.html">View More Movies</a>
         </section>
-
-        <section id="games">
-            <h2>ALL Movies</h2>
+        <section>
+            <h2>Popular TV Shows</h2>
             <div class="row">
                 <article>
-                    <h3>Avengers Endgame</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Avengers%20Endgame%20(2019).jpg?raw=true" alt="Avengers Endgame">
-                    <button onclick="window.location.href='Embed/Movies/Avengers Endgame.html'">Play Now</button>
+                    <h3>South Park</h3>
+                    <img src="IMG/TVShows/Poster/Show1.jpg" alt="South Park">
+                    <button onclick="window.location.href='index.html'">Watch Now</button>
                 </article>
-                <article>
-                    <h3>Cocaine Bear</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Cocaine%20Bear%20(2023).jpg?raw=true" alt="Cocaine Bear">
-                    <button onclick="window.location.href='Embed/Movies/Cocaine Bear.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Game Night</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Game%20Night%20(2018).avif" alt="Game Night">
-                    <button onclick="window.location.href='Embed/Movies/Game Night.html'">Play Now</button>
-                </article>
+                <!-- Add more TV shows as needed -->
             </div>
+            <a class="view-more" href="tvshows.html">View More TV Shows</a>
+        </section>
+        <section>
+            <h2>Top Music Albums</h2>
             <div class="row">
                 <article>
-                    <h3>Good Boys</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Good%20Boys%20(2019).jpg?raw=true" alt="Good Boys">
-                    <button onclick="window.location.href='Embed/Movies/Good Boys.html'">Play Now</button>
+                    <h3>Album Title</h3>
+                    <img src="IMG/Music/Album1.jpg" alt="Album 1" class="square">
+                    <button onclick="window.location.href='index.html'">Listen Now</button>
                 </article>
-                <article>
-                    <h3>Deadpool</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Deadpool%20(2016).png?raw=true" alt="Deadpool">
-                    <button onclick="window.location.href='Embed/Movies/Deadpool.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Jackass 4.5</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Jackass%204.5%20(2022).jpg?raw=true" alt="Jackass 4.5">
-                    <button onclick="window.location.href='Embed/Movies/Jackass 4.5.html'">Play Now</button>
-                </article>
+                <!-- Add more music albums as needed -->
             </div>
+            <a class="view-more" href="music.html">View More Music Albums</a>
+        </section>
+        <section>
+            <h2>Music Videos</h2>
+            <div class="row">
+                <article>
+                    <h3>Music Video Title</h3>
+                    <img src="IMG/MusicVideos/Video1.jpg" alt="Music Video 1">
+                    <button onclick="window.location.href='index.html'">Watch Now</button>
+                </article>
+                <!-- Add more music videos as needed -->
+            </div>
+            <a class="view-more" href="musicvideos.html">View More Music Videos</a>
+        </section>
+        <section>
+            <h2>Books</h2>
+            <div class="row">
+                <article>
+                    <h3>Book Title</h3>
+                    <img src="IMG/Ebooks/Book1.jpg" alt="Book 1">
+                    <button onclick="window.location.href='index.html'">Read Now</button>
+                </article>
+                <!-- Add more books as needed -->
+            </div>
+            <a class="view-more" href="ebooks.html">View More Books</a>
+        </section>
+        <section>
+            <h2>Live TV</h2>
+            <div class="row">
+                <article>
+                    <h3>Live TV Channel</h3>
+                    <img src="IMG/LiveTV/Channel1.jpg" alt="Live TV 1">
+                    <button onclick="window.location.href='index.html'">Watch Now</button>
+                </article>
+                <!-- Add more live TV channels as needed -->
+            </div>
+            <a class="view-more" href="livetv.html">View More Live TV</a>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Unblocked Games 24</p>
-    </footer>
 </body>
 </html>
