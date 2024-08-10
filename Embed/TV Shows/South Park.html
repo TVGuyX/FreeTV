@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Park - Seasons 1 & 5</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        #video-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        #bottom-bar.hidden {
+            opacity: 0;
+        }
+        #bottom-bar a, #episode-button {
+            text-decoration: none;
+        }
+        #bottom-bar button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        #bottom-bar button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        #episode-button {
+            background-color: #fff;
+            color: #333;
+        }
+        #episode-button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        #episode-modal, #season-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+        }
+        #episode-list, #season-list {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            height: 80%;
+            overflow-y: scroll;
+            color: #333;
+        }
+        .episode, .season {
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .episode:hover, .season:hover {
+            background-color: #f0f0f0;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <iframe id="episode-frame" src="https://drive.google.com/file/d/1Ae1wqQe1PjvFXWm1F7H-BhJDWgKKt3DQ/preview" allowfullscreen></iframe>
+    </div>
+    <div id="bottom-bar">
+        <a href="https://tvguyx.github.io/FreeTV/index.html">
+            <button>Back To Home</button>
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/shows.html">
+            <button>More Shows</button>
+        </a>
+        <button id="episode-button">Choose Episode</button>
+        <button id="season-button">Choose Season</button>
+    </div>
+
+    <!-- Episode Modal -->
+    <div id="episode-modal">
+        <div id="episode-list">
+            <span class="close" id="episode-close">&times;</span>
+            <h2>Season 5 Episodes</h2>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1I8S4BWpT0Zzfvcsasx5pON_s3NxeliI0/preview', 'It Hits the Fan')">Episode 1: It Hits the Fan</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/13WWmsAcRLBqY7qB2nlYaPUnqY5yi--Ee/preview', 'Cripple Fight')">Episode 2: Cripple Fight</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1BgEvW1v-vGJMcLC2K92eR6hRNaEBaXZR/preview', 'Super Best Friends')">Episode 3: Super Best Friends</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1B4ULV2algSKjWSQKQUXvS8wgMjIOdnu6/preview', 'Scott Tenorman Must Die')">Episode 4: Scott Tenorman Must Die</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1CKyw_1XElLi6XoPOZpWZAiHBq0sxCnzs/preview', 'Terrance and Phillip: Behind the Blow')">Episode 5: Terrance and Phillip: Behind the Blow</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1dqJihYkLCu8J2jN3z17Kn6PYYfsBUkzU/preview', 'Cartmanland')">Episode 6: Cartmanland</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1vtYB-T9mJxNxnj_2KBBst1D8Bvm7s0X7/preview', 'Proper Condom Use')">Episode 7: Proper Condom Use</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1yZURcx5l_NkKzekauf66Z5L3Vm0BPPNv/preview', 'Towelie')">Episode 8: Towelie</div>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1lGdYPGAsQUJU8lRQzVusRqH_QoAJHcpt/preview', 'Osama bin Laden Has Farty Pants')">Episode 9: Osama bin Laden Has Farty Pants</div>
+        </div>
+    </div>
+
+    <!-- Season Modal -->
+    <div id="season-modal">
+        <div id="season-list">
+            <span class="close" id="season-close">&times;</span>
+            <h2>Seasons</h2>
+            <div class="season" onclick="showSeason('season5')">Season 5</div>
+            <div class="season" onclick="showSeason('season1')">Season 1</div>
+        </div>
+    </div>
+
+    <script>
+        function changeEpisode(url, title) {
+            document.getElementById('episode-frame').src = url;
+            document.title = `South Park - ${title}`;
+            document.getElementById('episode-modal').style.display = 'none';
+        }
+
+        function showSeason(season) {
+            if (season === 'season5') {
+                document.getElementById('episode-list').innerHTML = `
+                    <span class="close" id="episode-close">&times;</span>
+                    <h2>Season 5 Episodes</h2>
+                    <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1I8S4BWpT0Zzfvcsasx5pON_s3NxeliI0/preview', 'It Hits the Fan')">Episode 1: It Hits the Fan</div>
+                    <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/13WWmsAcRLBqY7qB2nlYaPUnqY5yi--Ee/preview', 'Cripple Fight')">Episode 2: Cripple Fight</div>
+                    <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1BgEvW1v-vGJMcLC2K92eR6hRNaEBaXZR/preview', 'Super Best Friends')">Episode 3: Super Best Friends</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1B4ULV2algSKjWSQKQUXvS8wgMjIOdnu6/preview', 'Scott Tenorman Must Die')">Episode 4: Scott Tenorman Must Die</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1CKyw_1XElLi6XoPOZpWZAiHBq0sxCnzs/preview', 'Terrance and Phillip: Behind the Blow')">Episode 5: Terrance and Phillip: Behind the Blow</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1dqJihYkLCu8J2jN3z17Kn6PYYfsBUkzU/preview', 'Cartmanland')">Episode 6: Cartmanland</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1vtYB-T9mJxNxnj_2KBBst1D8Bvm7s0X7/preview', 'Proper Condom Use')">Episode 7: Proper Condom Use</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1yZURcx5l_NkKzekauf66Z5L3Vm0BPPNv/preview', 'Towelie')">Episode 8: Towelie</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1lGdYPGAsQUJU8lRQzVusRqH_QoAJHcpt/preview', 'Osama bin Laden Has Farty Pants')">Episode 9: Osama bin Laden Has Farty Pants</div>
+            `;
+        } else if (season === 'season1') {
+            document.getElementById('episode-list').innerHTML = `
+                <span class="close" id="episode-close">&times;</span>
+                <h2>Season 1 Episodes</h2>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1A1A-6I71nZLgdyAwC0dRQ0z1d-KdPqnl/preview', 'Cartman Gets an Anal Probe')">Episode 1: Cartman Gets an Anal Probe</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1ZK7FvqZB3LgTCXGmpYrHzAtyDFRvV1Gc/preview', 'Weight Gain 4000')">Episode 2: Weight Gain 4000</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1Y3AD99Mcfq9b9vv5QYt4f-sICGNHfI2s/preview', 'Volcano')">Episode 3: Volcano</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1j8xVYt2-7TXwhlU_WXyGo5-x6X3IRe9S/preview', 'Big Gay Al\'s Big Gay Boat Ride')">Episode 4: Big Gay Al's Big Gay Boat Ride</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1Um9tAGG0M0TccfUPX5rY7I_mLjx8E-nz/preview', 'An Elephant Makes Love to a Pig')">Episode 5: An Elephant Makes Love to a Pig</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1TWAEc5ft-zlnF6uAXH4XXdr-xy8D9yVX/preview', 'Death')">Episode 6: Death</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1F9tNsY0zdY2iihb1gwk2W4ZMEz3-QS5x/preview', 'Pinkeye')">Episode 7: Pinkeye</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1G0RpdRvnysNKAVHRoByU6bW0tiCwOq69/preview', 'Tom\'s Rhinoplasty')">Episode 8: Tom's Rhinoplasty</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1vHgGh15t74L4dEV6UQNVJYv7KtwzFDcu/preview', 'Mecha-Streisand')">Episode 9: Mecha-Streisand</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1PfFbXWwYw9Pz3m3x0dFgjRldgMe0z7Y1/preview', 'Cartman\'s Mom is a Dirty Slut')">Episode 10: Cartman's Mom is a Dirty Slut</div>
+            `;
+        }
+        document.getElementById('season-modal').style.display = 'none';
+        document.getElementById('episode-modal').style.display = 'block';
+    }
+
+    document.getElementById('episode-button').addEventListener('click', function() {
+        document.getElementById('episode-modal').style.display = 'block';
+    });
+
+    document.getElementById('season-button').addEventListener('click', function() {
+        document.getElementById('season-modal').style.display = 'block';
+    });
+
+    document.getElementById('episode-close').addEventListener('click', function() {
+        document.getElementById('episode-modal').style.display = 'none';
+    });
+
+    document.getElementById('season-close').addEventListener('click', function() {
+        document.getElementById('season-modal').style.display = 'none';
+    });
+</script>
+</body>
+</html>
