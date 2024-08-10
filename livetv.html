@@ -34,7 +34,9 @@
                 <article>
                     <h3>Channel: ABC</h3>
                     <img src="img/livetv/abc.jpg" alt="ABC Channel Logo">
-                    <button onclick="watchLiveTV('abc_live_stream.m3u8')">Watch Now</button>
+                    <a href="https://abc.com/live">
+                        <button>Watch Now</button>
+                    </a>
                 </article>
             </div>
         </section>
@@ -42,13 +44,5 @@
     <footer>
         <p>&copy; 2024 Unblocked Games 24</p>
     </footer>
-    <div id="player">
-        <video id="videoPlayer" controls></video>
-        <div id="player-controls">
-            <button onclick="pauseVideo()">Pause</button>
-            <button onclick="rewindVideo()">Rewind</button>
-            <button onclick="stopVideo()">Stop</button>
-        </div>
-    </div>
 </body>
 </html>
