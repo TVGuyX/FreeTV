@@ -2,44 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Live TV Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live TV Channel</title>
     <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
-    <link rel="stylesheet" href="./styles.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
     <script src="https://unpkg.com/plyr@3"></script>
-    <script src="./plyr-hls.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        #video-container {
+            width: 100vw;
+            height: calc(100vh - 60px); /* Adjust for the height of the bottom row */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #bottom-row {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px; /* Height for better visibility */
+            background: rgba(0, 0, 0, 0.5); /* Transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(10px); /* Blur effect for a dynamic look */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); /* Shadow for better visibility */
+            z-index: 1000; /* Ensure it stays above other content */
+        }
+        #bottom-row a {
+            text-decoration: none;
+        }
+        #bottom-row button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px; /* Rounded button edges */
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        #bottom-row button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Unblocked Games 24</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="movies.html">Movies</a>
-            <a href="tvshows.html">TV Shows</a>
-            <a href="music.html">Music</a>
-            <a href="musicvideos.html">Music Videos</a>
-            <a href="games.html">Games</a>
-            <a href="ebooks.html">Ebooks</a>
-            <a href="livetv.html">Live TV</a>
-        </nav>
-        <input type="text" id="search" placeholder="Search...">
-    </header>
-
-    <main>
-        <section id="livetv">
-            <h2>Live TV Player</h2>
-            <div class="container">
-                <video controls crossorigin playsinline>
-                    <source src="https://buzzrota-web.amagi.tv/playlist.m3u8" type="application/x-mpegURL" />
-                </video>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Unblocked Games 24</p>
-    </footer>
+    <div id="video-container">
+        <video controls crossorigin playsinline>
+            <source src="https://p2p.cy/WoZie9ph/master.m3u8" type="application/x-mpegURL" />
+        </video>
+    </div>
+    <div id="bottom-row">
+        <a href="https://tvguyx.github.io/FreeTV/">
+            <button>Back To Home</button>
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/livetv.html">
+            <button>More Channels</button>
+        </a>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -78,34 +114,5 @@
             }
         });
     </script>
-
-    <style>
-        .container {
-            padding-top: 18vh;
-            margin: 20px auto;
-            width: 600px;
-        }
-        video {
-            width: 100%;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #000;
-        }
-        nav input[type="text"] {
-            margin-top: 10px;
-            padding: 5px;
-            width: 200px;
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
 </body>
 </html>
