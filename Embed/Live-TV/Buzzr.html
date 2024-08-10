@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live TV Player</title>
+    <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
+    <script src="https://unpkg.com/plyr@3"></script>
+    <script src="./plyr-hls.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Unblocked Games 24</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="tvshows.html">TV Shows</a>
+            <a href="music.html">Music</a>
+            <a href="musicvideos.html">Music Videos</a>
+            <a href="games.html">Games</a>
+            <a href="ebooks.html">Ebooks</a>
+            <a href="livetv.html">Live TV</a>
+        </nav>
+        <input type="text" id="search" placeholder="Search...">
+    </header>
+
+    <main>
+        <section id="livetv">
+            <h2>Live TV Player</h2>
+            <div class="container">
+                <video controls crossorigin playsinline>
+                    <source src="https://buzzrota-web.amagi.tv/playlist.m3u8" type="application/x-mpegURL" />
+                </video>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Unblocked Games 24</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.querySelector("video");
+            const source = video.getElementsByTagName("source")[0].src;
+            const defaultOptions = {};
+
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(source);
+
+                hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+                    const availableQualities = hls.levels.map((l) => l.height);
+                    defaultOptions.quality = {
+                        default: availableQualities[0],
+                        options: availableQualities,
+                        forced: true,        
+                        onChange: (e) => updateQuality(e),
+                    };
+
+                    const player = new Plyr(video, defaultOptions);
+                });
+                hls.attachMedia(video);
+                window.hls = hls;
+            } else {
+                const player = new Plyr(video, defaultOptions);
+            }
+
+            function updateQuality(newQuality) {
+                window.hls.levels.forEach((level, levelIndex) => {
+                    if (level.height === newQuality) {
+                        console.log("Found quality match with " + newQuality);
+                        window.hls.currentLevel = levelIndex;
+                    }
+                });
+            }
+        });
+    </script>
+
+    <style>
+        .container {
+            padding-top: 18vh;
+            margin: 20px auto;
+            width: 600px;
+        }
+        video {
+            width: 100%;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #000;
+        }
+        nav input[type="text"] {
+            margin-top: 10px;
+            padding: 5px;
+            width: 200px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</body>
+</html>
