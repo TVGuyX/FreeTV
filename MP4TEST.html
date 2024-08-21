@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ren & Stimpy Show - Intro</title>
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .plyr__video-embed {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Ren & Stimpy Show - Intro (Widescreen HD)</h1>
+        <!-- Plyr video player -->
+        <video controls crossorigin playsinline class="plyr">
+            <source src="https://ia600507.us.archive.org/18/items/Test-files-stuff-no-worries-hi-person/FMLYGY2106gmhvh.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    <script>
+        const player = new Plyr('.plyr');
+    </script>
+</body>
+</html>
