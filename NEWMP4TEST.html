@@ -28,6 +28,7 @@
         video {
             width: 100%;
             border-radius: 8px;
+            display: none;
         }
         .controls {
             display: flex;
@@ -39,6 +40,11 @@
             bottom: 0;
             width: 100%;
             box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .controls.visible {
+            opacity: 1;
         }
         .controls button {
             background: none;
@@ -48,6 +54,11 @@
             cursor: pointer;
             margin: 0 10px;
             outline: none;
+        }
+        .volume-slider {
+            width: 100px;
+            margin: 0 10px;
+            cursor: pointer;
         }
         .progress-container {
             flex-grow: 1;
@@ -63,19 +74,92 @@
             height: 100%;
             background-color: #ff0000;
         }
+        .settings-menu {
+            position: absolute;
+            bottom: 50px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .settings-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .settings-menu li {
+            padding: 5px 0;
+            cursor: pointer;
+            color: white;
+        }
+        .poster-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .poster-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-button {
+            position: absolute;
+            font-size: 48px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .playback-notification {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div class="video-container">
-        <video id="video" src="https://archive.org/download/the-ren-stimpy-show-intro-widescreen-hd/The%20Ren%20%26%20Stimpy%20Show%20-%20Intro%20%28Widescreen%20HD%29.mp4"></video>
+        <div class="poster-container" id="poster-container">
+            <img src="https://archive.org/download/the-ren-stimpy-show-intro-widescreen-hd/The%20Ren%20%26%20Stimpy%20Show%20-%20Intro%20%28Widescreen%20HD%29.mp4" alt="Poster">
+            <div class="play-button" id="play-button">►</div>
+        </div>
+        <video id="video" controls></video>
         <div class="controls">
             <button id="play-pause">►</button>
             <button id="rewind">⏪ 10s</button>
             <button id="forward">⏩ 10s</button>
+            <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.1" value="1">
+            <button id="settings">⚙️</button>
             <div class="progress-container" id="progress-container">
                 <div class="progress" id="progress"></div>
             </div>
         </div>
+        <div class="settings-menu" id="settings-menu">
+            <ul id="quality-options">
+                <li data-quality="2160p" data-bitrate="16000">2160p (4K)</li>
+                <li data-quality="1080p" data-bitrate="8000">1080p (HD)</li>
+                <li data-quality="720p" data-bitrate="4000">720p</li>
+                <li data-quality="480p" data-bitrate="2000">480p</li>
+            </ul>
+            <ul id="subtitle-options"></ul>
+        </div>
+        <div class="playback-notification" id="playback-notification">Playing: 4K</div>
     </div>
 
     <script>
@@ -83,8 +167,42 @@
         const playPauseButton = document.getElementById('play-pause');
         const rewindButton = document.getElementById('rewind');
         const forwardButton = document.getElementById('forward');
+        const volumeSlider = document.getElementById('volume');
+        const settingsButton = document.getElementById('settings');
         const progressContainer = document.getElementById('progress-container');
         const progress = document.getElementById('progress');
+        const settingsMenu = document.getElementById('settings-menu');
+        const qualityOptions = document.getElementById('quality-options');
+        const subtitleOptions = document.getElementById('subtitle-options');
+        const posterContainer = document.getElementById('poster-container');
+        const playButton = document.getElementById('play-button');
+        const playbackNotification = document.getElementById('playback-notification');
+
+        const qualityLevels = [
+            { quality: '2160p', bitrate: 16000, label: '4K', url: 'https://archive.org/download/the-ren-stimpy-show-intro-widescreen-hd/The%20Ren%20%26%20Stimpy%20Show%20-%20Intro%20%28Widescreen%20HD%29.mp4' },
+            { quality: '1080p', bitrate: 8000, label: 'HD', url: 'https://archive.org/download/the-ren-stimpy-show-intro-widescreen-hd/The%20Ren%20%26%20Stimpy%20Show%20-%20Intro%20%28Widescreen%20HD%29.mp4' },
+            { quality: '720p', bitrate: 4000, label: '720p', url: 'https://archive.org/download/the-ren-stimpy-show-intro-widescreen-hd/The%20Ren%20%26%20Stimpy%20Show%20-%20Intro%20%28Widescreen%20HD%29.mp4' },
+            { quality: '480p', bitrate: 2000, label: 'SD', url: 'https://archive.org/download/the-ren-stimpy-show-intro-widescreen-hd/The%20Ren%20%26%20Stimpy%20Show%20-%20Intro%20%28Widescreen%20HD%29.mp4' }
+        ];
+
+        let selectedQuality = qualityLevels[0];
+
+        // Function to select quality based on user's internet speed
+        function selectQualityBySpeed() {
+            // Assume a test to determine the user's internet speed
+            const speed = 10000; // speed in kbps (just an example)
+
+            selectedQuality = qualityLevels.find(q => speed >= q.bitrate) || qualityLevels[qualityLevels.length - 1];
+            video.src = selectedQuality.url;
+            playbackNotification.textContent = `Playing: ${selectedQuality.label}`;
+        }
+
+        // Show poster and wait for play button
+        playButton.addEventListener('click', () => {
+            posterContainer.style.display = 'none';
+            video.style.display = 'block';
+            video.play();
+        });
 
         // Play or Pause the video
         playPauseButton.addEventListener('click', () => {
@@ -102,23 +220,68 @@
             video.currentTime -= 10;
         });
 
-        // Skip forward 10 seconds
+        // Forward 10 seconds
         forwardButton.addEventListener('click', () => {
             video.currentTime += 10;
         });
 
-        // Update progress bar as the video plays
-        video.addEventListener('timeupdate', () => {
-            const percent = (video.currentTime / video.duration) * 100;
-            progress.style.width = `${percent}%`;
+        // Adjust volume
+        volumeSlider.addEventListener('input', () => {
+            video.volume = volumeSlider.value;
         });
 
-        // Seek video when clicking on progress bar
+        // Toggle settings menu
+        settingsButton.addEventListener('click', () => {
+            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Update progress bar
+        video.addEventListener('timeupdate', () => {
+            const percentage = (video.currentTime / video.duration) * 100;
+            progress.style.width = `${percentage}%`;
+        });
+
+        // Seek in the video
         progressContainer.addEventListener('click', (e) => {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            const duration = video.duration;
-            video.currentTime = (clickX / width) * duration;
+            const rect = progressContainer.getBoundingClientRect();
+            const clickPosition = e.clientX - rect.left;
+            const percentage = clickPosition / rect.width;
+            video.currentTime = percentage * video.duration;
+        });
+
+        // Quality selection
+        qualityOptions.addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI') {
+                const selectedOption = e.target;
+                selectedQuality = qualityLevels.find(q => q.quality === selectedOption.getAttribute('data-quality'));
+                video.src = selectedQuality.url;
+                video.play();
+                settingsMenu.style.display = 'none';
+                playbackNotification.textContent = `Playing: ${selectedQuality.label}`;
+                playbackNotification.style.display = 'block';
+                setTimeout(() => {
+                    playbackNotification.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Initialize player
+        document.addEventListener('DOMContentLoaded', () => {
+            selectQualityBySpeed();
+            playbackNotification.style.display = 'block';
+            setTimeout(() => {
+                playbackNotification.style.display = 'none';
+            }, 3000);
+        });
+
+        // Show/hide controls
+        video.addEventListener('mousemove', () => {
+            const controls = document.querySelector('.controls');
+            controls.classList.add('visible');
+            clearTimeout(video.controlsTimeout);
+            video.controlsTimeout = setTimeout(() => {
+                controls.classList.remove('visible');
+            }, 3000);
         });
     </script>
 </body>
