@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies & TV - Version 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1c1c1e;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #search-bar {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .row {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        .row img {
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .row img:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            padding-left: 20px;
+        }
+
+        .continue-watching {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Movies & TV</h1>
+        <input type="text" id="search-bar" placeholder="Search...">
+    </header>
+
+    <section id="featured">
+        <!-- Rotating banner for featured content -->
+        <img src="https://via.placeholder.com/1500x400" alt="Featured Content">
+        <img src="https://via.placeholder.com/1500x400" alt="Featured Content" style="display:none;">
+        <img src="https://via.placeholder.com/1500x400" alt="Featured Content" style="display:none;">
+    </section>
+
+    <section>
+        <h2>Continue Watching</h2>
+        <div class="row continue-watching">
+            <!-- Dynamic content for continue watching -->
+        </div>
+    </section>
+
+    <section>
+        <h2>Movies</h2>
+        <div class="row">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 1">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 2">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 3">
+            <!-- Add more movie items -->
+        </div>
+    </section>
+
+    <section>
+        <h2>TV Shows</h2>
+        <div class="row">
+            <img src="https://via.placeholder.com/200x300" alt="Show 1">
+            <img src="https://via.placeholder.com/200x300" alt="Show 2">
+            <img src="https://via.placeholder.com/200x300" alt="Show 3">
+            <!-- Add more show items -->
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for rotating the featured banner
+        let currentIndex = 0;
+        const featuredImages = document.querySelectorAll('#featured img');
+        setInterval(() => {
+            featuredImages[currentIndex].style.display = 'none';
+            currentIndex = (currentIndex + 1) % featuredImages.length;
+            featuredImages[currentIndex].style.display = 'block';
+        }, 3000);
+
+        // JavaScript to handle Continue Watching and other dynamic content can be added here
+    </script>
+</body>
+</html>
