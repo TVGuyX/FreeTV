@@ -44,6 +44,33 @@
             height: 100%;
             object-fit: cover;
             transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        #featured img.active {
+            display: block;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        #featured-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #featured-dots span.active {
+            background-color: #fff;
         }
 
         .row {
@@ -88,9 +115,32 @@
 
     <section id="featured">
         <!-- Rotating banner for featured content -->
-        <img src="https://via.placeholder.com/1500x400" alt="Featured Content">
-        <img src="https://via.placeholder.com/1500x400" alt="Featured Content" style="display:none;">
-        <img src="https://via.placeholder.com/1500x400" alt="Featured Content" style="display:none;">
+        <a href="movie1.html">
+            <img src="https://via.placeholder.com/1500x400" alt="Featured Movie 1" class="active">
+        </a>
+        <a href="movie2.html">
+            <img src="https://via.placeholder.com/1500x400" alt="Featured Movie 2">
+        </a>
+        <a href="movie3.html">
+            <img src="https://via.placeholder.com/1500x400" alt="Featured Movie 3">
+        </a>
+        <a href="movie4.html">
+            <img src="https://via.placeholder.com/1500x400" alt="Featured Movie 4">
+        </a>
+        <a href="movie5.html">
+            <img src="https://via.placeholder.com/1500x400" alt="Featured Movie 5">
+        </a>
+        <a href="movie6.html">
+            <img src="https://via.placeholder.com/1500x400" alt="Featured Movie 6">
+        </a>
+        <div id="featured-dots">
+            <span class="active" data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+            <span data-index="3"></span>
+            <span data-index="4"></span>
+            <span data-index="5"></span>
+        </div>
     </section>
 
     <section>
@@ -167,16 +217,29 @@
     </section>
 
     <script>
-        // JavaScript for rotating the featured banner
+        // JavaScript for rotating the featured banner and handling dots
         let currentIndex = 0;
         const featuredImages = document.querySelectorAll('#featured img');
-        setInterval(() => {
-            featuredImages[currentIndex].style.display = 'none';
-            currentIndex = (currentIndex + 1) % featuredImages.length;
-            featuredImages[currentIndex].style.display = 'block';
-        }, 3000);
+        const dots = document.querySelectorAll('#featured-dots span');
 
-        // JavaScript to handle Continue Watching and other dynamic content can be added here
+        function showSlide(index) {
+            featuredImages[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            featuredImages[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        setInterval(() => {
+            const nextIndex = (currentIndex + 1) % featuredImages.length;
+            showSlide(nextIndex);
+        }, 3000);
     </script>
 </body>
 </html>
