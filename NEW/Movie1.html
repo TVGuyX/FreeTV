@@ -37,7 +37,7 @@
             position: relative;
             width: 100%;
             height: 400px;
-            background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2F3brothersfilm.com%2Fblog%2F2015%2F02%2Fbeetlejuice-1988&psig=AOvVaw2ba0fiRwThoZdEqnsjH2GY&ust=1724872831169000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKiUw5XylYgDFQAAAAAdAAAAABA8') no-repeat center center/cover;
+            background: url('https://via.placeholder.com/1500x400') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -103,10 +103,13 @@
             color: #ccc;
         }
 
-        .info-line::before {
-            content: "•";
-            margin: 0 10px;
-            color: #666;
+        .info-box {
+            display: inline-block;
+            padding: 3px 7px;
+            background-color: #333;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-right: 10px;
         }
 
         #movie-description {
@@ -129,8 +132,8 @@
         }
 
         .extras-content img, .related-movies-content img {
-            width: 200px;
-            height: 300px;
+            width: 400px;
+            height: 225px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
@@ -141,20 +144,6 @@
             transform: scale(1.05);
         }
 
-        .rating-box {
-            display: inline-block;
-            padding: 3px 7px;
-            background-color: #333;
-            border-radius: 3px;
-            font-size: 12px;
-            margin-right: 10px;
-        }
-
-        .info-tags {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
     </style>
 </head>
 <body>
@@ -163,9 +152,15 @@
     </header>
 
     <section id="movie-header">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ABeetlejuice_logo.svg&psig=AOvVaw1HQhdeYNMQGbw0AlUEgD5g&ust=1724872949069000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOC3i9DylYgDFQAAAAAdAAAAABAJ" alt="Movie Title Logo" id="movie-title-logo">
+        <img src="https://via.placeholder.com/500x200" alt="Movie Title Logo" id="movie-title-logo">
         <div id="movie-info">
-            <p>Comedy <span class="info-line"></span> 2024 <span class="info-line"></span> 1 hr 32 min</p>
+            <div class="info-tags">
+                <span>Comedy</span>
+                <span class="info-line"></span>
+                <span>2024</span>
+                <span class="info-line"></span>
+                <span>1 hr 32 min</span>
+            </div>
             <div id="watch-buttons">
                 <a href="#" class="watch-button">Watch Now</a>
                 <a href="#" class="trailer-button">Watch Trailer</a>
@@ -178,21 +173,19 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus feugiat metus ut velit facilisis, id laoreet felis mollis.</p>
         </div>
         <div class="info-tags">
-            <span class="rating-box">PG</span>
-            <p>4K</p>
-            <span class="info-line"></span>
-            <p>HDR</p>
-            <span class="info-line"></span>
-            <p>CC</p>
+            <span class="info-box">PG</span>
+            <span class="info-box">4K</span>
+            <span class="info-box">HDR</span>
+            <span class="info-box">CC</span>
         </div>
     </section>
 
     <section id="extras">
         <h3>Extras</h3>
         <div class="extras-content">
-            <img src="https://via.placeholder.com/200x300" alt="Extra 1">
-            <img src="https://via.placeholder.com/200x300" alt="Extra 2">
-            <img src="https://via.placeholder.com/200x300" alt="Extra 3">
+            <img src="https://via.placeholder.com/400x225" alt="Extra 1">
+            <img src="https://via.placeholder.com/400x225" alt="Extra 2">
+            <img src="https://via.placeholder.com/400x225" alt="Extra 3">
             <!-- Add more extras if needed -->
         </div>
     </section>
@@ -201,13 +194,13 @@
         <h3>Related Movies</h3>
         <div class="related-movies-content">
             <a href="movie2.html">
-                <img src="https://via.placeholder.com/200x300" alt="Related Movie 1">
+                <img src="https://via.placeholder.com/400x225" alt="Related Movie 1">
             </a>
             <a href="movie3.html">
-                <img src="https://via.placeholder.com/200x300" alt="Related Movie 2">
+                <img src="https://via.placeholder.com/400x225" alt="Related Movie 2">
             </a>
             <a href="movie4.html">
-                <img src="https://via.placeholder.com/200x300" alt="Related Movie 3">
+                <img src="https://via.placeholder.com/400x225" alt="Related Movie 3">
             </a>
             <!-- Add more related movies if needed -->
         </div>
