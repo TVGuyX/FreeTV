@@ -3,57 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies & TV</title>
+    <title>Movies & TV - Version 2</title>
     <style>
-        /* Existing styles for rows with current image sizes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1c1c1e;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #search-bar {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+
         .row {
             display: flex;
-            overflow-x: scroll;
-            white-space: nowrap;
-            margin-bottom: 20px;
+            overflow-x: auto;
+            padding: 20px;
         }
 
         .row img {
-            height: 200px; /* Assuming the original height for portrait-style images */
+            width: 200px;
+            height: 300px;
             margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        /* New styles for rows with 16:9 landscape images */
-        .row.landscape img {
-            height: auto;
-            width: 300px; /* Adjust as needed for the desired width */
-            margin-right: 10px;
+        .row img:hover {
+            transform: scale(1.05);
+        }
+
+        .landscape img {
+            width: 300px; /* Adjust width as necessary */
+            height: 168px; /* 16:9 aspect ratio */
+        }
+
+        h2 {
+            padding-left: 20px;
+        }
+
+        .continue-watching {
+            padding: 20px;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Movies & TV</h1>
+        <input type="text" id="search-bar" placeholder="Search...">
+    </header>
 
-    <!-- Existing rows with original image sizes -->
-    <div class="row">
-        <img src="movie1.jpg" alt="Movie 1">
-        <img src="movie2.jpg" alt="Movie 2">
-        <img src="movie3.jpg" alt="Movie 3">
-    </div>
-    
-    <div class="row">
-        <img src="tvshow1.jpg" alt="TV Show 1">
-        <img src="tvshow2.jpg" alt="TV Show 2">
-        <img src="tvshow3.jpg" alt="TV Show 3">
-    </div>
+    <section id="featured">
+        <!-- Rotating banner for featured content -->
+        <img src="https://via.placeholder.com/1500x400" alt="Featured Content">
+        <img src="https://via.placeholder.com/1500x400" alt="Featured Content" style="display:none;">
+        <img src="https://via.placeholder.com/1500x400" alt="Featured Content" style="display:none;">
+    </section>
 
-    <!-- New row with 16:9 landscape images for movies -->
-    <div class="row landscape">
-        <img src="movie4.jpg" alt="Movie 4">
-        <img src="movie5.jpg" alt="Movie 5">
-        <img src="movie6.jpg" alt="Movie 6">
-    </div>
+    <section>
+        <h2>Continue Watching</h2>
+        <div class="row continue-watching">
+            <!-- Dynamic content for continue watching -->
+        </div>
+    </section>
 
-    <!-- New row with 16:9 landscape images for TV shows -->
-    <div class="row landscape">
-        <img src="tvshow4.jpg" alt="TV Show 4">
-        <img src="tvshow5.jpg" alt="TV Show 5">
-        <img src="tvshow6.jpg" alt="TV Show 6">
-    </div>
+    <section>
+        <h2>Movies</h2>
+        <div class="row">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 1">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 2">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 3">
+            <!-- Add more movie items -->
+        </div>
+    </section>
 
+    <section>
+        <h2>TV Shows</h2>
+        <div class="row">
+            <img src="https://via.placeholder.com/200x300" alt="Show 1">
+            <img src="https://via.placeholder.com/200x300" alt="Show 2">
+            <img src="https://via.placeholder.com/200x300" alt="Show 3">
+            <!-- Add more show items -->
+        </div>
+    </section>
+
+    <!-- New 16:9 landscape rows for Movies -->
+    <section>
+        <h2>Featured Movies</h2>
+        <div class="row landscape">
+            <img src="https://via.placeholder.com/300x168" alt="Featured Movie 1">
+            <img src="https://via.placeholder.com/300x168" alt="Featured Movie 2">
+            <img src="https://via.placeholder.com/300x168" alt="Featured Movie 3">
+            <!-- Add more featured movie items -->
+        </div>
+    </section>
+
+    <!-- New 16:9 landscape rows for TV Shows -->
+    <section>
+        <h2>Featured TV Shows</h2>
+        <div class="row landscape">
+            <img src="https://via.placeholder.com/300x168" alt="Featured TV Show 1">
+            <img src="https://via.placeholder.com/300x168" alt="Featured TV Show 2">
+            <img src="https://via.placeholder.com/300x168" alt="Featured TV Show 3">
+            <!-- Add more featured TV show items -->
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for rotating the featured banner
+        let currentIndex = 0;
+        const featuredImages = document.querySelectorAll('#featured img');
+        setInterval(() => {
+            featuredImages[currentIndex].style.display = 'none';
+            currentIndex = (currentIndex + 1) % featuredImages.length;
+            featuredImages[currentIndex].style.display = 'block';
+        }, 3000);
+
+        // JavaScript to handle Continue Watching and other dynamic content can be added here
+    </script>
 </body>
 </html>
