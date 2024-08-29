@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Show Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .header .details {
+            max-width: 800px;
+        }
+        .header .details h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .header .details p {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .season-list {
+            margin-top: 30px;
+        }
+        .season {
+            margin-bottom: 30px;
+        }
+        .season h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .episode {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .episode img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .episode-details {
+            max-width: 800px;
+        }
+        .episode-details h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+        .episode-details p {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        .episode-details a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007aff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="show-poster.jpg" alt="TV Show Poster">
+            <div class="details">
+                <h1>TV Show Title</h1>
+                <p>Description of the TV show. This can be a brief summary that captures the essence of the show, its theme, and main characters.</p>
+            </div>
+        </div>
+
+        <div class="season-list">
+            <!-- Season 1 -->
+            <div class="season">
+                <h2>Season 1</h2>
+                <div class="episode">
+                    <img src="episode1.jpg" alt="Episode 1 Thumbnail">
+                    <div class="episode-details">
+                        <h3>Episode 1: Pilot</h3>
+                        <p>A brief description of Episode 1. This is a teaser or overview of what happens in the episode.</p>
+                        <a href="episode1.html">Watch Now</a>
+                    </div>
+                </div>
+                <div class="episode">
+                    <img src="episode2.jpg" alt="Episode 2 Thumbnail">
+                    <div class="episode-details">
+                        <h3>Episode 2: The Adventure Continues</h3>
+                        <p>A brief description of Episode 2. Another summary that makes the viewer interested in watching.</p>
+                        <a href="episode2.html">Watch Now</a>
+                    </div>
+                </div>
+                <!-- Add more episodes here -->
+            </div>
+
+            <!-- Season 2 -->
+            <div class="season">
+                <h2>Season 2</h2>
+                <div class="episode">
+                    <img src="episode1.jpg" alt="Episode 1 Thumbnail">
+                    <div class="episode-details">
+                        <h3>Episode 1: A New Beginning</h3>
+                        <p>A brief description of Episode 1 of Season 2.</p>
+                        <a href="episode1.html">Watch Now</a>
+                    </div>
+                </div>
+                <div class="episode">
+                    <img src="episode2.jpg" alt="Episode 2 Thumbnail">
+                    <div class="episode-details">
+                        <h3>Episode 2: Mystery Unfolds</h3>
+                        <p>A brief description of Episode 2 of Season 2.</p>
+                        <a href="episode2.html">Watch Now</a>
+                    </div>
+                </div>
+                <!-- Add more episodes here -->
+            </div>
+            <!-- Add more seasons here -->
+        </div>
+    </div>
+
+</body>
+</html>
