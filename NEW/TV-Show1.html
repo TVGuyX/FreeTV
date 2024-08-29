@@ -80,11 +80,44 @@
             text-decoration: none;
             border-radius: 5px;
         }
+
+        /* Related TV Shows Section */
+        .related-shows {
+            margin-top: 50px;
+        }
+        .related-shows h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .related-show-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .related-show {
+            width: 200px;
+            text-align: center;
+        }
+        .related-show img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .related-show-title {
+            font-size: 18px;
+            margin: 0;
+        }
+        .related-show a {
+            text-decoration: none;
+            color: #007aff;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- Header Section -->
         <div class="header">
             <img src="show-poster.jpg" alt="TV Show Poster">
             <div class="details">
@@ -93,6 +126,7 @@
             </div>
         </div>
 
+        <!-- Season and Episodes Section -->
         <div class="season-list">
             <!-- Season 1 -->
             <div class="season">
@@ -139,6 +173,39 @@
             </div>
             <!-- Add more seasons here -->
         </div>
+
+        <!-- Related TV Shows Section -->
+        <div class="related-shows">
+            <h2>Related TV Shows</h2>
+            <div class="related-show-list">
+                <div class="related-show">
+                    <a href="related-show1.html">
+                        <img src="related-show1.jpg" alt="Related Show 1">
+                        <p class="related-show-title">Related Show 1</p>
+                    </a>
+                </div>
+                <div class="related-show">
+                    <a href="related-show2.html">
+                        <img src="related-show2.jpg" alt="Related Show 2">
+                        <p class="related-show-title">Related Show 2</p>
+                    </a>
+                </div>
+                <div class="related-show">
+                    <a href="related-show3.html">
+                        <img src="related-show3.jpg" alt="Related Show 3">
+                        <p class="related-show-title">Related Show 3</p>
+                    </a>
+                </div>
+                <div class="related-show">
+                    <a href="related-show4.html">
+                        <img src="related-show4.jpg" alt="Related Show 4">
+                        <p class="related-show-title">Related Show 4</p>
+                    </a>
+                </div>
+                <!-- Add more related shows as needed -->
+            </div>
+        </div>
+
     </div>
 
 </body>
