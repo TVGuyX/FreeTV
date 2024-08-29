@@ -365,6 +365,88 @@
             </div>
             <a class="view-more" href="games.html">View More Games</a>
         </section>
+
+<!-- Notification -->
+<div id="notification" class="notification">
+    <span class="notification-text">A New Update Is Coming Soon</span>
+    <button class="notification-button" >More Information Coming Soon</button>
+    <span class="notification-close" onclick="closeNotification()">&times;</span>
+</div>
+
+<style>/* Notification Styles */
+    .notification {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 300px;
+        animation: slideIn 1s ease-out;
+        z-index: 1000;
+    }
+    
+    .notification-text {
+        margin-right: 10px;
+    }
+    
+    .notification-button {
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    
+    .notification-button:hover {
+        background-color: #004494;
+    }
+    
+    .notification-close {
+        font-size: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    
+    /* Slide-in Animation */
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    </style>
+
+<script>// Function to close the notification
+    function closeNotification() {
+        const notification = document.getElementById('notification');
+        notification.style.display = 'none';
+    }
+    
+    // Function to handle the "View Information" button click
+    function viewInfo() {
+        // You can add functionality here for what happens when the button is clicked
+        alert('View more information about the upcoming update!');
+    }
+    
+    // Optional: Show the notification when the page loads
+    window.addEventListener('load', () => {
+        const notification = document.getElementById('notification');
+        notification.style.display = 'flex';
+    });
+    </script>
+
     </main>
     <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top ↑</button>
 </body>
