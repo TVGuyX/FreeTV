@@ -39,15 +39,22 @@
             font-size: 18px;
             line-height: 1.4;
         }
-        .season-list {
-            margin-top: 30px;
-        }
-        .season {
+        .season-selector {
             margin-bottom: 30px;
         }
-        .season h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
+        .season-selector select {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+        .season {
+            display: none;
+        }
+        .season.active {
+            display: block;
         }
         .episode {
             display: flex;
@@ -126,10 +133,20 @@
             </div>
         </div>
 
+        <!-- Season Selector -->
+        <div class="season-selector">
+            <label for="season-select">Select Season:</label>
+            <select id="season-select" onchange="changeSeason()">
+                <option value="season1">Season 1</option>
+                <option value="season2">Season 2</option>
+                <!-- Add more seasons as needed -->
+            </select>
+        </div>
+
         <!-- Season and Episodes Section -->
         <div class="season-list">
             <!-- Season 1 -->
-            <div class="season">
+            <div id="season1" class="season active">
                 <h2>Season 1</h2>
                 <div class="episode">
                     <img src="episode1.jpg" alt="Episode 1 Thumbnail">
@@ -151,7 +168,7 @@
             </div>
 
             <!-- Season 2 -->
-            <div class="season">
+            <div id="season2" class="season">
                 <h2>Season 2</h2>
                 <div class="episode">
                     <img src="episode1.jpg" alt="Episode 1 Thumbnail">
@@ -207,6 +224,20 @@
         </div>
 
     </div>
+
+    <script>
+        function changeSeason() {
+            const seasonSelect = document.getElementById('season-select');
+            const selectedSeason = seasonSelect.value;
+
+            const seasons = document.querySelectorAll('.season');
+            seasons.forEach(season => {
+                season.classList.remove('active');
+            });
+
+            document.getElementById(selectedSeason).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
