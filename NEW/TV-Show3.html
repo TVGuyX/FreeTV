@@ -13,48 +13,43 @@
             padding: 0;
         }
 
-/* Navigation Bar */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Align items to the left */
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align items to the left */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+            padding: 12px; /* Increased padding */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
 
-.navbar .logo {
-    font-size: 18px;
-    font-weight: bold;
-    margin-right: 20px; /* Add some space between the logo and the first nav link */
-}
+        .navbar .logo {
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+            margin-right: 20px;
+        }
 
         .navbar a {
             color: #fff;
             text-decoration: none;
-            padding: 10px 15px;
-            font-size: 14px;
+            padding: 12px 18px; /* Increased padding */
+            font-size: 16px; /* Increased font size */
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
-            margin: 0 5px;
+            margin: 0 7px; /* Increased margin */
         }
 
         .navbar a:hover {
             background-color: rgba(255, 255, 255, 0.3);
         }
 
-        .navbar .logo {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
         .container {
             max-width: 1200px;
-            margin: 60px auto 0; /* Adjust for navbar height */
+            margin: 70px auto 0; /* Adjusted for navbar height */
             padding: 20px;
         }
 
@@ -109,11 +104,11 @@
         .episode {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px; /* Increased margin */
         }
 
         .episode img {
-            width: 180px; /* Increased size */
+            width: 200px; /* Increased size */
             height: auto;
             border-radius: 10px;
             margin-right: 20px;
@@ -125,7 +120,7 @@
 
         .episode-details h3 {
             margin: 0;
-            font-size: 22px;
+            font-size: 24px; /* Increased font size */
         }
 
         .episode-details p {
@@ -251,8 +246,8 @@
                 <div class="episode">
                     <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/7e730e6f-806e-42af-b10e-64010f60d310/34911474a8be53aa6c4d96619696ca8939ae50a9.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 3 Thumbnail">
                     <div class="episode-details">
-                        <h3>Episode 3: Caffeinated Concert Tickets</h3>
-                        <p>Mordecai and Rigby need to earn money to buy tickets for a concert, so they take jobs as rickshaw drivers but quickly get in over their heads.</p>
+                        <h3>Episode 3: The Dungeon</h3>
+                        <p>Mordecai and Rigby get trapped in a dungeon in a game they are playing and must find their way out before they can win a prize.</p>
                         <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E03.html">Watch Now</a>
                     </div>
                 </div>
@@ -261,7 +256,7 @@
             <!-- Season 2 -->
             <div id="season2" class="season">
                 <h2>Season 2</h2>
-                <!-- Add season 2 episodes here -->
+                <!-- Add episodes for Season 2 here -->
             </div>
 
             <!-- Add more seasons as needed -->
@@ -269,43 +264,33 @@
 
         <!-- Related TV Shows Section -->
         <div class="related-shows">
-            <h2>Related TV Shows</h2>
+            <h2>Related Shows</h2>
             <div class="related-show-list">
                 <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Gravity-Falls.html">
-                        <img src="https://static.wikia.nocookie.net/gravityfalls/images/a/a3/GF_titlecard_12.png" alt="Gravity Falls">
-                        <h3 class="related-show-title">Gravity Falls</h3>
-                    </a>
+                    <img src="https://m.media-amazon.com/images/I/81eU47TjW+L._AC_SY679_.jpg" alt="Adventure Time">
+                    <p class="related-show-title"><a href="#">Adventure Time</a></p>
                 </div>
                 <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Adventure-Time.html">
-                        <img src="https://m.media-amazon.com/images/I/81m20fqK2LL._AC_SL1500_.jpg" alt="Adventure Time">
-                        <h3 class="related-show-title">Adventure Time</h3>
-                    </a>
+                    <img src="https://m.media-amazon.com/images/I/71XGpZm9mrL._AC_SY679_.jpg" alt="The Amazing World of Gumball">
+                    <p class="related-show-title"><a href="#">The Amazing World of Gumball</a></p>
                 </div>
                 <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Steven-Universe.html">
-                        <img src="https://m.media-amazon.com/images/M/MV5BNzYzMzgxMTYyM15BMl5BanBnXkFtZTgwNTE4Nzg3NjM@._V1_FMjpg_UX1000_.jpg" alt="Steven Universe">
-                        <h3 class="related-show-title">Steven Universe</h3>
-                    </a>
+                    <img src="https://m.media-amazon.com/images/I/71Xe5O8zp5L._AC_SY679_.jpg" alt="Steven Universe">
+                    <p class="related-show-title"><a href="#">Steven Universe</a></p>
                 </div>
-                <!-- Add more related shows as needed -->
+                <!-- Add more related shows here -->
             </div>
         </div>
     </div>
 
     <script>
         function changeSeason() {
-            var selectedSeason = document.getElementById("season-select").value;
-            var seasons = document.querySelectorAll(".season");
-
-            seasons.forEach(function(season) {
-                if (season.id === selectedSeason) {
-                    season.classList.add("active");
-                } else {
-                    season.classList.remove("active");
-                }
+            const selectedSeason = document.getElementById('season-select').value;
+            const seasons = document.querySelectorAll('.season');
+            seasons.forEach(season => {
+                season.classList.remove('active');
             });
+            document.getElementById(selectedSeason).classList.add('active');
         }
     </script>
 </body>
