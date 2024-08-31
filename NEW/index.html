@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UG24</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            position: relative;
+            padding: 20px;
+            background-color: #1c1c1e;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        #featured img.active {
+            display: block;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        #featured-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #featured-dots span.active {
+            background-color: #fff;
+        }
+
+        .row {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        .row img {
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .row img:hover {
+            transform: scale(1.05);
+        }
+
+        .landscape img {
+            width: 300px; /* Adjust width as necessary */
+            height: 168px; /* 16:9 aspect ratio */
+        }
+
+        h2 {
+            padding-left: 20px;
+        }
+
+        #search-bar {
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            width: 300px;
+            margin-top: 10px;
+        }
+
+        #search-results {
+            display: none; /* Hidden until search */
+            position: absolute;
+            top: 60px; /* Adjusted to appear directly under the search bar */
+            left: 20px;
+            right: 20px;
+            background-color: #1c1c1e;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #2c2c2e;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-result-item:hover {
+            background-color: #3c3c3e;
+        }
+
+        .search-result-item img {
+            width: 75px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-result-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-result-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .search-result-meta {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Show sections by default */
+        section {
+            padding: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>UG24</h1>
+        <input type="text" id="search-bar" placeholder="Search..." oninput="searchContent()">
+        <!-- Search Results Section -->
+        <div id="search-results"></div>
+    </header>
+
+      <!-- Search Results Section -->
+    <section id="search-results"></section>
+
+    <script>
+        const contentData = [
+            // Movies
+            {
+                type: 'movie',
+                title: 'Monkey Man',
+                year: '2024',
+                quality: 'HD',
+                poster: 'https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Monkey%20Man%20(2024).jpeg?raw=true'
+            },
+            {
+                type: 'movie',
+                title: 'Despicable Me 4',
+                year: '2024',
+                quality: 'HD',
+                poster: 'https://m.media-amazon.com/images/M/MV5BNzY0ZTlhYzgtOTgzZC00ZTg2LTk4NTEtZDllM2E2NGE5Njg2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'
+            },
+            // TV Shows
+            {
+                type: 'tvshow',
+                title: 'Impractical Jokers',
+                seasons: '10',
+                quality: 'HD',
+                poster: 'https://yourcountdown.to/uploads/countdown/2024/01/xs/impractical-jokers-1705523704.webp'
+            },
+            {
+                type: 'tvshow',
+                title: 'The Big Bang Theory',
+                seasons: '12',
+                quality: 'HD',
+                poster: 'https://m.media-amazon.com/images/M/MV5BY2FmZTY5YTktOWRlYy00NmIyLWE0ZmQtZDg2YjlmMzczZDZiXkEyXkFqcGdeQXVyNjg4NzAyOTA@._V1_FMjpg_UX1000_.jpg'
+            },
+            // Games
+            {
+                type: 'game',
+                title: 'The Legend of Zelda: Tears of the Kingdom',
+                poster: 'https://assets.nintendo.com/image/upload/ar_16:9,c_fill,f_auto,q_auto:eco,w_400/ncom/en_US/games/switch/t/the-legend-of-zelda-tears-of-the-kingdom-switch/hero'
+            },
+            {
+                type: 'game',
+                title: 'Spider-Man 2',
+                poster: 'https://assets-prd.ignimgs.com/2023/10/16/spiderman2-hed-v2-1697490767984.jpg'
+            },
+            // Apps
+            {
+                type: 'app',
+                title: 'Adobe Photoshop',
+                poster: 'https://cdn.icon-icons.com/icons2/3053/PNG/512/adobe_photoshop_alt_macos_bigsur_icon_190439.png'
+            },
+            {
+                type: 'app',
+                title: 'Spotify',
+                poster: 'https://cdn-icons-png.flaticon.com/512/2111/2111624.png'
+            },
+            // Operating Systems
+            {
+                type: 'os',
+                title: 'Windows 11',
+                poster: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Windows_11_logo.svg/1200px-Windows_11_logo.svg.png'
+            },
+            {
+                type: 'os',
+                title: 'macOS Ventura',
+                poster: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/MacOS_Ventura_wordmark.svg/1200px-MacOS_Ventura_wordmark.svg.png'
+            }
+        ];
+
+        function searchContent() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const resultsContainer = document.getElementById('search-results');
+
+            // Clear previous results
+            resultsContainer.innerHTML = '';
+
+            // Filter content based on the search query
+            const results = contentData.filter(item =>
+                item.title.toLowerCase().includes(query)
+            );
+
+            if (results.length > 0) {
+                results.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('search-result-item');
+
+                    const poster = document.createElement('img');
+                    poster.src = item.poster;
+                    resultItem.appendChild(poster);
+
+                    const infoContainer = document.createElement('div');
+                    infoContainer.classList.add('search-result-info');
+
+                    const title = document.createElement('div');
+                    title.classList.add('search-result-title');
+                    title.textContent = item.title;
+                    infoContainer.appendChild(title);
+
+                    const meta = document.createElement('div');
+                    meta.classList.add('search-result-meta');
+
+                    // Add metadata only for movies and TV shows
+                    if (item.type === 'movie') {
+                        meta.textContent = `${item.year} • ${item.quality}`;
+                    } else if (item.type === 'tvshow') {
+                        meta.textContent = `${item.seasons} Seasons • ${item.quality}`;
+                    }
+                    infoContainer.appendChild(meta);
+
+                    resultItem.appendChild(infoContainer);
+                    resultsContainer.appendChild(resultItem);
+                });
+
+                // Show the search results box
+                resultsContainer.style.display = 'block';
+            } else {
+                resultsContainer.style.display = 'none';
+            }
+        }
+
+        // Hide results when clicking outside
+        document.addEventListener('click', function(event) {
+            const searchBar = document.getElementById('search-bar');
+            const resultsContainer = document.getElementById('search-results');
+
+            if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
+                resultsContainer.style.display = 'none';
+            }
+        });
+    </script>
+    <!-- Search Stuff -->
+
+    <section id="featured">
+        <!-- Rotating banner for featured content -->
+        <a href="movie1.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Dune%20Part%20Two%20(2024).jpg?raw=true" alt="Dune: Part 2 (2024)" class="active">
+        </a>
+        <a href="movie2.html">
+            <img src="https://miro.medium.com/v2/resize:fit:1200/1*tJIT4VQUonCaDjwoBLZnsQ.jpeg" alt="Despicable Me 4 (2024)">
+        </a>
+        <a href="movie3.html">
+            <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/20052b85-4652-41e7-9c10-605be932f194._CR0%2C0%2C3000%2C600_SX1500_.png" alt="South Park">
+        </a>
+        <a href="movie4.html">
+            <img src="" alt="Featured Movie 4">
+        </a>
+        <a href="movie5.html">
+            <img src="" alt="Featured Movie 5">
+        </a>
+        <a href="movie6.html">
+            <img src="https://images.squarespace-cdn.com/content/v1/555f43ace4b09cfed988524e/1595653974683-FW0G6NOFCKJV76EV5EGN/image-asset.jpeg" alt="Step Brothers (2008)">
+        </a>
+        <div id="featured-dots">
+            <span class="active" data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+            <span data-index="3"></span>
+            <span data-index="4"></span>
+            <span data-index="5"></span>
+        </div>
+    </section>
+
+<!-- New 16:9 landscape rows for Games -->
+<section>
+    <h2>Featured Games</h2>
+    <div class="row landscape">
+        <a href="movie4.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+        </a>
+        <a href="movie5.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Minecraft.webp" alt="Minecraft">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Earn%20to%20Die.png?raw=true" alt="Earn To Die">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tiny%20Fishing.jpg?raw=true" alt="Tiny Fishing">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Crossy%20Road.jpg?raw=true" alt="Crossy Road">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/FNAF.jpg?raw=true" alt="FNAF">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Happy%20Wheels.avif" alt="Happy Wheels">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Fruit%20Ninja.png?raw=true" alt="Fruit Ninja">
+        </a>
+        <a href="movie6.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Moto%20X3M.avif" alt="Moto X3M">
+        </a>
+    </div>
+</section>
+
+    <section>
+        <h2>Movies</h2>
+        <div class="row">
+            <a href="movie1.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Monkey%20Man%20(2024).jpeg?raw=true" alt="Monkey Man (2024)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BNzY0ZTlhYzgtOTgzZC00ZTg2LTk4NTEtZDllM2E2NGE5Njg2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Despicable Me 4 (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BMWJkOGJiNGItYzFmZi00ODExLWE1NDEtOWQyNzhhYzljODViXkEyXkFqcGdeQXVyMTY3ODkyNDkz._V1_.jpg" alt="The Garfield Movie (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BZWNjZWUwNDgtYTM4ZC00Zjk0LTg3ZWItNGEyZmVkZTIxZDk0XkEyXkFqcGc@._V1_.jpg" alt="Bad Boys: Ride or Die (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://musicart.xboxlive.com/7/954a6a00-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" alt="Godzilla x Kong The New Empire (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BNGE5MWJmZWYtN2ZlMi00ZjY1LTlhYTUtMzQ2Y2IxZWQyYTA2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX1000_.jpg" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/If%20(2024).jpg?raw=true" alt="IF (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/A%20Quiet%20Place%20Day%20One%20(2024).jpeg" alt="A Quiet Place Day One (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/Night%20Swim%20(2024).jpeg" alt="Night Swim (2024)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Cocaine%20Bear%20(2023).jpg?raw=true" alt="Cocaine Bear (2023)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Good%20Boys%20(2019).jpg?raw=true" alt="Good Boys (2019)">
+            </a>
+            <a href="movie3.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI (2023)">
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>TV Shows</h2>
+        <div class="row">
+            <a href="show1.html">
+                <img src="https://yourcountdown.to/uploads/countdown/2024/01/xs/impractical-jokers-1705523704.webp" alt="Impractical Jokers">
+            </a>
+            <a href="show2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BY2FmZTY5YTktOWRlYy00NmIyLWE0ZmQtZDg2YjlmMzczZDZiXkEyXkFqcGdeQXVyNjg4NzAyOTA@._V1_FMjpg_UX1000_.jpg" alt="The Big Bang Theory">
+            </a>
+            <a href="show3.html">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a6/AbbottElementaryS1DVD.jpg" alt="Abbott Elementary">
+            </a>
+            <a href="show2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BZTlmYjk0ZTItODNhMC00YmIyLWExZWEtYjk0YWQzMGNhOTZmXkEyXkFqcGdeQXVyMTY0Njc2MTUx._V1_FMjpg_UX1000_.jpg" alt="Young Sheldon">
+            </a>
+            <a href="show2.html">
+                <img src="https://www.peacocktv.com/dam/growth/assets/Library/ModernFamily/modern-family-description-image.jpg?downsize=1200:*&output-format=webp&output-quality=70" alt="Modern Family">
+            </a>
+            <a href="show2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BODEwZjEzMjAtNjQxMy00Yjc4LWFlMDAtYjhjZTAxNDU3OTg3XkEyXkFqcGdeQXVyOTM2NTM4MjA@._V1_.jpg" alt="Family Guy">
+            </a>
+            <a href="show2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BNDRkOWIyOTUtMjg5YS00OTJjLTgwNGYtMjgxMTA0NWQ2NGI3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg" alt="American Dad!">
+            </a>
+            <a href="show3.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BMGFkNGY4NGMtZjY0NC00YTI0LThiZjMtMjBmZGMzOGU3YTdmXkEyXkFqcGdeQXVyMTM0NTUzNDIy._V1_FMjpg_UX1000_.jpg" alt="Adventure Time">
+            </a>
+            <a href="show3.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BNWJjZjQ5NWUtMTkwZC00NGY2LWEyMDEtMGIyZThkMmMyZTZlXkEyXkFqcGdeQXVyMTI2MzY3NTA3._V1_.jpg" alt="Regular Show">
+            </a>
+            <a href="show3.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BMzc4Y2JlYWEtMmE4MS00Yjk5LThjYjYtNDRiN2FlMTAwOWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" alt="Magic for Humans">
+            </a>
+        </div>
+    </section>
+
+    <!-- New 16:9 landscape rows for Movies -->
+    <section>
+        <h2>Featured Movies</h2>
+        <div class="row landscape">
+            <a href="movie4.html">
+                <img src="https://i.ytimg.com/vi/edyAQfczCJI/maxresdefault.jpg" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="movie5.html">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/704446625682d87649faf88113c1cb19ccf3792523bafc83a1254c8435404ba3.jpg" alt="Step Brother (2008)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/The%20Fall%20Guy%20(2024).jpeg" alt="The Fall Guy (2024)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Game%20Night%20(2018).avif" alt="Game Night (2018)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Jackass%204.5%20(2022).jpg?raw=true" alt="Jackass 4.5 (2022)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Other%20Guys%20(2010).jpeg?raw=true" alt="The Other Guy (2010)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Meg%20(2018).jpeg?raw=true" alt="The Meg (2018)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Paul%20Blart%20Mall%20Cop%20(2009).jpeg?raw=true" alt="Paul Blart: Mall Cop (2009)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Ford%20V%20Ferrari%20(2019).jpeg?raw=true" alt="Ford V Ferrari (2019)">
+            </a>
+            <a href="movie6.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Click%20(2006).jpg?raw=true" alt="Click (2006)">
+            </a>
+        </div>
+    </section>
+
+    <!-- New 16:9 landscape rows for TV Shows -->
+    <section>
+        <h2>Featured TV Shows</h2>
+        <div class="row landscape">
+            <a href="show4.html">
+                <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/fd30a89f-173e-459a-a5bd-ad9748b7f07f/d8c78925e81212787f0f227de4e9885cbd82903b.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom" alt="South Park">
+            </a>
+            <a href="show5.html">
+                <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/229855e0-bbfb-4f5b-970c-b26a911a44a7/1d3a7aaa-6267-11ef-a614-129be508a7a3?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Abbott Elementary">
+            </a>
+            <a href="show6.html">
+                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/03A4EB3D71AE0BE1E33A9FC6A0D7DF2C2679A96CB22F776104E43F563BA014C9/scale?width=1200&amp;aspectRatio=1.78&amp;format=webp" alt="Gravity Falls">
+            </a>
+            <a href="show6.html">
+                <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/52dae4c7-2ab1-4bb9-ab1c-8100fd54e2f9/c3264e4f-5cb8-11ef-9983-12c0da8c75ad?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Friends">
+            </a>
+            <a href="show6.html">
+                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/3CA596E973F889DA5A32F7C45AAA9BA6F975B0EE96F9D86FB45C4095FE6FC02B/scale?width=1200&amp;aspectRatio=1.78&amp;format=webp" alt="Amphibia">
+            </a>
+            <a href="show6.html">
+                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/A13BC173D649D864DC8BC7264B0302DB68778D6C49F96C1103A48706A6A2BC60/scale?width=1200&amp;aspectRatio=1.78&amp;format=webp" alt="The Simpsons">
+            </a>
+            <a href="show6.html">
+                <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/c8ea8e19-cae7-4683-9b62-cdbbed744784/914da85b-244a-11ef-8e04-12093494333d?host=wbd-images.prod-vod.h264.io&partner=beamcom" alt="The Big Bang Theory">
+            </a>
+            <a href="show6.html">
+                <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/76b03b76-cee8-49f1-bcc5-32f315c5a227/b9162e3a-cbbd-11ee-bc01-0277465740e5?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Young Sheldon">
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Horror Movies</h2>
+        <div class="row">
+            <a href="movie1.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI (2023)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Evil%20Dead%20Rise%20(2023).jpeg?raw=true" alt="Evil Dead Rise (2023)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/A%20Nightmare%20On%20Elm%20Street%20(1984).jpg?raw=true" alt="A Nightmare On Elm Street (1984)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/A%20Quiet%20Place%20Day%20One%20(2024).jpeg" alt="A Quiet Place Day One (2024)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/Night%20Swim%20(2024).jpeg" alt="Night Swim (2024)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://i.redd.it/eav6b4hygyob1.jpg" alt="Halloween Kills (2021)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Scream2022film.jpeg/220px-Scream2022film.jpeg" alt="Scream (2022)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BOTU0MDQ0MGUtZjM4Ny00ZjlhLTliYTUtZTRmYTIyOGMzY2QzXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Violent Night (2022)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BYzA0OTk4OWQtYWZlYy00Y2M4LWFmNzctZmU4OWVkMTI1NjJkXkEyXkFqcGc@._V1_.jpg" alt="A Nightmare On Elm Street 2 Freddys Revenge (1985)">
+            </a>
+            <a href="movie2.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BMjFkYTEwNjAtYWU1YS00NTMyLTkwYmUtZjEyMjZjMDg5Njc5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg" alt="A Nightmare On Elm Street 3 (1987)">
+            </a>
+        </div>
+    </section>
+
+    <!-- New 16:9 landscape rows for Movies -->
+    <section>
+        <h2>Movie Collections</h2>
+        <div class="row landscape">
+            <a href="movie4.html">
+                <img src="https://images.fanart.tv/fanart/scream-collection-5fb052444d33b.jpg" alt="Scream Collection">
+            </a>
+            <a href="movie4.html">
+                <img src="https://images.fanart.tv/fanart/a-nightmare-on-elm-street-collection-5f189f5472263.jpg" alt="A Nightmare On Elm Street Collection">
+            </a>
+            <a href="movie4.html">
+                <img src="https://images.fanart.tv/fanart/bad-boys-collection-566873a97018f.jpg" alt="Bad Boys Collection">
+            </a>
+            <a href="movie4.html">
+                <img src="https://images.fanart.tv/fanart/despicable-me-collection-5491abb1ba2ed.jpg" alt="Despicable Me Collection">
+            </a>
+            <a href="movie4.html">
+                <img src="https://images.fanart.tv/fanart/halloween-collection-552825278fb55.jpg" alt="Halloween Collection">
+            </a>
+            <a href="movie4.html">
+                <img src="https://images.fanart.tv/fanart/cars-collection-599901dbce743.jpg" alt="Cars Collection">
+            </a>
+            <a href="movie4.html">
+                <img src="" alt="">
+            </a>
+            <a href="movie4.html">
+                <img src="" alt="">
+            </a>
+        </div>
+    </section>
+    
+    <script>
+        // JavaScript for rotating the featured banner and handling dots
+        let currentIndex = 0;
+        const featuredImages = document.querySelectorAll('#featured img');
+        const dots = document.querySelectorAll('#featured-dots span');
+
+        function showSlide(index) {
+            featuredImages[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            featuredImages[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        setInterval(() => {
+            const nextIndex = (currentIndex + 1) % featuredImages.length;
+            showSlide(nextIndex);
+        }, 3000);
+    </script>
+</body>
+</html>
