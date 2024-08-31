@@ -88,37 +88,50 @@
             border-radius: 5px;
         }
 
-        /* Related TV Shows Section */
-        .related-shows {
-            margin-top: 50px;
-        }
-        .related-shows h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        .related-show-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .related-show {
-            width: 200px;
-            text-align: center;
-        }
-        .related-show img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-        .related-show-title {
-            font-size: 18px;
-            margin: 0;
-        }
-        .related-show a {
-            text-decoration: none;
-            color: #007aff;
-        }
+/* Related TV Shows Section */
+.related-shows {
+    margin-top: 50px;
+}
+
+.related-shows h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.related-show-list {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+.related-show-list::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+}
+
+.related-show {
+    flex: 0 0 auto;
+    width: 200px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.related-show img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.related-show-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.related-show a {
+    text-decoration: none;
+    color: #007aff;
+}
     </style>
 </head>
 <body>
@@ -215,49 +228,24 @@
             <!-- Add more seasons here -->
         </div>
 
-        <!-- Related TV Shows Section -->
-        <div class="related-shows">
-            <h2>Related TV Shows</h2>
-            <div class="related-show-list">
-                <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Adventure-Time/index.html">
-                        <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/fff09eaf-17c3-446b-be32-8a0d47e4ccf1/66e5155a-1e79-11ef-8a0d-0afffbfd8ac1?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Adventure Time">
-                        <p class="related-show-title">Adventure Time</p>
-                    </a>
-                </div>
-                <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Close-Enough/index.html">
-                        <img src="https://static.wikia.nocookie.net/closeenough/images/0/0b/Close_Enough.png/revision/latest/scale-to-width-down/1200?cb=20170721231354" alt="Close Enough">
-                        <p class="related-show-title">Close Enough</p>
-                    </a>
-                </div>
-                <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/The-Amazing-World-of-Gumball/index.html">
-                        <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/18ad0649-f2dd-410d-8842-2ba2aa486fdb/915b499c07b086b46c4d52e937a9a44c29568f13.jpg?submitted=1684654124201&host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="The Amazing World of Gumball">
-                        <p class="related-show-title">The Amazing World of Gumball</p>
-                    </a>
-                </div>
-                <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/We-Bare-Bears/index.html">
-                        <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/d93e40b9-21c1-48e3-a0c8-28dfb2eaa9f1/543ec3f5-368f-4003-975e-24a09be5e01d?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="We Bare Bears">
-                        <p class="related-show-title">We Bare Bears</p>
-                    </a>
-                </div>
-                <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/The-Grim-Adventures-of-Billy-Mandy/index.html">
-                        <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/0fd9938a-862b-466d-999e-c4ece1d56e0c/1b63c3176773d822856f4dcbecdeb53a6c4bfc33.jpg?submitted=1684653330518&host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="The Grim Adventures of Billy & Mandy">
-                        <p class="related-show-title">The Grim Adventures of Billy & Mandy</p>
-                    </a>
-                </div>
-                <div class="related-show">
-                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Courage-the-Cowardly-Dog/index.html">
-                        <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/7768bbde-9895-494b-8469-bd7ff909ac64/52948ca45d8ddf697efc2bf693fcb3709d0605b4.jpg?submitted=1684662179623&host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Courage the Cowardly Dog">
-                        <p class="related-show-title">Courage the Cowardly Dog</p>
-                    </a>
-                </div>
-                <!-- Add more related shows as needed -->
-            </div>
+<div class="related-shows">
+    <h2>Related TV Shows</h2>
+    <div class="related-show-list">
+        <div class="related-show">
+            <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Adventure-Time/index.html">
+                <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/fff09eaf-17c3-446b-be32-8a0d47e4ccf1/66e5155a-1e79-11ef-8a0d-0afffbfd8ac1?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Adventure Time">
+                <p class="related-show-title">Adventure Time</p>
+            </a>
         </div>
+        <div class="related-show">
+            <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Amazing-World-of-Gumball/index.html">
+                <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/26bfdbd3-36d4-4b1e-b17a-0bbd899f69d4/2e1a0bb3-40a6-4909-825d-b6b3333f56f6?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="The Amazing World of Gumball">
+                <p class="related-show-title">The Amazing World of Gumball</p>
+            </a>
+        </div>
+        <!-- Add more related shows here -->
+    </div>
+</div>
 
     </div>
 
