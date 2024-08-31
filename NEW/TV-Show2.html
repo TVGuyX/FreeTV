@@ -12,36 +12,77 @@
             margin: 0;
             padding: 0;
         }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar .logo {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 60px auto 0; /* Adjust for navbar height */
             padding: 20px;
         }
+
         .header {
             display: flex;
             align-items: center;
             margin-bottom: 30px;
         }
+
         .header img {
             width: 200px;
             height: auto;
             border-radius: 10px;
             margin-right: 20px;
         }
+
         .header .details {
             max-width: 800px;
         }
+
         .header .details h1 {
             margin: 0;
             font-size: 36px;
         }
+
         .header .details p {
             font-size: 18px;
             line-height: 1.4;
         }
+
         .season-selector {
             margin-bottom: 30px;
         }
+
         .season-selector select {
             padding: 10px;
             font-size: 16px;
@@ -50,34 +91,42 @@
             border: 1px solid #555;
             border-radius: 5px;
         }
+
         .season {
             display: none;
         }
+
         .season.active {
             display: block;
         }
+
         .episode {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
+
         .episode img {
-            width: 180px; /* Increased width */
+            width: 180px; /* Increased size */
             height: auto;
             border-radius: 10px;
             margin-right: 20px;
         }
+
         .episode-details {
             max-width: 800px;
         }
+
         .episode-details h3 {
             margin: 0;
             font-size: 22px;
         }
+
         .episode-details p {
             font-size: 16px;
             line-height: 1.4;
         }
+
         .episode-details a {
             display: inline-block;
             margin-top: 10px;
@@ -136,6 +185,22 @@
 </head>
 <body>
 
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">UG24</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Games</a>
+            <a href="#">Sports</a>
+            <a href="#">Cheating Tools</a>
+            <a href="#">Apps</a>
+            <a href="#">Music</a>
+            <a href="#">Live TV</a>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Header Section -->
         <div class="header">
@@ -181,24 +246,8 @@
                     <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/7e730e6f-806e-42af-b10e-64010f60d310/34911474a8be53aa6c4d96619696ca8939ae50a9.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 3 Thumbnail">
                     <div class="episode-details">
                         <h3>Episode 3: Caffeinated Concert Tickets</h3>
-                        <p>Mordecai and Rigby make a deal with a Coffee Bean to help them stay awake to work major overtime to pay for concert tickets.</p>
+                        <p>Mordecai and Rigby need to earn money to buy tickets for a concert, so they take jobs as rickshaw drivers but quickly get in over their heads.</p>
                         <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E03.html">Watch Now</a>
-                    </div>
-                </div>
-                <div class="episode">
-                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/35247de5-0fcc-4354-a986-8a1ca463435b/904f64e988a73c2157ed31ccb47bd524e7755123.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 4 Thumbnail">
-                    <div class="episode-details">
-                        <h3>Episode 4: Death Punchies</h3>
-                        <p>Rigby learns an ultimate karate move and becomes the bully of the park.</p>
-                        <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E04.html">Watch Now</a>
-                    </div>
-                </div>
-                <div class="episode">
-                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/8027c014-9443-469c-ac92-95ab41dcfcc7/174fb5c73f135a0691eb6837e1bb3299905c6b3a.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 5 Thumbnail">
-                    <div class="episode-details">
-                        <h3>Episode 5: Free Cake</h3>
-                        <p>Mordecai and Rigby accidentally ruin Benson's surprise birthday party and must find a way to make things right.</p>
-                        <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E05.html">Watch Now</a>
                     </div>
                 </div>
             </div>
@@ -206,8 +255,10 @@
             <!-- Season 2 -->
             <div id="season2" class="season">
                 <h2>Season 2</h2>
-                <!-- Add episode content similar to season 1 -->
+                <!-- Add season 2 episodes here -->
             </div>
+
+            <!-- Add more seasons as needed -->
         </div>
 
         <!-- Related TV Shows Section -->
@@ -215,20 +266,22 @@
             <h2>Related TV Shows</h2>
             <div class="related-show-list">
                 <div class="related-show">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNzU0Mjc1NTM0M15BMl5BanBnXkFtZTcwMTA1MTc1MQ@@._V1_.jpg" alt="Adventure Time">
-                    <p class="related-show-title"><a href="https://tvguyx.github.io/FreeTV/TV-Shows/Adventure-Time/">Adventure Time</a></p>
+                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Gravity-Falls.html">
+                        <img src="https://static.wikia.nocookie.net/gravityfalls/images/a/a3/GF_titlecard_12.png" alt="Gravity Falls">
+                        <h3 class="related-show-title">Gravity Falls</h3>
+                    </a>
                 </div>
                 <div class="related-show">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMTUyNzk4OTQ2MF5BMl5BanBnXkFtZTgwMTcxOTkxMzE@._V1_.jpg" alt="The Amazing World of Gumball">
-                    <p class="related-show-title"><a href="https://tvguyx.github.io/FreeTV/TV-Shows/The-Amazing-World-of-Gumball/">The Amazing World of Gumball</a></p>
+                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Adventure-Time.html">
+                        <img src="https://m.media-amazon.com/images/I/81m20fqK2LL._AC_SL1500_.jpg" alt="Adventure Time">
+                        <h3 class="related-show-title">Adventure Time</h3>
+                    </a>
                 </div>
                 <div class="related-show">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMjI2MjExOTM4NV5BMl5BanBnXkFtZTgwNjM2NzEzNTE@._V1_.jpg" alt="Gravity Falls">
-                    <p class="related-show-title"><a href="https://tvguyx.github.io/FreeTV/TV-Shows/Gravity-Falls/">Gravity Falls</a></p>
-                </div>
-                <div class="related-show">
-                    <img src="https://m.media-amazon.com/images/M/MV5BYzdlMjMwZmEtNDVjZC00MGE5LWJhNzQtMmYzZjYwZDJhMmE0XkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_.jpg" alt="Rick and Morty">
-                    <p class="related-show-title"><a href="https://tvguyx.github.io/FreeTV/TV-Shows/Rick-and-Morty/">Rick and Morty</a></p>
+                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Steven-Universe.html">
+                        <img src="https://m.media-amazon.com/images/M/MV5BNzYzMzgxMTYyM15BMl5BanBnXkFtZTgwNTE4Nzg3NjM@._V1_FMjpg_UX1000_.jpg" alt="Steven Universe">
+                        <h3 class="related-show-title">Steven Universe</h3>
+                    </a>
                 </div>
                 <!-- Add more related shows as needed -->
             </div>
@@ -237,15 +290,17 @@
 
     <script>
         function changeSeason() {
-            var seasonSelect = document.getElementById("season-select");
+            var selectedSeason = document.getElementById("season-select").value;
             var seasons = document.querySelectorAll(".season");
+
             seasons.forEach(function(season) {
-                season.classList.remove("active");
+                if (season.id === selectedSeason) {
+                    season.classList.add("active");
+                } else {
+                    season.classList.remove("active");
+                }
             });
-            var selectedSeason = seasonSelect.value;
-            document.getElementById(selectedSeason).classList.add("active");
         }
     </script>
-
 </body>
 </html>
