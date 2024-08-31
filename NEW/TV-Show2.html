@@ -3,93 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regular Show</title>
+    <title>Regular Show Episodes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
+            background-color: #f3f3f3;
             margin: 0;
             padding: 0;
         }
 
-        /* Navigation Bar */
         .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
-            padding: 10px;
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: flex-start; /* Move buttons more to the left */
+            padding: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
         }
 
         .navbar a {
-            color: #fff;
+            color: white;
             text-decoration: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            margin-right: 10px;
             border-radius: 5px;
-            margin: 0 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
         }
 
         .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .navbar .logo {
-            font-size: 18px;
-            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .container {
+            padding-top: 80px;
             max-width: 1200px;
-            margin: 60px auto 0; /* Adjust for navbar height */
+            margin: 0 auto;
             padding: 20px;
         }
 
-        .header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .header img {
-            width: 200px;
-            height: auto;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
-
-        .header .details {
-            max-width: 800px;
-        }
-
-        .header .details h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-
-        .header .details p {
-            font-size: 18px;
-            line-height: 1.4;
+        h1 {
+            text-align: center;
         }
 
         .season-selector {
-            margin-bottom: 30px;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .season-selector select {
             padding: 10px;
             font-size: 16px;
-            background-color: #333;
-            color: #fff;
-            border: 1px solid #555;
-            border-radius: 5px;
         }
 
         .season {
@@ -103,115 +73,77 @@
         .episode {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
         .episode img {
-            width: 180px; /* Increased size */
-            height: auto;
-            border-radius: 10px;
+            width: 180px; /* Increased thumbnail size */
             margin-right: 20px;
+            border-radius: 5px;
         }
 
         .episode-details {
-            max-width: 800px;
+            flex: 1;
         }
 
         .episode-details h3 {
             margin: 0;
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .episode-details p {
-            font-size: 16px;
-            line-height: 1.4;
+            margin: 5px 0;
+            color: #555;
         }
 
         .episode-details a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #007aff;
-            color: white;
+            color: #007bff;
             text-decoration: none;
-            border-radius: 5px;
         }
 
-        /* Related TV Shows Section */
         .related-shows {
-            margin-top: 50px;
-        }
-
-        .related-shows h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            margin-top: 40px;
         }
 
         .related-show-list {
             display: flex;
-            overflow-x: auto;
-            padding-bottom: 20px;
-            scroll-behavior: smooth;
-        }
-
-        .related-show-list::-webkit-scrollbar {
-            display: none; /* Hide the scrollbar */
+            justify-content: space-around;
         }
 
         .related-show {
-            flex: 0 0 auto;
-            width: 200px;
-            margin-right: 20px;
             text-align: center;
         }
 
         .related-show img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .related-show-title {
-            font-size: 18px;
-            margin: 0;
-        }
-
-        .related-show a {
-            text-decoration: none;
-            color: #007aff;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
         }
     </style>
 </head>
 <body>
-
-    <!-- Navigation Bar -->
     <div class="navbar">
-        <div class="logo">UG24</div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">TV Shows</a>
-            <a href="#">Games</a>
-            <a href="#">Sports</a>
-            <a href="#">Cheating Tools</a>
-            <a href="#">Apps</a>
-            <a href="#">Music</a>
-            <a href="#">Live TV</a>
-        </div>
+        <a href="https://tvguyx.github.io/FreeTV/">Home</a>
+        <a href="https://tvguyx.github.io/FreeTV/Movies.html">Movies</a>
+        <a href="https://tvguyx.github.io/FreeTV/TV-Shows.html">TV Shows</a>
+        <a href="https://tvguyx.github.io/FreeTV/Live-TV.html">Live TV</a>
     </div>
 
     <div class="container">
-        <!-- Header Section -->
-        <div class="header">
-            <img src="https://m.media-amazon.com/images/S/pv-target-images/a514ff0b29991f5169bb406e99488b9e590bff2c1bd2c74b792e276692b33dc0.jpg" alt="Regular Show">
-            <div class="details">
-                <h1>Regular Show</h1>
-                <p>Mordecai, a blue jay, and Rigby, a raccoon, are groundskeepers at a park. But these best friends are lazy and don't let their jobs interfere with their ability to have fun. While Mordecai tries to be responsible and do a good job, he's frequently led astray by his immature pal, who is totally without fear or shame, and has no boundaries at all. The friends often end up having to pay for their irresponsible actions as they usually get into more trouble than they anticipated. Their slacking off at work causes much chagrin for their hot-tempered gumball machine boss, Benson.</p>
-            </div>
-        </div>
-
-        <!-- Season Selector -->
+        <h1>Regular Show Episodes</h1>
+        
         <div class="season-selector">
             <label for="season-select">Select Season:</label>
             <select id="season-select" onchange="changeSeason()">
@@ -221,29 +153,29 @@
             </select>
         </div>
 
-        <!-- Season and Episodes Section -->
-        <div class="season-list">
+        <div id="seasons">
             <!-- Season 1 -->
             <div id="season1" class="season active">
-                <h2>Season 1</h2>
                 <div class="episode">
-                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/9a4e089b-2bdd-4552-8429-e2ffcc050824/64d1a226fddd1be7da7d672f333e7bdd8a46c27f.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 1 Thumbnail">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjA1MjQ2OTg0OV5BMl5BanBnXkFtZTgwOTczODczNjM@._V1_FMjpg_UX1000_.jpg" alt="Episode 1 Thumbnail">
                     <div class="episode-details">
                         <h3>Episode 1: The Power</h3>
-                        <p>Mordecai and Rigby find a mysterious keyboard that allows them to do anything they want, including accidentally sending Benson to the moon.</p>
+                        <p>Mordecai and Rigby are asked to do a simple job: take out the trash. But a magic keyboard they find turns this mundane task into a surreal adventure.</p>
                         <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E01.html">Watch Now</a>
                     </div>
                 </div>
+
                 <div class="episode">
-                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/0ac01d40-3bf6-483e-b66d-c2c2a6ff4733/ac7e6d0f284ddaf312cdc773db4bbcfed49088d5.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 2 Thumbnail">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTc5NTU5Njc2OF5BMl5BanBnXkFtZTgwMTczODczNjM@._V1_FMjpg_UX1000_.jpg" alt="Episode 2 Thumbnail">
                     <div class="episode-details">
-                        <h3>Episode 2: Just Set up the Chairs</h3>
-                        <p>Mordecai and Rigby get distracted while setting up chairs for a kid's birthday party and unleash a monster that terrorizes the entire park.</p>
+                        <h3>Episode 2: Just Set Up the Chairs</h3>
+                        <p>Mordecai and Rigby are supposed to set up chairs for a party, but their attempt to avoid work leads to a chaotic adventure.</p>
                         <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E02.html">Watch Now</a>
                     </div>
                 </div>
+
                 <div class="episode">
-                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/7e730e6f-806e-42af-b10e-64010f60d310/34911474a8be53aa6c4d96619696ca8939ae50a9.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 3 Thumbnail">
+                    <img src="https://static.tvmaze.com/uploads/images/original_untouched/28/72396.jpg" alt="Episode 3 Thumbnail">
                     <div class="episode-details">
                         <h3>Episode 3: Caffeinated Concert Tickets</h3>
                         <p>Mordecai and Rigby need to earn money to buy tickets for a concert, so they take jobs as rickshaw drivers but quickly get in over their heads.</p>
