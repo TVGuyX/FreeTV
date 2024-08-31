@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Show</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the left */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.navbar .logo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px; /* Add some space between the logo and the first nav link */
+}
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar .logo {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto 0; /* Adjust for navbar height */
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .header .details {
+            max-width: 800px;
+        }
+
+        .header .details h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .header .details p {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .season-selector {
+            margin-bottom: 30px;
+        }
+
+        .season-selector select {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+
+        .season {
+            display: none;
+        }
+
+        .season.active {
+            display: block;
+        }
+
+        .episode {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .episode img {
+            width: 180px; /* Increased size */
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .episode-details {
+            max-width: 800px;
+        }
+
+        .episode-details h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .episode-details p {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .episode-details a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007aff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Related TV Shows Section */
+        .related-shows {
+            margin-top: 50px;
+        }
+
+        .related-shows h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .related-show-list {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .related-show-list::-webkit-scrollbar {
+            display: none; /* Hide the scrollbar */
+        }
+
+        .related-show {
+            flex: 0 0 auto;
+            width: 200px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .related-show img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .related-show-title {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .related-show a {
+            text-decoration: none;
+            color: #007aff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">UG24</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Games</a>
+            <a href="#">Sports</a>
+            <a href="#">Cheating Tools</a>
+            <a href="#">Apps</a>
+            <a href="#">Music</a>
+            <a href="#">Live TV</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="https://m.media-amazon.com/images/S/pv-target-images/a514ff0b29991f5169bb406e99488b9e590bff2c1bd2c74b792e276692b33dc0.jpg" alt="Regular Show">
+            <div class="details">
+                <h1>Regular Show</h1>
+                <p>Mordecai, a blue jay, and Rigby, a raccoon, are groundskeepers at a park. But these best friends are lazy and don't let their jobs interfere with their ability to have fun. While Mordecai tries to be responsible and do a good job, he's frequently led astray by his immature pal, who is totally without fear or shame, and has no boundaries at all. The friends often end up having to pay for their irresponsible actions as they usually get into more trouble than they anticipated. Their slacking off at work causes much chagrin for their hot-tempered gumball machine boss, Benson.</p>
+            </div>
+        </div>
+
+        <!-- Season Selector -->
+        <div class="season-selector">
+            <label for="season-select">Select Season:</label>
+            <select id="season-select" onchange="changeSeason()">
+                <option value="season1">Season 1</option>
+                <option value="season2">Season 2</option>
+                <!-- Add more seasons as needed -->
+            </select>
+        </div>
+
+        <!-- Season and Episodes Section -->
+        <div class="season-list">
+            <!-- Season 1 -->
+            <div id="season1" class="season active">
+                <h2>Season 1</h2>
+                <div class="episode">
+                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/9a4e089b-2bdd-4552-8429-e2ffcc050824/64d1a226fddd1be7da7d672f333e7bdd8a46c27f.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 1 Thumbnail">
+                    <div class="episode-details">
+                        <h3>Episode 1: The Power</h3>
+                        <p>Mordecai and Rigby find a mysterious keyboard that allows them to do anything they want, including accidentally sending Benson to the moon.</p>
+                        <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E01.html">Watch Now</a>
+                    </div>
+                </div>
+                <div class="episode">
+                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/0ac01d40-3bf6-483e-b66d-c2c2a6ff4733/ac7e6d0f284ddaf312cdc773db4bbcfed49088d5.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 2 Thumbnail">
+                    <div class="episode-details">
+                        <h3>Episode 2: Just Set up the Chairs</h3>
+                        <p>Mordecai and Rigby get distracted while setting up chairs for a kid's birthday party and unleash a monster that terrorizes the entire park.</p>
+                        <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E02.html">Watch Now</a>
+                    </div>
+                </div>
+                <div class="episode">
+                    <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/7e730e6f-806e-42af-b10e-64010f60d310/34911474a8be53aa6c4d96619696ca8939ae50a9.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=320" alt="Episode 3 Thumbnail">
+                    <div class="episode-details">
+                        <h3>Episode 3: Caffeinated Concert Tickets</h3>
+                        <p>Mordecai and Rigby need to earn money to buy tickets for a concert, so they take jobs as rickshaw drivers but quickly get in over their heads.</p>
+                        <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Regular-Show/Episodes/S01E03.html">Watch Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Season 2 -->
+            <div id="season2" class="season">
+                <h2>Season 2</h2>
+                <!-- Add season 2 episodes here -->
+            </div>
+
+            <!-- Add more seasons as needed -->
+        </div>
+
+        <!-- Related TV Shows Section -->
+        <div class="related-shows">
+            <h2>Related TV Shows</h2>
+            <div class="related-show-list">
+                <div class="related-show">
+                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Gravity-Falls.html">
+                        <img src="https://static.wikia.nocookie.net/gravityfalls/images/a/a3/GF_titlecard_12.png" alt="Gravity Falls">
+                        <h3 class="related-show-title">Gravity Falls</h3>
+                    </a>
+                </div>
+                <div class="related-show">
+                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Adventure-Time.html">
+                        <img src="https://m.media-amazon.com/images/I/81m20fqK2LL._AC_SL1500_.jpg" alt="Adventure Time">
+                        <h3 class="related-show-title">Adventure Time</h3>
+                    </a>
+                </div>
+                <div class="related-show">
+                    <a href="https://tvguyx.github.io/FreeTV/TV-Shows/Steven-Universe.html">
+                        <img src="https://m.media-amazon.com/images/M/MV5BNzYzMzgxMTYyM15BMl5BanBnXkFtZTgwNTE4Nzg3NjM@._V1_FMjpg_UX1000_.jpg" alt="Steven Universe">
+                        <h3 class="related-show-title">Steven Universe</h3>
+                    </a>
+                </div>
+                <!-- Add more related shows as needed -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeSeason() {
+            var selectedSeason = document.getElementById("season-select").value;
+            var seasons = document.querySelectorAll(".season");
+
+            seasons.forEach(function(season) {
+                if (season.id === selectedSeason) {
+                    season.classList.add("active");
+                } else {
+                    season.classList.remove("active");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
