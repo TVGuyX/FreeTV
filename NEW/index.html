@@ -182,6 +182,7 @@
                 year: '2024',
                 quality: 'HD',
                 poster: ''
+                link: 'https://example.com/'
             },
             {
                 type: 'movie',
@@ -295,65 +296,66 @@
         ];
 
         function searchContent() {
-            const query = document.getElementById('search-bar').value.toLowerCase();
-            const resultsContainer = document.getElementById('search-results');
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
 
-            // Clear previous results
-            resultsContainer.innerHTML = '';
+    // Clear previous results
+    resultsContainer.innerHTML = '';
 
-            // Filter content based on the search query
-            const results = contentData.filter(item =>
-                item.title.toLowerCase().includes(query)
-            );
+    // Filter content based on the search query
+    const results = contentData.filter(item =>
+        item.title.toLowerCase().includes(query)
+    );
 
-            if (results.length > 0) {
-                results.forEach(item => {
-                    const resultItem = document.createElement('div');
-                    resultItem.classList.add('search-result-item');
+    if (results.length > 0) {
+        results.forEach(item => {
+            // Create a link element
+            const resultLink = document.createElement('a');
+            resultLink.href = item.link;
+            resultLink.target = '_blank'; // Optional: Open link in a new tab
 
-                    const poster = document.createElement('img');
-                    poster.src = item.poster;
-                    resultItem.appendChild(poster);
+            // Create a container for the result item
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('search-result-item');
 
-                    const infoContainer = document.createElement('div');
-                    infoContainer.classList.add('search-result-info');
+            const poster = document.createElement('img');
+            poster.src = item.poster;
+            resultItem.appendChild(poster);
 
-                    const title = document.createElement('div');
-                    title.classList.add('search-result-title');
-                    title.textContent = item.title;
-                    infoContainer.appendChild(title);
+            const infoContainer = document.createElement('div');
+            infoContainer.classList.add('search-result-info');
 
-                    const meta = document.createElement('div');
-                    meta.classList.add('search-result-meta');
+            const title = document.createElement('div');
+            title.classList.add('search-result-title');
+            title.textContent = item.title;
+            infoContainer.appendChild(title);
 
-                    // Add metadata only for movies and TV shows
-                    if (item.type === 'movie') {
-                        meta.textContent = `${item.year} • ${item.quality}`;
-                    } else if (item.type === 'tvshow') {
-                        meta.textContent = `${item.seasons} Seasons • ${item.quality}`;
-                    }
-                    infoContainer.appendChild(meta);
+            const meta = document.createElement('div');
+            meta.classList.add('search-result-meta');
 
-                    resultItem.appendChild(infoContainer);
-                    resultsContainer.appendChild(resultItem);
-                });
-
-                // Show the search results box
-                resultsContainer.style.display = 'block';
-            } else {
-                resultsContainer.style.display = 'none';
+            // Add metadata only for movies and TV shows
+            if (item.type === 'movie') {
+                meta.textContent = `${item.year} • ${item.quality}`;
+            } else if (item.type === 'tvshow') {
+                meta.textContent = `${item.seasons} Seasons • ${item.quality}`;
             }
-        }
+            infoContainer.appendChild(meta);
 
-        // Hide results when clicking outside
-        document.addEventListener('click', function(event) {
-            const searchBar = document.getElementById('search-bar');
-            const resultsContainer = document.getElementById('search-results');
+            resultItem.appendChild(infoContainer);
 
-            if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
-                resultsContainer.style.display = 'none';
-            }
+            // Append the result item to the link
+            resultLink.appendChild(resultItem);
+
+            // Append the link to the results container
+            resultsContainer.appendChild(resultLink);
         });
+
+        // Show the search results box
+        resultsContainer.style.display = 'block';
+    } else {
+        resultsContainer.style.display = 'none';
+    }
+}
     </script>
     <!-- Search Stuff -->
 
