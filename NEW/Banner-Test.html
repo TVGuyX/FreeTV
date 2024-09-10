@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UG24</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            position: relative;
+            padding: 20px;
+            background-color: #1c1c1e;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        #featured img.active {
+            display: block;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        #featured-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #featured-dots span.active {
+            background-color: #fff;
+        }
+
+        .row {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        .row img {
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .row img:hover {
+            transform: scale(1.05);
+        }
+
+        .landscape img {
+            width: 300px; /* Adjust width as necessary */
+            height: 168px; /* 16:9 aspect ratio */
+        }
+
+        h2 {
+            padding-left: 20px;
+        }
+
+        #search-bar {
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            width: 300px;
+            margin-top: 10px;
+        }
+
+        #search-results {
+            display: none; /* Hidden until search */
+            position: absolute;
+            top: 60px; /* Adjusted to appear directly under the search bar */
+            left: 20px;
+            right: 20px;
+            background-color: #1c1c1e;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #2c2c2e;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-result-item:hover {
+            background-color: #3c3c3e;
+        }
+
+        .search-result-item img {
+            width: 75px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-result-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-result-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .search-result-meta {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Show sections by default */
+        section {
+            padding: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>UG24</h1>
+
+    <script>
+        const contentData = [
+            // Movies
+        ]
+        function searchContent() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
+
+    // Clear previous results
+    resultsContainer.innerHTML = '';
+
+    // Filter content based on the search query
+    const results = contentData.filter(item =>
+        item.title.toLowerCase().includes(query)
+    );
+
+    if (results.length > 0) {
+        results.forEach(item => {
+            // Create a link element
+            const resultLink = document.createElement('a');
+            resultLink.href = item.link;
+            resultLink.target = '_blank'; // Optional: Open link in a new tab
+
+            // Create a container for the result item
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('search-result-item');
+
+            const poster = document.createElement('img');
+            poster.src = item.poster;
+            resultItem.appendChild(poster);
+
+            const infoContainer = document.createElement('div');
+            infoContainer.classList.add('search-result-info');
+
+            const title = document.createElement('div');
+            title.classList.add('search-result-title');
+            title.textContent = item.title;
+            infoContainer.appendChild(title);
+
+            const meta = document.createElement('div');
+            meta.classList.add('search-result-meta');
+
+            // Add metadata only for movies and TV shows
+            if (item.type === 'movie') {
+                meta.textContent = `${item.year} • ${item.quality}`;
+            } else if (item.type === 'tvshow') {
+                meta.textContent = `${item.seasons} Seasons • ${item.quality}`;
+            }
+            infoContainer.appendChild(meta);
+
+            resultItem.appendChild(infoContainer);
+
+            // Append the result item to the link
+            resultLink.appendChild(resultItem);
+
+            // Append the link to the results container
+            resultsContainer.appendChild(resultLink);
+        });
+
+        // Show the search results box
+        resultsContainer.style.display = 'block';
+    } else {
+        resultsContainer.style.display = 'none';
+    }
+}
+    </script>
+    <!-- Search Stuff -->
+
+    <section id="featured">
+        <!-- Rotating banner for featured content -->
+        <a href="https://tvguyx.github.io/FreeTV/Movies/.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Dune%20Part%20Two%20(2024).jpg?raw=true" alt="Dune: Part 2 (2024)" class="active">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Movies/Bad Boys Ride or Die (2024).html">
+            <img src="" alt="Bad Boys: Ride or Die (2024)">
+        </a>
+        <a href="">
+            <img src="" alt="">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Movies/Deadpool and Wolverine (2024).html">
+            <img src="https://getyourcomicon.co.uk/wp-content/uploads/2024/02/DeadpoolWolverine-banner.jpg" alt="Deadpool and Wolverine (2024)">
+        </a>
+        <a href="">
+            <img src="" alt="">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Movies/Ghostbusters Frozen Empire (2024).html">
+            <img src="https://weliveentertainment.com/wp-content/uploads/2024/03/ghostbusters-frozen-empire-banner.jpg" alt="Ghostbusters: Frozen Empire (2024)">
+        </a>
+        <div id="featured-dots">
+            <span class="active" data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+            <span data-index="3"></span>
+            <span data-index="4"></span>
+            <span data-index="5"></span>
+        </div>
+    </section>
+
+<section>
+        <h2>2024 Movies</h2>
+        <div class="row">
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Bad Boys Ride or Die (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Bad%20Boys%20Ride%20or%20Die%20(2024).jpg?raw=true" alt="Bad Boys: Ride or Die (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Deadpool and Wolverine (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Deadpool%20&%20Wolverine%20(2024).jpeg?raw=true" alt="Deadpool and Wolverine (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Despicable Me 4 (2024).html"></a>
+                <img src="https://posters.movieposterdb.com/24_02/2024/7510222/s_despicable-me-4-movie-poster_3c4ff16e.jpg" alt="Despicable Me 4 (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Godzilla x Kong The New Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Godzilla x Kong The New Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/The Fall Guy (2024).html">
+                <img src="https://xl.movieposterdb.com/24_03/2024/1684562/xl_the-fall-guy-movie-poster_b7866e6d.jpg?v=2024-08-13%2021:33:27" alt="The Fall Guy (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Ghostbusters Frozen Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Ghostbusters%20Frozen%20Empire%20(2024).jpeg?raw=true" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/IF (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/If%20(2024).jpg?raw=true" alt="IF (2024)">
+            </a>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Movies</h2>
+        <div class="row">
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Monkey Man (2024).html">
+                <img src="https://xl.movieposterdb.com/24_08/2023/9214772/xl_monkey-man-movie-poster_a53c3371.jpg?v=2024-08-13%2015:16:13" alt="Monkey Man (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Despicable Me 4 (2024).html">
+                <img src="https://xl.movieposterdb.com/24_02/2024/7510222/xl_despicable-me-4-movie-poster_3c4ff16e.jpg?v=2024-09-01%2004:35:45" alt="Despicable Me 4 (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/The Garfield Movie (2024).html">
+                <img src="https://xl.movieposterdb.com/23_12/2024/5779228/xl_the-garfield-movie-movie-poster_c56f63c9.jpg?v=2024-09-03%2021:55:17" alt="The Garfield Movie (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Bad Boys Ride or Die (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Bad%20Boys%20Ride%20or%20Die%20(2024).jpg?raw=true" alt="Bad Boys: Ride or Die (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Godzilla x Kong The New Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Godzilla x Kong The New Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Ghostbusters Frozen Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Ghostbusters%20Frozen%20Empire%20(2024).jpeg?raw=true" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/IF (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/If%20(2024).jpg?raw=true" alt="IF (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/A Quiet Place Day One (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/A%20Quiet%20Place%20Day%20One%20(2024).jpeg" alt="A Quiet Place Day One (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Night Swim (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/Night%20Swim%20(2024).jpeg" alt="Night Swim (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Cocaine Bear (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Cocaine%20Bear%20(2023).jpg?raw=true" alt="Cocaine Bear (2023)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Good Boys (2019).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Good%20Boys%20(2019).jpg?raw=true" alt="Good Boys (2019)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Scream VI (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI (2023)">
+            </a>
+        </div>
+    </section>
+    
+    <!-- New 16:9 landscape rows for Movies -->
+    <section>
+        <h2>Featured Movies</h2>
+        <div class="row landscape">
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Ghostbusters Frozen Empire (2024).html">
+                <img src="https://i.ytimg.com/vi/edyAQfczCJI/maxresdefault.jpg" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/The Fall Guy (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/The%20Fall%20Guy%20(2024).jpeg" alt="The Fall Guy (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Game Night (2018).html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Game%20Night%20(2018).avif" alt="Game Night (2018)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Jackass 4.5 (2022).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Jackass%204.5%20(2022).jpg?raw=true" alt="Jackass 4.5 (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/The Other Guy (2010).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Other%20Guys%20(2010).jpeg?raw=true" alt="The Other Guy (2010)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/The Meg (2018).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Meg%20(2018).jpeg?raw=true" alt="The Meg (2018)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Paul Blart Mall Cop (2009).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Paul%20Blart%20Mall%20Cop%20(2009).jpeg?raw=true" alt="Paul Blart: Mall Cop (2009)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Ford V Ferrari (2019).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Ford%20V%20Ferrari%20(2019).jpeg?raw=true" alt="Ford V Ferrari (2019)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Click (2006).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Click%20(2006).jpg?raw=true" alt="Click (2006)">
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Horror Movies</h2>
+        <div class="row">
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Scream VI (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI (2023)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Evil Dead Rise (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Evil%20Dead%20Rise%20(2023).jpeg?raw=true" alt="Evil Dead Rise (2023)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/A Nightmare On Elm Street (1984).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/A%20Nightmare%20On%20Elm%20Street%20(1984).jpg?raw=true" alt="A Nightmare On Elm Street (1984)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Night Swim (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/Night%20Swim%20(2024).jpeg" alt="Night Swim (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Halloween Kills (2021).html">
+                <img src="https://i.redd.it/eav6b4hygyob1.jpg" alt="Halloween Kills (2021)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Scream (2022).html">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Scream2022film.jpeg/220px-Scream2022film.jpeg" alt="Scream (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Violent Night (2022).html">
+                <img src="https://m.media-amazon.com/images/M/MV5BOTU0MDQ0MGUtZjM4Ny00ZjlhLTliYTUtZTRmYTIyOGMzY2QzXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Violent Night (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/A Nightmare On Elm Street 2 Freddys Revenge (1985).html">
+                <img src="https://m.media-amazon.com/images/M/MV5BYzA0OTk4OWQtYWZlYy00Y2M4LWFmNzctZmU4OWVkMTI1NjJkXkEyXkFqcGc@._V1_.jpg" alt="A Nightmare On Elm Street 2 Freddys Revenge (1985)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/A Nightmare On Elm Street 3 (1987).html">
+                <img src="https://m.media-amazon.com/images/M/MV5BMjFkYTEwNjAtYWU1YS00NTMyLTkwYmUtZjEyMjZjMDg5Njc5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg" alt="A Nightmare On Elm Street 3 (1987)">
+            </a>
+        </div>
+    </section>
+    
+    <script>
+        // JavaScript for rotating the featured banner and handling dots
+        let currentIndex = 0;
+        const featuredImages = document.querySelectorAll('#featured img');
+        const dots = document.querySelectorAll('#featured-dots span');
+
+        function showSlide(index) {
+            featuredImages[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            featuredImages[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        setInterval(() => {
+            const nextIndex = (currentIndex + 1) % featuredImages.length;
+            showSlide(nextIndex);
+        }, 3000);
+    </script>
+</body>
+</html>
