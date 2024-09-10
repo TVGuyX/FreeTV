@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Boys: Ride or Die (2024)</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .overlay-button {
+            position: absolute;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            transition: opacity 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0);
+        }
+
+        .overlay-button.show {
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+
+        #back-home {
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #000;
+            border-radius: 5px;
+        }
+
+        #more-button {
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        #server-select {
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #more-menu {
+            display: none;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 80%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        #more-menu h2 {
+            margin-top: 0;
+        }
+
+        #close-menu {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .menu-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .poster-row {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+        }
+
+        .poster {
+            flex: 0 0 auto;
+            margin-right: 20px;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+
+        .poster img {
+            width: 250px;
+            height: 375px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .watch-now-button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #16e67e;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #initial-message {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            z-index: 20;
+            width: 90%;
+            max-width: 600px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="video-container">
+        <!-- Google Drive Video Embed -->
+        <iframe id="video-iframe" src="https://drive.google.com/file/d/1kPXndrE945d_14Mr5SSRzS2VjTdIIe36/preview"></iframe>
+
+        <!-- Back to Home Button -->
+        <div id="back-home" class="overlay-button">
+            <a href="https://tvguyx.github.io/FreeTV/index.html" style="color: #000; text-decoration: none;">Back to Home</a>
+        </div>
+
+        <!-- Server Selection Button -->
+        <div id="server-select" class="overlay-button">Server 1 (HD)</div>
+
+        <!-- More Button -->
+        <div id="more-button" class="overlay-button">More</div>
+
+        <!-- More Menu -->
+        <div id="more-menu">
+            <div id="close-menu">X</div>
+            <a href="https://tvguyx.github.io/FreeTV/Report-Movie.html" class="menu-button">Report Movie</a>
+            <a href="https://tvguyx.github.io/FreeTV/Request-Movie.html" class="menu-button">Request Movie</a>
+            <div class="section-title">Description</div>
+            <p>When their late police captain gets linked to drug cartels, wisecracking Miami cops Mike Lowrey and Marcus Burnett embark on a dangerous mission to clear his name.</p>
+            
+            <div class="section-title">More In This Collection</div>
+            <div class="poster-row">
+                <div class="poster">
+                    <img src="https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/title-key-art/badboys_onesheet_1400x2100_0.jpg?itok=GGzVOfd0" alt="Bad Boys">
+                    <p>Bad Boys</p>
+                    <a href="https://tvguyx.github.io/FreeTV/Movies/Bad Boys (1995).hmtl" class="watch-now-button">Watch Now</a>
+                </div>
+                <div class="poster">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZmU4NzVkZjEtZmQxMi00ZDY5LWI3ZDYtMWRmZjE5YmYwZjQzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg" alt="Bad Boys II">
+                    <p>Bad Boys II</p>
+                    <a href="https://tvguyx.github.io/FreeTV/Movies/Bad Boys II (2003).html" class="watch-now-button">Watch Now</a>
+                </div>
+                <div class="poster">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMWU0MGYwZWQtMzcwYS00NWVhLTlkZTAtYWVjOTYwZTBhZTBiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg" alt="Bad Boys For Life">
+                    <p>Bad Boys: For Life</p>
+                    <a href="https://tvguyx.github.io/FreeTV/Movies/Bad Boys For Life (2020).html" class="watch-now-button">Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="section-title">Recommended Movies</div>
+            <div class="poster-row">
+                <div class="poster">
+                    <img src="https://posters.movieposterdb.com/23_11/2024/1684562/l_the-fall-guy-movie-poster_af257014.jpg" alt="The Fall Guy">
+                    <p>The Fall Guy</p>
+                    <a href="https://tvguyx.github.io/FreeTV/Movies/The Fall Guy (2024).html" class="watch-now-button">Watch Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Initial Message -->
+        <div id="initial-message">
+            <p>Move your mouse or touch the screen towards the top left or right to show more</p>
+            <p>If content doesn't load, talk to the person who gave you access to this app</p>
+        </div>
+    </div>
+
+    <script>
+        let showMenu = false;
+        let showOverlay = false;
+
+        const iframe = document.getElementById('video-iframe');
+        const backHome = document.getElementById('back-home');
+        const moreButton = document.getElementById('more-button');
+        const serverSelect = document.getElementById('server-select');
+        const moreMenu = document.getElementById('more-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const initialMessage = document.getElementById('initial-message');
+
+        // Server data
+        const servers = [
+            { url: 'https://drive.google.com/file/d/1kPXndrE945d_14Mr5SSRzS2VjTdIIe36/preview', quality: 'HD', name: 'Google Drive' },
+        ];
+        let currentServerIndex = 0;
+
+        function updateServer() {
+            const server = servers[currentServerIndex];
+            iframe.src = server.url;
+            serverSelect.innerText = `Server ${currentServerIndex + 1} (${server.quality})`;
+        }
+
+        // Toggle more menu
+        moreButton.addEventListener('click', () => {
+            showMenu = !showMenu;
+            moreMenu.style.display = showMenu ? 'block' : 'none';
+        });
+
+        // Close more menu
+        closeMenu.addEventListener('click', () => {
+            moreMenu.style.display = 'none';
+            showMenu = false;
+        });
+
+        // Switch server
+        serverSelect.addEventListener('click', () => {
+            currentServerIndex = (currentServerIndex + 1) % servers.length;
+            updateServer();
+        });
+
+        // Handle overlay appearance
+        function handleMovement() {
+            if (showOverlay) {
+                backHome.classList.add('show');
+                moreButton.classList.add('show');
+                serverSelect.classList.add('show');
+            } else {
+                backHome.classList.remove('show');
+                moreButton.classList.remove('show');
+                serverSelect.classList.remove('show');
+            }
+        }
+
+        document.addEventListener('mousemove', () => {
+            showOverlay = true;
+            handleMovement();
+            clearTimeout(overlayTimeout);
+            overlayTimeout = setTimeout(() => {
+                showOverlay = false;
+                handleMovement();
+            }, 3000);
+        });
+
+        document.addEventListener('touchstart', () => {
+            showOverlay = true;
+            handleMovement();
+            clearTimeout(overlayTimeout);
+            overlayTimeout = setTimeout(() => {
+                showOverlay = false;
+                handleMovement();
+            }, 3000);
+        });
+
+        let overlayTimeout;
+
+        // Show initial message for 10 seconds
+        initialMessage.style.display = 'block';
+        setTimeout(() => {
+            initialMessage.style.display = 'none';
+        }, 10000);
+
+        updateServer(); // Initialize with the first server
+    </script>
+
+</body>
+</html>
