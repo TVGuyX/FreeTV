@@ -217,39 +217,34 @@
         const moreButton = document.getElementById('more-button');
         const moreMenu = document.getElementById('more-menu');
         const closeMenu = document.getElementById('close-menu');
-        const overlayButtons = document.querySelectorAll('.overlay-button');
-        const videoContainer = document.getElementById('video-container');  // Add the main container
 
-        // Function to show overlay buttons
-        const showOverlayButtons = () => {
-            overlayButtons.forEach(button => button.style.opacity = '1');
-            clearTimeout(timeout);
-            timeout = setTimeout(hideOverlayButtons, 3000); // 3 seconds delay for hiding buttons on inactivity
-        };
-
-        // Function to hide overlay buttons
-        const hideOverlayButtons = () => {
-            overlayButtons.forEach(button => button.style.opacity = '0');
-        };
-
-        // Function to hide the More Menu
-        closeMenu.addEventListener('click', () => {
-            moreMenu.style.display = 'none';
-        });
-
-        // Function to show the More Menu
         moreButton.addEventListener('click', () => {
             moreMenu.style.display = 'block';
         });
 
-        // Hide overlay buttons after a delay
-        let timeout;
-        showOverlayButtons(); // Show buttons initially
+        closeMenu.addEventListener('click', () => {
+            moreMenu.style.display = 'none';
+        });
 
-        // Detect activity anywhere on the screen (touch/click)
-        videoContainer.addEventListener('mousemove', showOverlayButtons);
-        videoContainer.addEventListener('click', showOverlayButtons);
-        videoContainer.addEventListener('touchstart', showOverlayButtons);
+        // Hide overlay buttons when mouse is not moving
+        let timeout;
+        const overlayButtons = document.querySelectorAll('.overlay-button');
+
+        const showOverlayButtons = () => {
+            overlayButtons.forEach(button => {
+                button.style.opacity = '1';
+            });
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                overlayButtons.forEach(button => {
+                    button.style.opacity = '0';
+                });
+            }, 3000);
+        };
+
+        // Listen for touch or mouse events to show overlay buttons
+        document.addEventListener('mousemove', showOverlayButtons);
+        document.addEventListener('touchstart', showOverlayButtons);
     </script>
 </body>
 </html>
