@@ -160,27 +160,60 @@
             padding: 20px;
             display: block;
         }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align items to the left */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+            padding: 12px; /* Increased padding */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px; /* Increased padding */
+            font-size: 16px; /* Increased font size */
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 0 7px; /* Increased margin */
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>UG24 - Movies</h1>
         
-        <a href="https://tvguyx.github.io/FreeTV/index.html">
-            <h2>Home</h2>
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/tvshows.html">
-            <h2>TV Shows</h2>
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/games.html">
-            <h2>Games</h2>
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/ebooks.html">
-            <h2>Ebooks</h2>
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/livetv.html">
-            <h2>Live TV</h2>
-        </a>
+        <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">UG24</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Games</a>
+            <a href="#">Sports</a>
+            <a href="#">Cheating Tools</a>
+            <a href="#">Apps</a>
+            <a href="#">Music</a>
+            <a href="#">Live TV</a>
+        </div>
+    </div>
         
         <input type="text" id="search-bar" placeholder="Search Movies... (NOT WORKING)" oninput="searchContent()">
         <!-- Search Results Section -->
