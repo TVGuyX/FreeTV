@@ -3,386 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies - Unblocked Games 24</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
-    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
-    <script src="scripts.js" defer></script>
+    <title>UG24</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
+        body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        header nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        #search {
-            margin-top: 10px;
-            padding: 5px;
-            width: 100%;
-        }
-
-        main {
+            position: relative;
             padding: 20px;
+            background-color: #1c1c1e;
         }
 
-        #games {
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        #featured img.active {
+            display: block;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 10px;
+        }
+
+        #featured-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #featured-dots span.active {
+            background-color: #fff;
         }
 
         .row {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .row article {
-            flex: 1 0 30%;
-            margin: 10px;
-            padding: 10px;
-            text-align: center;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            padding: 20px;
         }
 
         .row img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .row button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
             cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        .row button:hover {
-            background-color: #555;
+        .row img:hover {
+            transform: scale(1.05);
         }
 
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
+        .landscape img {
+            width: 300px; /* Adjust width as necessary */
+            height: 168px; /* 16:9 aspect ratio */
+        }
+
+        h2 {
+            padding-left: 20px;
+        }
+
+        /* Show sections by default */
+        section {
+            padding: 20px;
+            display: block;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align items to the left */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+            padding: 12px; /* Increased padding */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px; /* Increased padding */
+            font-size: 16px; /* Increased font size */
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 0 7px; /* Increased margin */
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Unblocked Games 24</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="movies.html">Movies</a>
-            <a href="tvshows.html">TV Shows</a>
-            <a href="music.html">Music</a>
-            <a href="musicvideos.html">Music Videos</a>
-            <a href="games.html">Games</a>
-            <a href="ebooks.html">Ebooks</a>
-            <a href="livetv.html">Live TV</a>
-        </nav>
-        <input type="text" id="search" placeholder="Search...">
-    </header>
-    <main>
-        <section id="games">
-            <h2>NEW Movies</h2>
-            <div class="row">
-                <article>
-                    <h3>Bad Boys: Ride or Die</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Bad%20Boys%20Ride%20or%20Die%20(2024).jpg?raw=true" alt="Bad Boys: Ride or Die">
-                    <button onclick="window.location.href='Embed/Movies/Bad Boys Ride or Die (2024).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Godzilla x Kong The New Empire</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Godzilla x Kong The New Empire">
-                    <button onclick="window.location.href='Embed/Movies/Godzilla x Kong The New Empire (2024).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Ghostbusters: Frozen Empire</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Ghostbusters%20Frozen%20Empire%20(2024).jpeg?raw=true" alt="Ghostbusters: Frozen Empire">
-                    <button onclick="window.location.href='Embed/Movies/Ghostbusters Frozen Empire (2024).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>If</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/If%20(2024).jpg?raw=true" alt="If">
-                    <button onclick="window.location.href='Embed/Movies/If (2024).html'">Watch Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>A Quiet Place Day One</h3>
-                    <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/A%20Quiet%20Place%20Day%20One%20(2024).jpeg" alt="A Quiet Place Day One">
-                    <button onclick="window.location.href='Embed/Movies/A Quiet Place Day One (2024).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Night Swim</h3>
-                    <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/Night%20Swim%20(2024).jpeg" alt="Night Swim">
-                    <button onclick="window.location.href='Embed/Movies/Night Swim (2024).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>The Fall Guy</h3>
-                    <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/The%20Fall%20Guy%20(2024).jpeg" alt="The Fall Guy (2024)">
-                    <button onclick="window.location.href='Embed/Movies/The Fall Guy (2024).html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Deadpool & Wolverine</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Deadpool%20&%20Wolverine%20(2024).jpeg?raw=true" alt="Deadpool & Wolverine">
-                    <button onclick="window.location.href='Embed/Movies/Deadpool & Wolverine (2024).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Monkey Man</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Monkey%20Man%20(2024).jpeg?raw=true" alt="Monkey Man">
-                    <button onclick="window.location.href='Embed/Movies/Monkey Man (2024).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Dune: Part Two</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Dune%20Part%20Two%20(2024).jpg?raw=true" alt="Dune: Part Two">
-                    <button onclick="window.location.href='Embed/Movies/Dune Part Two (2024).html'">Watch Now</button>
-                </article>
-            </div>
-        </section>
+        
+        <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">UG24</div>
+        <div class="nav-links">
+            <a href="https://tvguyx.github.io/FreeTV/index.html">Home</a>
+            <a href="https://tvguyx.github.io/FreeTV/movies.html">Movies</a>
+            <a href="https://tvguyx.github.io/FreeTV/tvshows.html">TV Shows</a>
+            <a href="https://tvguyx.github.io/FreeTV/games.html">Games</a>
+            <a href="https://tvguyx.github.io/FreeTV/sports.html">Sports</a>
+            <a href="https://tvguyx.github.io/FreeTV/cheating-tools.html">Cheating Tools</a>
+            <a href="https://tvguyx.github.io/FreeTV/apps.html">Apps</a>
+            <a href="https://tvguyx.github.io/FreeTV/music.html">Music</a>
+            <a href="https://tvguyx.github.io/FreeTV/livetv.html">Live TV</a>
+        </div>
+    </div>
 
-        <section id="games">
-            <h2>ALL Movies</h2>
-            <div class="row">
-                <article>
-                    <h3>Avengers Endgame</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Avengers%20Endgame%20(2019).jpg?raw=true" alt="Avengers Endgame">
-                    <button onclick="window.location.href='Embed/Movies/Avengers Endgame (2019).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Cocaine Bear</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Cocaine%20Bear%20(2023).jpg?raw=true" alt="Cocaine Bear">
-                    <button onclick="window.location.href='Embed/Movies/Cocaine Bear (2023).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Game Night</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Game%20Night%20(2018).avif" alt="Game Night">
-                    <button onclick="window.location.href='Embed/Movies/Game Night (2018).html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Good Boys</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Good%20Boys%20(2019).jpg?raw=true" alt="Good Boys">
-                    <button onclick="window.location.href='https://tvguyx.github.io/FreeTV/Movies/Good%20Boys%20(2019).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Deadpool</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Deadpool%20(2016).png?raw=true" alt="Deadpool">
-                    <button onclick="window.location.href='Embed/Movies/Deadpool (2016).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Jackass 4.5</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Jackass%204.5%20(2022).jpg?raw=true" alt="Jackass 4.5">
-                    <button onclick="window.location.href='Embed/Movies/Jackass 4.5 (2022).html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Scary Movie</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scary%20Movie%20(2000).jpeg?raw=true" alt="Scary Movie">
-                    <button onclick="window.location.href='Embed/Movies/Scary Movie (2000).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Scream VI</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI">
-                    <button onclick="window.location.href='Embed/Movies/Scream VI (2023).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Evil Dead Rise</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Evil%20Dead%20Rise%20(2023).jpeg?raw=true" alt="Evil Dead Rise">
-                    <button onclick="window.location.href='Embed/Movies/Evil Dead Rise (2023).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>A Nightmare On Elm Street</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/A%20Nightmare%20On%20Elm%20Street%20(1984).jpg?raw=true" alt="A Nightmare On Elm Street">
-                    <button onclick="window.location.href='Embed/Movies/A Nightmare On Elm Street (1984).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Jumanji Welcome to the Jungle</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Jumanji%20Welcome%20to%20the%20Jungle%20(2017).jpeg?raw=true" alt="Jumanji Welcome to the Jungle">
-                    <button onclick="window.location.href='Embed/Movies/Jumanji Welcome to the Jungle (2017).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Spiderman No Way Home</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Spiderman%20No%20Way%20Home%20(2021).jpeg?raw=true" alt="Spiderman No Way Home">
-                    <button onclick="window.location.href='Embed/Movies/Spiderman No Way Home (2021).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>The Lorax</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/The%20Lorax%20(2012).jpeg?raw=true" alt="The Lorax">
-                    <button onclick="window.location.href='Embed/Movies/The Lorax (2012).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Batman</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Poster/Batman%20(1989).avif" alt="Batman">
-                    <button onclick="window.location.href='Embed/Movies/Batman (1989).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Batman Forever</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Batman%20Forever%20(1995).jpeg?raw=true" alt="Batman Forever">
-                    <button onclick="window.location.href='Embed/Movies/Batman Forever (1995).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Batman Returns</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Batman%20Returns%20(1992).jpeg?raw=true" alt="Batman Returns">
-                    <button onclick="window.location.href='Embed/Movies/Batman Returns (1992).html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>The Bob’s Burgers Movie</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/The%20Bob%E2%80%99s%20Burgers%20Movie%20(2022).jpeg?raw=true" alt="The Bob’s Burgers Movie (2022)">
-                    <button onclick="window.location.href='Embed/Movies/The Bob’s Burgers Movie (2022).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Superbad</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Superbad%20(2007).jpeg?raw=true" alt="Superbad (2007)">
-                    <button onclick="window.location.href='Embed/Movies/Superbad (2007).html'">Watch Now</button>
-                </article>
-                <article>
-                <h3>The Other Guys</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Other%20Guys%20(2010).jpeg?raw=true" alt="The Other Guys">
-                    <button onclick="window.location.href='Embed/Movies/The Other Guys (2010).html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Stewie Griffin: The Untold Story</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Stewie%20Griffin%20The%20Untold%20Story%20(2005).jpeg?raw=true" alt="Stewie Griffin: The Untold Story (2005)">
-                    <button onclick="window.location.href='Embed/Movies/Stewie Griffin The Untold Story (2005).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Elf</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Elf%20(2003).jpeg?raw=true" alt="Elf (2003)">
-                    <button onclick="window.location.href='Embed/Movies/Elf (2003).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Migration</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Poster/Migration%20(2023).webp" alt="The Other Guys">
-                    <button onclick="window.location.href='Embed/Movies/Migration (2023).html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Minions</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Poster/Minions%20(2015).avif" alt="Minions (2015)">
-                    <button onclick="window.location.href='Embed/Movies/Minions (2015).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>John Wick Chapter 4</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/John%20Wick%20Chapter%204%20(2023).jpg?raw=true" alt="John Wick Chapter 4 (2023)">
-                    <button onclick="window.location.href='Embed/Movies/John Wick Chapter 4 (2023).html'">Watch Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>How the Grinch Stole Christmas! (1966)</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/How%20the%20Grinch%20Stole%20Christmas!%20(1966).jpeg?raw=true" alt="How the Grinch Stole Christmas! (1966)">
-                    <button onclick="window.location.href='Embed/Movies/How the Grinch Stole Christmas! (1966).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Holes</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Holes%20(2003).jpeg?raw=true" alt="Holes (2003)">
-                    <button onclick="window.location.href='Embed/Movies/Holes (2003).html'">Watch Now</button>
-                </article>
-                <article>
-                <h3>The Meg</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Meg%20(2018).jpeg?raw=true" alt="The Meg (2018)">
-                    <button onclick="window.location.href='Embed/Movies/The Meg (2018).html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>The Forever Purge</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/The%20Forever%20Purge%20(2021).jpeg?raw=true" alt="The Forever Purge (2021)">
-                    <button onclick="window.location.href='Embed/Movies/The Forever Purge (2021).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Teen Wolf</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Teen%20Wolf%20(1985).jpeg?raw=true" alt="Teen Wolf (1985)">
-                    <button onclick="window.location.href='Embed/Movies/Teen Wolf (1985).html'">Watch Now</button>
-                </article>
-                <article>
-                <h3>Shorts</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Poster/Shorts%20(2009).webp" alt="Shorts (2009)">
-                    <button onclick="window.location.href='Embed/Movies/Shorts (2009).html'">Play Now</button>
-                </article>
-                <article>
-                <h3>Minions The Rise of Gru</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Minions%20The%20Rise%20of%20Gru%20(2022).jpeg?raw=true" alt="Minions The Rise of Gru (2022)">
-                    <button onclick="window.location.href='Embed/Movies/Minions The Rise of Gru (2022).html'">Play Now</button>
-                </article>
-                <article>
-                <h3>Paul Blart Mall Cop</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Paul%20Blart%20Mall%20Cop%20(2009).jpeg?raw=true" alt="Paul Blart Mall Cop (2009)">
-                    <button onclick="window.location.href='Embed/Movies/Paul Blart Mall Cop (2009).html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Ford V Ferrari</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Ford%20V%20Ferrari%20(2019).jpeg?raw=true" alt="Ford V Ferrari (2019)">
-                    <button onclick="window.location.href='Embed/Movies/Ford V Ferrari (2019).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Forrest Gump</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Forrest%20Gump%20(1994).jpeg?raw=true" alt="Forrest Gump (1994)">
-                    <button onclick="window.location.href='Embed/Movies/Forrest Gump (1994).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Click</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Click%20(2006).jpg?raw=true" alt="Click (2006)">
-                    <button onclick="window.location.href='Embed/Movies/Click (2006).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>Minions & More 1</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Minions%20&%20More%201%20(2022).jpeg?raw=true" alt="Minions and More 1 (2022)">
-                    <button onclick="window.location.href='Embed/Movies/Minions & More 1 (2022).html'">Watch Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>The Terminator</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/The%20Terminator%20(1984).jpeg?raw=true" alt="The Terminator (1984)">
-                    <button onclick="window.location.href='Embed/Movies/The Terminator (1984).html'">Watch Now</button>
-                </article>
-                <article>
-                    <h3>The Simpsons Movie (2007)</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/The%20Simpsons%20Movie%20(2007).png?raw=true" alt="The Simpsons Movie (2007)">
-                    <button onclick="window.location.href='Embed/Movies/The Simpsons Movie (2007).html'">Watch Now</button>
-                </article>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Unblocked Games 24</p>
-    </footer>
-    <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top ↑</button>
+    </header>
+
+    <section id="featured">
+        <!-- Rotating banner for featured content -->
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Dune%20Part%20Two%20(2024).jpg?raw=true" alt="Dune: Part 2 (2024)" class="active">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/MoviesBad Boys Ride or Die (2024).html">
+            <img src="" alt="Bad Boys: Ride or Die (2024)">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Deadpool%20&%20Wolverine%20(2024).html">
+            <img src="" alt="Deadpool and Wolverine (2024)">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Movies/Ghostbusters Frozen Empire (2024).html">
+            <img src="" alt="Ghostbusters: Frozen Empire (2024)">
+        </a>
+        <div id="featured-dots">
+            <span class="active" data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+            <span data-index="3"></span>
+            <span data-index="4"></span>
+            <span data-index="5"></span>
+        </div>
+    </section>
+
+<section>
+        <h2>2024 Movies</h2>
+        <div class="row">
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Bad Boys Ride or Die (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Bad%20Boys%20Ride%20or%20Die%20(2024).jpg?raw=true" alt="Bad Boys: Ride or Die (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Deadpool%20&%20Wolverine%20(2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Deadpool%20&%20Wolverine%20(2024).jpeg?raw=true" alt="Deadpool and Wolverine (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Godzilla x Kong The New Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Godzilla x Kong The New Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/The Fall Guy (2024).html">
+                <img src="https://xl.movieposterdb.com/24_03/2024/1684562/xl_the-fall-guy-movie-poster_b7866e6d.jpg?v=2024-08-13%2021:33:27" alt="The Fall Guy (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Ghostbusters Frozen Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Ghostbusters%20Frozen%20Empire%20(2024).jpeg?raw=true" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Movies/IF (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/If%20(2024).jpg?raw=true" alt="IF (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Quiet Place Day One (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/A%20Quiet%20Place%20Day%20One%20(2024).jpeg" alt="A Quiet Place Day One (2024)">
+            </a>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Movies</h2>
+        <div class="row">
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Monkey Man (2024).html">
+                <img src="https://xl.movieposterdb.com/24_08/2023/9214772/xl_monkey-man-movie-poster_a53c3371.jpg?v=2024-08-13%2015:16:13" alt="Monkey Man (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Despicable Me 4 (2024).html">
+                <img src="https://xl.movieposterdb.com/24_02/2024/7510222/xl_despicable-me-4-movie-poster_3c4ff16e.jpg?v=2024-09-01%2004:35:45" alt="Despicable Me 4 (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Bad Boys Ride or Die (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Bad%20Boys%20Ride%20or%20Die%20(2024).jpg?raw=true" alt="Bad Boys: Ride or Die (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Godzilla x Kong The New Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Godzilla%20x%20Kong%20The%20New%20Empire%20(2024).jpg?raw=true" alt="Godzilla x Kong The New Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Ghostbusters Frozen Empire (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Ghostbusters%20Frozen%20Empire%20(2024).jpeg?raw=true" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/IF (2024).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/If%20(2024).jpg?raw=true" alt="IF (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Quiet Place Day One (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/A%20Quiet%20Place%20Day%20One%20(2024).jpeg" alt="A Quiet Place Day One (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Night Swim (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/Night%20Swim%20(2024).jpeg" alt="Night Swim (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Cocaine Bear (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Cocaine%20Bear%20(2023).jpg?raw=true" alt="Cocaine Bear (2023)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Good Boys (2019).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Good%20Boys%20(2019).jpg?raw=true" alt="Good Boys (2019)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Scream VI (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI (2023)">
+            </a>
+        </div>
+    </section>
+    
+    <!-- New 16:9 landscape rows for Movies -->
+    <section>
+        <h2>Featured Movies</h2>
+        <div class="row landscape">
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Ghostbusters: Frozen Empire (2024).html">
+                <img src="https://i.ytimg.com/vi/edyAQfczCJI/maxresdefault.jpg" alt="Ghostbusters: Frozen Empire (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/The Fall Guy (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/The%20Fall%20Guy%20(2024).jpeg" alt="The Fall Guy (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Game Night (2018).html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Movies/Game%20Night%20(2018).avif" alt="Game Night (2018)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Jackass 4.5 (2022).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Jackass%204.5%20(2022).jpg?raw=true" alt="Jackass 4.5 (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/The Other Guy (2010).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Other%20Guys%20(2010).jpeg?raw=true" alt="The Other Guy (2010)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/The Meg (2018).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/The%20Meg%20(2018).jpeg?raw=true" alt="The Meg (2018)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Paul Blart Mall Cop (2009).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Paul%20Blart%20Mall%20Cop%20(2009).jpeg?raw=true" alt="Paul Blart: Mall Cop (2009)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Ford V Ferrari (2019).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Ford%20V%20Ferrari%20(2019).jpeg?raw=true" alt="Ford V Ferrari (2019)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Click (2006).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Click%20(2006).jpg?raw=true" alt="Click (2006)">
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Horror Movies</h2>
+        <div class="row">
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Scream VI (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI (2023)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Evil Dead Rise (2023).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Evil%20Dead%20Rise%20(2023).jpeg?raw=true" alt="Evil Dead Rise (2023)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Nightmare On Elm Street (1984).html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/A%20Nightmare%20On%20Elm%20Street%20(1984).jpg?raw=true" alt="A Nightmare On Elm Street (1984)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Quiet Place Day One (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/A%20Quiet%20Place%20Day%20One%20(2024).jpeg" alt="A Quiet Place Day One (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Night Swim (2024).html">
+                <img src="https://raw.githubusercontent.com/TVGuyX/FreeTV/main/IMG/Movies/Poster/Night%20Swim%20(2024).jpeg" alt="Night Swim (2024)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Halloween Kills (2021).html">
+                <img src="https://xl.movieposterdb.com/24_05/2021/10665342/xl_halloween-ends-movie-poster_ee850443.jpg?v=2024-06-17%2019:29:30" alt="Halloween Kills (2021)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Scream (2022).html">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Scream2022film.jpeg/220px-Scream2022film.jpeg" alt="Scream (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Violent Night (2022).html">
+                <img src="https://m.media-amazon.com/images/M/MV5BOTU0MDQ0MGUtZjM4Ny00ZjlhLTliYTUtZTRmYTIyOGMzY2QzXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Violent Night (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Nightmare On Elm Street 2 Freddys Revenge (1985).html">
+                <img src="https://m.media-amazon.com/images/M/MV5BYzA0OTk4OWQtYWZlYy00Y2M4LWFmNzctZmU4OWVkMTI1NjJkXkEyXkFqcGc@._V1_.jpg" alt="A Nightmare On Elm Street 2 Freddys Revenge (1985)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Nightmare On Elm Street 3 (1987).html">
+                <img src="https://m.media-amazon.com/images/M/MV5BMjFkYTEwNjAtYWU1YS00NTMyLTkwYmUtZjEyMjZjMDg5Njc5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg" alt="A Nightmare On Elm Street 3 (1987)">
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Some More Movies</h2>
+        <div class="row">
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Jumanji Welcome to the Jungle (2017).html">
+                <img src="https://xl.movieposterdb.com/21_07/2017/2283362/xl_2283362_e1810453.jpg?v=2023-10-31%2014:04:13" alt="Jumanji Welcome to the Jungle (2017)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Spiderman No Way Home (2021).html.html">
+                <img src="https://xl.movieposterdb.com/21_12/2021/10872600/xl_10872600_c809b67f.jpg?v=2024-08-06%2001:24:03" alt="Spiderman No Way Home (2021).html">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/The Lorax (2012).html">
+                <img src="https://xl.movieposterdb.com/11_10/2012/1482459/xl_1482459_5cdf100e.jpg?v=2023-10-20%2014:34:17" alt="The Lorax (2012">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Stewie Griffin The Untold Story (2005).html">
+                <img src="https://xl.movieposterdb.com/05_10/2005/0385690/xl_61106_0385690_fa0c5638.jpg?v=2022-10-25%2019:59:04" alt="Stewie Griffin The Untold Story (2005)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/The Bob’s Burgers Movie (2022).html">
+                <img src="https://xl.movieposterdb.com/23_11/2022/7466442/xl_bobs-burgers-the-movie-movie-poster_c6be23b2.jpg?v=2024-04-09%2005:56:54" alt="The Bob’s Burgers Movie (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Superbad (2007).html">
+                <img src="https://xl.movieposterdb.com/09_04/2007/829482/xl_829482_0e9fbfa6.jpg?v=2024-09-10%2022:18:04" alt="Superbad (2007)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Minions The Rise of Gru (2022).html">
+                <img src="https://xl.movieposterdb.com/21_04/2020/5113044/xl_5113044_67c66190.jpg?v=2024-08-06%2016:57:39" alt="Minions The Rise of Gru (2022)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Migration (2023).html">
+                <img src="https://xl.movieposterdb.com/23_10/2023/6495056/xl_migration-movie-poster_a9ece6e0.jpg?v=2024-08-07%2018:59:45" alt="Migration (2023)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Forrest Gump (1994).html">
+                <img src="https://xl.movieposterdb.com/12_04/1994/109830/xl_109830_58524cd6.jpg?v=2024-09-11%2019:58:03" alt="Forrest Gump (1994)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Avengers Endgame (2019).html">
+                <img src="https://xl.movieposterdb.com/20_05/2019/4154796/xl_4154796_2542f70b.jpg?v=2024-09-01%2004:22:33" alt="Avengers Endgame (2019)">
+            </a>
+        </div>
+    </section>
+    
+    <script>
+        // JavaScript for rotating the featured banner and handling dots
+        let currentIndex = 0;
+        const featuredImages = document.querySelectorAll('#featured img');
+        const dots = document.querySelectorAll('#featured-dots span');
+
+        function showSlide(index) {
+            featuredImages[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            featuredImages[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        setInterval(() => {
+            const nextIndex = (currentIndex + 1) % featuredImages.length;
+            showSlide(nextIndex);
+        }, 3000);
+    </script>
 </body>
 </html>
