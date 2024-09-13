@@ -131,6 +131,25 @@
         .navbar a:hover {
             background-color: rgba(255, 255, 255, 0.3);
         }
+
+        #scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 18px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #555;
+}
     </style>
 </head>
 <body>
@@ -364,6 +383,26 @@
             </a>
         </div>
     </section>
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top ↑</button>
+
+    <script>window.onscroll = function() {
+        scrollFunction();
+    };
+    
+    function scrollFunction() {
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    }
+    
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }</script>
     
     <script>
         // JavaScript for rotating the featured banner and handling dots
