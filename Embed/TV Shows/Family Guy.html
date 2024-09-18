@@ -157,6 +157,7 @@
             <h2>Seasons</h2>
             <div class="season" onclick="showSeason('season1')">Season 1</div>
             <div class="season" onclick="showSeason('season2')">Season 2</div>
+            <div class="season" onclick="showSeason('season17')">Season 17</div>
         </div>
     </div>
 
@@ -168,7 +169,7 @@
         }
 
         function showSeason(season) {
-            if (season === 'season5') {
+            if (season === 'season1') {
                 document.getElementById('episode-list').innerHTML = `
                     <span class="close" id="episode-close">&times;</span>
                     <h2>Season 1 Episodes</h2>
@@ -178,33 +179,33 @@
                 <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1gbS4TWkuIFyBXwc1Q0sbTenIWVHkko3Q/preview', 'Mind Over Murder')">Episode 4: Mind Over Murder</div>
                 <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1nv-o4ba9Gy6XgIi1KhHeQ-9MxjasrfGE/preview', 'A Hero Sits Next Door')">Episode 5: A Hero Sits Next Door</div>
                 <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/11ocQnFonkGy0jLdAzDQFm-Tgfr9KUu6n/preview', 'The Son Also Draws')">Episode 6: The Son Also Draws</div>
-                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1llddPUwLe1UohVftyMGUn8-ZFgKl5Hmx/view?usp=drivesdk', 'Brian: Portrait of a Dog')">Episode 7: Brian: Portrait of a Dog</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1llddPUwLe1UohVftyMGUn8-ZFgKl5Hmx/preview', 'Brian: Portrait of a Dog')">Episode 7: Brian: Portrait of a Dog</div>
             `;
         } else if (season === 'season2') {
             document.getElementById('episode-list').innerHTML = `
                 <span class="close" id="episode-close">&times;</span>
                 <h2>Season 2 Episodes</h2>
-                <div class="episode" onclick="changeEpisode('', 'Peter, Peter, Caviar Eater')">Episode 1: Peter, Peter, Caviar Eater</div>
-                <div class="episode" onclick="changeEpisode('', 'Holy Crap')">Episode 2: Holy Crap</div>
-                <div class="episode" onclick="changeEpisode('', 'Da Boom')">Episode 3: Da Boom</div>
-                <div class="episode" onclick="changeEpisode('', 'Brian in Love')">Episode 4: Brian in Love</div>
-                <div class="episode" onclick="changeEpisode('', 'Love Thy Trophy')">Episode 5: Love Thy Trophy</div>
-                <div class="episode" onclick="changeEpisode('', 'Death Is a Bitch')">Episode 6: Death Is a Bitch</div>
-                <div class="episode" onclick="changeEpisode('', 'The King Is Dead')">Episode 7: The King Is Dead</div>
-                <div class="episode" onclick="changeEpisode('', 'I Am Peter, Hear Me Roar')">Episode 8: I Am Peter, Hear Me Roar</div>
-                <div class="episode" onclick="changeEpisode('', 'If I'm Dyin', I'm Lyin'')">Episode 9: If I'm Dyin', I'm Lyin'</div>
-                <div class="episode" onclick="changeEpisode('', 'Running Mates')">Episode 10: Running Mates</div>
-                <div class="episode" onclick="changeEpisode('', 'A Picture Is Worth 1,000 Bucks')">Episode 11: A Picture Is Worth 1,000 Bucks</div>
-                <div class="episode" onclick="changeEpisode('', 'Fifteen Minutes of Shame')">Episode 12: Fifteen Minutes of Shame</div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 13: Road to Rhode Island</div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 14: </div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 15: </div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 16: </div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 17: </div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 18: </div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 19: </div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 20: </div>
-                <div class="episode" onclick="changeEpisode('', 'Road to Rhode Island')">Episode 21: </div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/17SXk7V2g9UjxG1rHTMaNjlppxbx0_TYc/preview', 'Peter, Peter, Caviar Eater')">Episode 1: Peter, Peter, Caviar Eater</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1RIaGXWYJs7eM9VyZrjFhI36J1H-nr4Vy/preview', 'Holy Crap')">Episode 2: Holy Crap</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1RIaGXWYJs7eM9VyZrjFhI36J1H-nr4Vy/preview', 'Da Boom')">Episode 3: Da Boom</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1UbGT42p23mjSx8cRwNDs5oT-gG0wr83j/preview', 'Brian in Love')">Episode 4: Brian in Love</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1TuLq_eonFVGyfQeb88yOGitiGcPaX0de/preview', 'Love Thy Trophy')">Episode 5: Love Thy Trophy</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/19Ij5UCV-3jtGnoeWpgBTP7AMlbe5ecPX/preview', 'Death Is a Bitch')">Episode 6: Death Is a Bitch</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1QhgODnIUzXDTyUnzNgbQ100mF5N2SbrX/preview', 'The King Is Dead')">Episode 7: The King Is Dead</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1woA69ilfxK74qm7sLceh8YzKqD4lvM3w/preview', 'I Am Peter, Hear Me Roar')">Episode 8: I Am Peter, Hear Me Roar</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1rSpBLeoHMvuqSFQfKTOPiL9Kf-McPjq8/preview', 'If I'm Dyin', I'm Lyin'')">Episode 9: If I'm Dyin', I'm Lyin'</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1P3GREz1USH4Uo4WAw3Q-Dpgf_dy_UHnH/preview', 'Running Mates')">Episode 10: Running Mates</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1HtYkRxxRahrmz2zYpHkG6xCK-cWQZgXV/preview', 'A Picture Is Worth 1,000 Bucks')">Episode 11: A Picture Is Worth 1,000 Bucks</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1iSKqgwMZnzjOvGbjb6oAKpDJ6Emil6Qb/preview', 'Fifteen Minutes of Shame')">Episode 12: Fifteen Minutes of Shame</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/17KTmqHGHSH04hnI_FvqxyhlPs2vpxy_l/preview', 'Road to Rhode Island')">Episode 13: Road to Rhode Island</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1VhoMXcODsoNxI29d7txy_GihYGPGfEwo/preview', 'Let's Go to the Hop')">Episode 14: Let's Go to the Hop</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1GpIeyWgNaV4CJNi_qgABvq-BfcHM_YID/preview', 'Dammit Janet')">Episode 15: Dammit Janet</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1BwHGBpa8GBI34RXZ_pUeRgmwNxKAtZBc/preview', 'There's Something About Paulie')">Episode 16: There's Something About Paulie</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1uzmOZZfZMhMOk676ThRbTooF4P3ev_qw/preview', 'He's Too Sexy for His Fat')">Episode 17: He's Too Sexy for His Fat</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1drYuyffG5bPUfLDQH7KWP7ifTTXvovGZ/preview', 'E. Peterbus Unum')">Episode 18: E. Peterbus Unum</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/13K87iz744uRKoscJUocTQYuh2o_thnzB/preview', 'The Story on Page One')">Episode 19: The Story on Page One</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1rqFWTwdkvcoX1572ipRtvLRCGVBmUSSj/preview', 'Wasted Talent')">Episode 20: Wasted Talent</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1qFuCTkVxk1sJuOiPNVWNdUCw-P2ek0LE/preview', 'Fore, Father')">Episode 21: Fore, Father</div>
             `;
         }
         document.getElementById('season-modal').style.display = 'none';
