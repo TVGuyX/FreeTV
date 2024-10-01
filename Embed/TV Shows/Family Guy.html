@@ -157,6 +157,7 @@
             <h2>Seasons</h2>
             <div class="season" onclick="showSeason('season1')">Season 1</div>
             <div class="season" onclick="showSeason('season2')">Season 2</div>
+            <div class="season" onclick="showSeason('season21')">Season 21</div>
         </div>
     </div>
 
@@ -205,6 +206,12 @@
                 <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/13K87iz744uRKoscJUocTQYuh2o_thnzB/preview', 'The Story on Page One')">Episode 19: The Story on Page One</div>
                 <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1rqFWTwdkvcoX1572ipRtvLRCGVBmUSSj/preview', 'Wasted Talent')">Episode 20: Wasted Talent</div>
                 <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1qFuCTkVxk1sJuOiPNVWNdUCw-P2ek0LE/preview', 'Fore, Father')">Episode 21: Fore, Father</div>
+            `;
+                } else if (season === 'season21') {
+            document.getElementById('episode-list').innerHTML = `
+                <span class="close" id="episode-close">&times;</span>
+                <h2>Season 21 Episodes</h2>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1n29ILqv2AC4RyCWa-1Q-MDHn0bUeTrwi/preview', 'Happy Holo-ween')">Episode 6: Happy Holo-ween</div>
             `;
         }
         document.getElementById('season-modal').style.display = 'none';
