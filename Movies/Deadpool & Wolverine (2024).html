@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadpool & Wolverine (2024)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #1c1c1e;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        #movie-header {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: url('https://deadline.com/wp-content/uploads/2024/07/deadpool-wolverine-ryan-reynolds-hugh-jackman.jpg?w=1024') no-repeat center center/cover;
+            padding: 20px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+
+        #movie-title-logo {
+            max-width: 250px;
+        }
+
+        #movie-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 50%;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        #watch-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .watch-button, .trailer-button {
+            padding: 15px 20px;
+            background-color: #007aff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .trailer-button {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #007aff;
+        }
+
+        .watch-button:hover, .trailer-button:hover {
+            opacity: 0.8;
+        }
+
+        #movie-details {
+            padding: 20px;
+            border-top: 1px solid #333;
+        }
+
+        #movie-details p {
+            margin: 5px 0;
+        }
+
+        .info-line {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .info-box {
+            display: inline-block;
+            padding: 3px 7px;
+            background-color: #333;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+
+        #movie-description {
+            margin-top: 20px;
+        }
+
+        #extras, #related-movies {
+            margin-top: 40px;
+        }
+
+        #extras h3, #related-movies h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .extras-content, .related-movies-content {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+        }
+
+        .extras-content img, .related-movies-content img {
+            width: 400px;
+            height: 225px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .extras-content img:hover, .related-movies-content img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Trailer Modal */
+        #trailer-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #trailer-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            background-color: #111;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #trailer-content iframe {
+            width: 100%;
+            height: 450px;
+        }
+
+        #close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background-color: red;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        #close-modal:hover {
+            background-color: darkred;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://tvguyx.github.io/FreeTV/index.html">&larr; Back To Home</a>
+    </header>
+
+    <section id="movie-header">
+        <img src=https://static.wikia.nocookie.net/logopedia/images/9/9d/Marvels_Deadpool_%26_Wolverine_Logo.png/revision/latest/scale-to-width-down/1200?cb=20240804205812" alt="Deadpool & Wolverine" id="movie-title-logo">
+    </section>
+
+    <section id="movie-details">
+        <div class="info-tags">
+            <span class="info-box">Action/Comedy</span>
+            <span class="info-box">2024</span>
+            <span class="info-box">2h 7m</span>
+        </div>
+        <br>
+        <div class="info-tags">
+            <span class="info-box">R</span>
+            <span class="info-box">HD</span>
+            <span class="info-box">5.1</span>
+            <span class="info-box">CC</span>
+        </div>
+        <div id="watch-buttons">
+            <a href="https://tvguyx.github.io/FreeTV/Movies/Embed/Deadpool & Wolverine (2024).html" class="watch-button">Watch Now</a>
+            <a href="#" class="trailer-button" id="trailer-btn">Watch Trailer</a>
+        </div>
+        <div id="movie-description">
+            <p>Three 12-year-old boys endure epic misadventures as they prepare for their first “kissing” party in this comedy.</p>
+        </div>
+    </section>
+
+    <section id="related-movies">
+        <h3>Related Movies</h3>
+        <div class="related-movies-content">
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Deadpool (2016).html">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/5a9180197072342057ccbf2917a156df97fb086a8fe24f09d8fcffa9df8e8956._UR1920,1080_SX720_FMjpg_.jpg" alt="Deadpool (2016)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Avengers Endgame (2019).html"></a>
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/56d93e04df43a733cb47d17daac4a8803b254fdaa3bf0dfad9ae8ce4d6e20f6c._SX1080_FMjpg_.jpg" alt="Avengers Endgame (2019)">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Batman Returns (1992).html"></a>
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/8f9b83ce1be05f98f372266b5c9c25f31a99261c75b142ed0716b4c716f151bf.jpg" alt="Batman Returns (1992)">
+            </a>
+        </div>
+    </section>
+
+    <!-- Trailer Modal -->
+    <div id="trailer-modal">
+        <div id="trailer-content">
+            <button id="close-modal">&times;</button>
+            <iframe src="https://www.youtube.com/embed/73_1biulkYk?si=BBHy7azugkqNVHhR" allowfullscreen></iframe>
+        </div>
+    </div>
+
+<br>
+<br>
+
+    <script>
+        // Open the trailer modal
+        document.getElementById('trailer-btn').addEventListener('click', function () {
+            document.getElementById('trailer-modal').style.display = 'flex';
+        });
+
+        // Close the trailer modal
+        document.getElementById('close-modal').addEventListener('click', function () {
+            document.getElementById('trailer-modal').style.display = 'none';
+        });
+
+        // Close modal by clicking outside the content
+        window.addEventListener('click', function (e) {
+            const modal = document.getElementById('trailer-modal');
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
