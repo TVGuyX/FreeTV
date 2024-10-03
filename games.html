@@ -3,461 +3,747 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games - Unblocked Games 24</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>UG24</title>
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
     <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
-    <script src="scripts.js" defer></script>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
+        body {
             font-family: Arial, sans-serif;
-        }
-
-        /* New bar at the top */
-        .notification-bar {
-            background-color: #ffcc00;
-            color: black;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        header nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        #search {
-            margin-top: 10px;
-            padding: 5px;
-            width: 100%;
-        }
-
-        main {
+            position: relative;
             padding: 20px;
+            background-color: #1c1c1e;
         }
 
-        #games {
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        #featured img.active {
+            display: block;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 10px;
+        }
+
+        #featured-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #featured-dots span.active {
+            background-color: #fff;
         }
 
         .row {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .row article {
-            flex: 1 0 30%;
-            margin: 10px;
-            padding: 10px;
-            text-align: center;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            padding: 20px;
         }
 
         .row img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .row button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
             cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        .row button:hover {
-            background-color: #555;
+        .row img:hover {
+            transform: scale(1.05);
         }
 
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
+        .landscape img {
+            width: 300px; /* Adjust width as necessary */
+            height: 168px; /* 16:9 aspect ratio */
         }
+
+        h2 {
+            padding-left: 20px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align items to the left */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+            padding: 12px; /* Increased padding */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px; /* Increased padding */
+            font-size: 16px; /* Increased font size */
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 0 7px; /* Increased margin */
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* View More Button */
+        .button-85 {
+          padding: 0.6em 2em;
+          border: none;
+          outline: none;
+          color: rgb(255, 255, 255);
+          background: #111;
+          cursor: pointer;
+          position: relative;
+          z-index: 0;
+          border-radius: 10px;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+        }
+        
+        .button-85:before {
+          content: "";
+          background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+          );
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          background-size: 400%;
+          z-index: -1;
+          filter: blur(5px);
+          -webkit-filter: blur(5px);
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          animation: glowing-button-85 20s linear infinite;
+          transition: opacity 0.3s ease-in-out;
+          border-radius: 10px;
+        }
+        
+        @keyframes glowing-button-85 {
+          0% {
+            background-position: 0 0;
+          }
+          50% {
+            background-position: 400% 0;
+          }
+          100% {
+            background-position: 0 0;
+          }
+        }
+        
+        .button-85:after {
+          z-index: -1;
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: #222;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+        }
+
+        /* Button */
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 18px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #555;
+}
     </style>
 </head>
 <body>
-    
-    <!-- Notification Bar -->
-    <div class="notification-bar">
-        MOST games have been fixed, if they are still not working please try again later
-    </div>
-    
     <header>
-        <h1>Unblocked Games 24</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="movies.html">Movies</a>
-            <a href="tvshows.html">TV Shows</a>
-            <a href="music.html">Music</a>
-            <a href="musicvideos.html">Music Videos</a>
-            <a href="games.html">Games</a>
-            <a href="ebooks.html">Ebooks</a>
-            <a href="livetv.html">Live TV</a>
-        </nav>
-        <input type="text" id="search" placeholder="Search...">
+
+<head>
+    <!-- Required Meta Tags for iOS/iPadOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Your App Name">
+
+    <!-- Add a Manifest for Android and modern browsers -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- App Icons for iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png">
+
+    <!-- iOS Splash Screens (Optional) -->
+    <link rel="apple-touch-startup-image" href="/splash/splash-2048x2732.png" media="(device-width: 1024px)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1668x2388.png" media="(device-width: 834px)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1536x2048.png" media="(device-width: 768px)">
+
+    <!-- Ensure the webpage scales correctly on iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+        
+        <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="button-85" class="logo">UG24</div>
+        <div class="nav-links">
+            <a href="https://tvguyx.github.io/FreeTV/index.html">Home</a>
+            <a href="https://tvguyx.github.io/FreeTV/movies.html">Movies</a>
+            <a href="https://tvguyx.github.io/FreeTV/tvshows.html">TV Shows</a>
+            <a href="https://tvguyx.github.io/FreeTV/games.html">Games</a>
+            <a href="https://tvguyx.github.io/FreeTV/sports.html">Sports</a>
+            <a href="https://tvguyx.github.io/FreeTV/cheating-tools.html">Cheating Tools</a>
+            <a href="https://tvguyx.github.io/FreeTV/apps.html">Apps</a>
+            <a href="https://tvguyx.github.io/FreeTV/livetv.html">Live TV</a>
+        </div>
+    </div>
+
     </header>
-    <main>
-        <section id="games">
-            <h2>Games</h2>
-            <div class="row">
-                <article>
-                    <h3>Subway Surfers</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
-                    <button onclick="window.location.href='Embed/Games/Subway Surfers.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Geometry Dash</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
-                    <button onclick="window.location.href='Embed/Games/Geometry Dash.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Geometry Dash Meltdown</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash%20Meltdown.png?raw=true" alt="Geometry Dash Meltdown">
-                    <button onclick="window.location.href='Embed/Games/Geometry Dash Meltdown.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Geometry Dash Subzero</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Geometry%20Dash%20Subzero.webp" alt="Geometry Dash Subzero">
-                    <button onclick="window.location.href='Embed/Games/Geometry Dash Subzero.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Minecraft</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Minecraft.webp" alt="Minecraft">
-                    <button onclick="window.location.href='Embed/Games/Minecraft.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Among Us</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Among%20Us.jpeg?raw=true" alt="Among Us">
-                    <button onclick="window.location.href='Embed/Games/Among Us.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Bitlife</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
-                    <button onclick="window.location.href='Embed/Games/Bitlife.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>8 Ball Pool</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/8%20Ball%20Pool.jpg?raw=true" alt="8 Ball Pool">
-                    <button onclick="window.location.href='Embed/Games/8 Ball Pool.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Cut the Rope</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Cut%20the%20Rope.avif" alt="Cut the Rope">
-                    <button onclick="window.location.href='Embed/Games/Cut the Rope.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Stupid Zombies</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Stupid%20Zombies.jpeg?raw=true" alt="Stupid Zombie">
-                    <button onclick="window.location.href='Embed/Games/Stupid Zombies.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Doodle Jump</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Doodle%20Jump.jpeg?raw=true" alt="Doodle Jump">
-                    <button onclick="window.location.href='Embed/Games/Doodle Jump.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Temple Run 2</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Temple%20Run%202.jpeg?raw=true" alt="Temple Run">
-                    <button onclick="window.location.href='Embed/Games/Temple Run 2.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Earn To Die</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Earn%20to%20Die.png?raw=true" alt="Earn To Die">
-                    <button onclick="window.location.href='Embed/Games/Earn To Die.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Tiny Fishing</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tiny%20Fishing.jpg?raw=true" alt="Tiny Fishing">
-                    <button onclick="window.location.href='Embed/Games/Tiny Fishing.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>The Impossible Quiz</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz.png?raw=true" alt="The Impossible Quiz">
-                    <button onclick="window.location.href='Embed/Games/The Impossible Quiz.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Retro Bowl</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Retro%20Bowl.avif" alt="Retro Bowl">
-                    <button onclick="window.location.href='Embed/Games/Retro Bowl.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Slope</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Slope.jpg?raw=true" alt="Slope">
-                    <button onclick="window.location.href='Embed/Games/Slope.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Pac Man</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Pac%20Man.jpg?raw=true" alt="Pac Man">
-                    <button onclick="window.location.href='Embed/Games/Pac Man.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>FNAF</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/FNAF.jpg?raw=true" alt="FNAF">
-                    <button onclick="window.location.href='Embed/Games/FNAF.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>FNAF 4</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/FNAF%204.jpeg?raw=true" alt="FNAF 4">
-                    <button onclick="window.location.href='Embed/Games/FNAF 4.html'">Play Now</button>
-                </article>
-                 <article>
-                    <h3>Crossy Road</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Crossy%20Road.jpg?raw=true" alt="Crossy Road">
-                    <button onclick="window.location.href='Embed/Games/Crossy Road.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Block the Pig</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Block%20the%20Pig.png?raw=true" alt="Burrito Bison">
-                    <button onclick="window.location.href='Embed/Games/Block the Pig.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Chrome Dino</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Chrome%20Dino.webp" alt="Chrome Dino">
-                    <button onclick="window.location.href='Embed/Games/Chrome Dino.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Color Switch</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Color%20Switch.webp" alt="Color Switch">
-                    <button onclick="window.location.href='Embed/Games/Color Switch.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Candy Jump</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Candy%20Jump.jpg?raw=true" alt="Candy Jump">
-                    <button onclick="window.location.href='Embed/Games/Candy Jump.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Draw The Hill</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Draw%20The%20Hill.jpg?raw=true" alt="Draw The Hill">
-                    <button onclick="window.location.href='Embed/Games/Draw The Hill.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Flappy Bird</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Flappy%20Bird.webp" alt="Flappy Bird">
-                    <button onclick="window.location.href='Embed/Games/Flappy Bird.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Awesome Tanks</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Awesome%20Tanks.jpg?raw=true" alt="Awesome Tanks">
-                    <button onclick="window.location.href='Embed/Games/Awesome Tanks.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Awesome Tanks 2</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Awesome%20Tanks%202.jpg?raw=true" alt="Awesome Tanks 2">
-                    <button onclick="window.location.href='Embed/Games/Awesome Tanks 2.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Basket Bros</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Basket%20Bros.avif" alt="Basket Bros">
-                    <button onclick="window.location.href='Embed/Games/Basket Bros.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Moto X3M</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Moto%20X3M.avif" alt="Moto X3M">
-                    <button onclick="window.location.href='Embed/Games/Moto X3M.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Basketball Stars</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Basketball%20Stars.avif" alt="Basketball Stars">
-                    <button onclick="window.location.href='Embed/Games/Basketball Stars.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Fallout</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Fallout.jpeg?raw=true" alt="Fallout">
-                    <button onclick="window.location.href='Embed/Games/Fallout.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Mortal Kombat</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Mortal%20Kombat.jpeg?raw=true" alt="Mortal Kombat">
-                    <button onclick="window.location.href='Embed/Games/Mortal Kombat.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Microsoft Flight Simulator</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Microsoft%20Flight%20Simulator.jpeg?raw=true" alt="Microsoft Flight Simulator">
-                    <button onclick="window.location.href='Embed/Games/Microsoft Flight Simulator.html'">Play Now</button>
-                </article>
-            </div>
-            <div class="row">
-                <article>
-                    <h3>Happy Wheels</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Happy%20Wheels.avif" alt="Happy Wheels">
-                    <button onclick="window.location.href='Embed/Games/Happy Wheels.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Stack</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Stack.jpg?raw=true" alt="Stack">
-                    <button onclick="window.location.href='Embed/Games/Stack.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Fruit Ninja</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Fruit%20Ninja.png?raw=true" alt="Fruit Ninja">
-                    <button onclick="window.location.href='Embed/Games/Fruit Ninja.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Wordle+</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Wordle+.png?raw=true" alt="Wordle+">
-                    <button onclick="window.location.href='Embed/Games/Wordle+.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Baldi's Basics</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Baldi's%20Basics.jpg?raw=true" alt="Baldi's Basics">
-                    <button onclick="window.location.href='Embed/Games/Baldis Basics.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Run 2</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Run%202.jpeg?raw=true" alt="Run 2">
-                    <button onclick="window.location.href='Embed/Games/Run 2.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Run 3</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Run%203.jpeg?raw=true" alt="Run 3">
-                    <button onclick="window.location.href='Embed/Games/Run 3.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Paper.io 2</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Paper%20io%202.jpeg?raw=true" alt="Paper io 2">
-                    <button onclick="window.location.href='Embed/Games/Paper io 2.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Street Fighter 2</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Street%20Fighter%202.webp" alt="Street Fighter 2">
-                    <button onclick="window.location.href='Embed/Games/Street Fighter 2.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Tetris</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tetris.jpeg?raw=true" alt="Tetris">
-                    <button onclick="window.location.href='Embed/Games/Tetris.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>World's Hardest Game</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/World's%20Hardest%20Game.jpeg?raw=true" alt="World's Hardest Game">
-                    <button onclick="window.location.href='Embed/Games/Worlds Hardest Game.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Plants VS. Zombies</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/PVZ.jpg?raw=true" alt="Plants VS. Zombies">
-                    <button onclick="window.location.href='Embed/Games/PVZ.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Angry Birds</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Angry%20Birds.jpg?raw=true" alt="Angry Birds">
-                    <button onclick="window.location.href='Embed/Games/Angry Birds.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>1v1.LOL</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/1v1-LOL.avif" alt="1v1.LOL">
-                    <button onclick="window.location.href='Embed/Games/1v1-LOL.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Little Alchemy</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Little%20Alchemy.png?raw=true" alt="Little Alchemy">
-                    <button onclick="window.location.href='Embed/Games/Little Alchemy.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Room Escape 100</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Room%20Escape%20100.webp" alt="Room Escape 100">
-                    <button onclick="window.location.href='Embed/Games/Room Escape 100.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Shark Attack</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Shark%20Attack.png?raw=true" alt="Shark Attack">
-                    <button onclick="window.location.href='Embed/Games/Shark Attack.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Time Shooter 2</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Time%20Shooter%202.avif" alt="Time Shooter 2">
-                    <button onclick="window.location.href='Embed/Games/Time Shooter 2.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Moto X3M Spooky Land</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Moto%20X3M%20Spooky%20Land%20Unblocked.jpg?raw=true" alt="Moto X3M Spooky Land">
-                    <button onclick="window.location.href='Embed/Games/Moto X3M Spooky Land Unblocked.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Bloons Tower Defense 5</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Bloons%20Tower%20Defense%205.webp" alt="Bloons Tower Defense 5">
-                    <button onclick="window.location.href='Embed/Games/Bloons Tower Defense 5.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>The Oregon Trail</h3>
-                    <img src="https://archive.org/download/oregon-trail-the-1990_202208/00_coverscreenshot.png" alt="The Oregon Trail">
-                    <button onclick="window.location.href='Embed/Games/The Oregon Trail.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>SpongeBob: Trail of the Snail</h3>
-                    <img src="https://ia801705.us.archive.org/26/items/trail_swf/00_coverscreenshot.png" alt="SpongeBob: Trail of the Snail">
-                    <button onclick="window.location.href='Embed/Games/SpongeBob Trail of the Snail.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>SpongeBob: Sea Monster Smoosh</h3>
-                    <img src="https://archive.org/download/smoosh_swf/00_coverscreenshot.png" alt="SpongeBob: Sea Monster Smoosh">
-                    <button onclick="window.location.href='Embed/Games/SpongeBob Sea Monster Smoosh.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>SpongeBob: Pyramid Peril</h3>
-                    <img src="https://archive.org/download/peril_swf/00_coverscreenshot.png" alt="SpongeBob: Pyramid Peril">
-                    <button onclick="window.location.href='Embed/Games/SpongeBob Pyramid Peril.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Spongebob Squarepants: B.C. Bowling</h3>
-                    <img src="https://archive.org/download/flash_SpongeBob_bcbowling/__ia_thumb.jpg" alt="Spongebob Squarepants: B.C. Bowling">
-                    <button onclick="window.location.href='Embed/Games/Spongebob Squarepants BC Bowling.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Melon Playground</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Melon%20Playground.webp" alt="Melon Playground">
-                    <button onclick="window.location.href='Embed/Games/Melon Playground.html'">Play Now</button>
-                </article>
-                <article>
-                    <h3>Helix Jump</h3>
-                    <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Helix%20Jump.avif" alt="Helix Jump">
-                    <button onclick="window.location.href='Embed/Games/Helix Jump.html'">Play Now</button>
-                </article>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Unblocked Games 24</p>
-    </footer>
+
+    <section id="featured">
+        <!-- Rotating banner for featured content -->
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Wordle+.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Wordle+.png?raw=true" alt="Wordle+">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Little Alchemy.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Little%20Alchemy.png?raw=true" alt="Little Alchemy">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Diggy.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Banner/diggy.jpg?raw=true" alt="Diggy">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz.png?raw=true" alt="The Impossible Quiz">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Bitlife.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
+        </a>
+
+        <div id="featured-dots">
+            <span class="active" data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+            <span data-index="3"></span>
+            <span data-index="4"></span>
+            <span data-index="5"></span>
+        </div>
+    </section>
+
+    <section>
+        <h2>ALL Games</h2>
+        <div class="row landscape">
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Minecraft.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Minecraft.webp" alt="Minecraft">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Among Us.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Among%20Us.jpeg?raw=true" alt="Among Us">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Bitlife.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/8 Ball Pool.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/8%20Ball%20Pool.jpg?raw=true" alt="8 Ball Pool">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Cut the Rope.html">
+                <img src="" alt="Cut the Rope">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash Meltdown.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash%20Meltdown.png?raw=true" alt="Geometry Dash Meltdown">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash Subzero.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Geometry%20Dash%20Subzero.webp" alt="Geometry Dash Subzero">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Tiny Fishing.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tiny%20Fishing.jpg?raw=true" alt="Tiny Fishing">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz.png?raw=true" alt="The Impossible Quiz">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Retro Bowl.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Retro%20Bowl.avif" alt="Retro Bowl">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Slope.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Slope.jpg?raw=true" alt="Slope">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/FNAF.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/FNAF.jpg?raw=true" alt="FNAF">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/FNAF 4.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/FNAF%204.jpeg?raw=true" alt="FNAF 4">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Crossy Road.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Crossy%20Road.jpg?raw=true" alt="Crossy Road">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Block the Pig.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Block%20the%20Pig.png?raw=true" alt="Block the Pig">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Chrome Dino.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Chrome%20Dino.webp" alt="Chrome Dino">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Color Switch.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Color%20Switch.webp" alt="Color Switch">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Candy Jump.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Candy%20Jump.jpg?raw=true" alt="Candy Jump">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Draw The Hill.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Draw%20The%20Hill.jpg?raw=true" alt="Draw The Hill">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Flappy Bird.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Flappy%20Bird.webp" alt="Flappy Bird">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Awesome Tanks.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Awesome%20Tanks.jpg?raw=true" alt="Awesome Tanks">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Awesome Tanks 2.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Awesome%20Tanks%202.jpg?raw=true" alt="Awesome Tanks 2">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Basket Bros.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Basket%20Bros.avif" alt="Basket Bros">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Moto X3M.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Moto%20X3M.avif" alt="Moto X3M">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Basketball Stars.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Basketball%20Stars.avif" alt="Basketball Stars">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Microsoft Flight Simulator.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Microsoft%20Flight%20Simulator.jpeg?raw=true" alt="Microsoft Flight Simulator">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Happy Wheels.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Happy%20Wheels.avif" alt="Happy Wheels">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Stack.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Stack.jpg?raw=true" alt="Stack">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Fruit Ninja.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Fruit%20Ninja.png?raw=true" alt="Fruit Ninja">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Wordle+.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Wordle+.png?raw=true" alt="Wordle+">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Baldi's Basics.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Baldi's%20Basics.jpg?raw=true" alt="Baldi's Basics">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Run 2.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Run%202.jpeg?raw=true" alt="Run 2">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Run 3.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Run%203.jpeg?raw=true" alt="Run 3">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Paper io 2.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Paper%20io%202.jpeg?raw=true" alt="Paper.io 2">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Street Fighter 2.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Street%20Fighter%202.webp" alt="Street Fighter 2">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Tetris.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tetris.jpeg?raw=true" alt="Tetris">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/World's Hardest Game.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/World's%20Hardest%20Game.jpeg?raw=true" alt="World's Hardest Game">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/PVZ.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/PVZ.jpg?raw=true" alt="Plants VS. Zombies">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Angry Birds.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Angry%20Birds.jpg?raw=true" alt="Angry Birds">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/1v1-LOL.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/1v1-LOL.avif" alt="1v1.LOL">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Little Alchemy.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Little%20Alchemy.png?raw=true" alt="Little Alchemy">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Room Escape 100.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Room%20Escape%20100.webp" alt="Room Escape 100">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Shark Attack.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Shark%20Attack.png?raw=true" alt="Shark Attack">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Time Shooter 2.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Time%20Shooter%202.avif" alt="Time Shooter 2">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Moto X3M Spooky Land.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Moto%20X3M%20Spooky%20Land%20Unblocked.jpg?raw=true" alt="Moto X3M Spooky Land">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Oregon Trail.html">
+                <img src="https://archive.org/download/oregon-trail-the-1990_202208/00_coverscreenshot.png" alt="The Oregon Trail">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/SpongeBob Trail of the Snail.html">
+                <img src="https://ia801705.us.archive.org/26/items/trail_swf/00_coverscreenshot.png" alt="SpongeBob: Trail of the Snail">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/SpongeBob Sea Monster Smoosh.html">
+                <img src="https://archive.org/download/smoosh_swf/00_coverscreenshot.png" alt="SpongeBob: Sea Monster Smoosh">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/SpongeBob Pyramid Peril.html">
+                <img src="https://archive.org/download/peril_swf/00_coverscreenshot.png" alt="SpongeBob Pyramid Peril">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Spongebob Squarepants BC Bowling.html">
+                <img src="https://archive.org/download/flash_SpongeBob_bcbowling/__ia_thumb.jpg" alt="Spongebob Squarepants: B.C. Bowling">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Melon Playground.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Melon%20Playground.webp" alt="Melon Playground">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Helix Jump.html">
+                <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Helix%20Jump.avif" alt="Helix Jump">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Real Flight Simulator.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Real%20Flight%20Simulator.jpg?raw=true" alt="Real Flight Simulator">
+            </a>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Diggy.html">
+                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Banner/diggy.jpg?raw=true" alt="Diggy">
+            </a>
+        </div>
+     </section>
+
+<section>
+    <h2>Featured Games</h2>
+    <div class="row landscape">
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Bitlife.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Cut the Rope.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Cut%20the%20Rope.avif" alt="Cut the Rope">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Slope.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Slope.jpg?raw=true" alt="Slope">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz.png?raw=true" alt="The Impossible Quiz">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Tiny Fishing.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tiny%20Fishing.jpg?raw=true" alt="Tiny Fishing">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Crossy Road.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Crossy%20Road.jpg?raw=true" alt="Crossy Road">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Time Shooter 2.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Time%20Shooter%202.avif" alt="Time Shooter 2">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Happy Wheels.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Happy%20Wheels.avif" alt="Happy Wheels">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Fruit Ninja.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Fruit%20Ninja.png?raw=true" alt="Fruit Ninja">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Moto X3M.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Moto%20X3M.avif" alt="Moto X3M">
+        </a>
+    </div>
+</section>
+    
+<section>
+    <h2>Recently Added Games</h2>
+    <div class="row landscape">
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Real Flight Simulator.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Real%20Flight%20Simulator.jpg?raw=true" alt="Real Flight Simulator">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Diggy.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Banner/diggy.jpg?raw=true" alt="Diggy">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash World Toxic Factory.html">
+            <img src="https://cdn2.scratch.mit.edu/get_image/project/224236914_480x360.png" alt="Geometry Dash World Toxic Factory">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Helix Jump.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Helix%20Jump.avif" alt="Helix Jump">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Melon Playground.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Melon%20Playground.webp" alt="Melon Playground">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/PVZ.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/PVZ.jpg?raw=true" alt="Plants VS. Zombies">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Angry Birds.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Angry%20Birds.jpg?raw=true" alt="Angry Birds">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Oregon Trail.html">
+            <img src="https://archive.org/download/oregon-trail-the-1990_202208/00_coverscreenshot.png" alt="The Oregon Trail">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/1v1-LOL.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/1v1-LOL.avif" alt="1v1.LOL">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Little Alchemy.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Little%20Alchemy.png?raw=true" alt="Little Alchemy">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Room Escape 100.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Room%20Escape%20100.webp" alt="Room Escape 100">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Shark Attack.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Shark%20Attack.png?raw=true" alt="Shark Attack">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Time Shooter 2.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Time%20Shooter%202.avif" alt="Time Shooter 2">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Moto X3M Spooky Land Unblocked.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Moto%20X3M%20Spooky%20Land%20Unblocked.jpg?raw=true" alt="Moto X3M Spooky Land Unblocked">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Bloons Tower Defense 5.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Bloons%20Tower%20Defense%205.webp" alt="Bloons Tower Defense 5">
+        </a>
+    </div>
+</section>
+
+<section>
+    <h2>Most Played Games</h2>
+    <div class="row landscape">
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz.png?raw=true" alt="The Impossible Quiz">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Bitlife.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Cut the Rope.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Cut%20the%20Rope.avif" alt="Cut the Rope">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Crossy Road.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Crossy%20Road.jpg?raw=true" alt="Crossy Road">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Run 3.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Run%203.jpeg?raw=true" alt="Run 3">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Little Alchemy.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Little%20Alchemy.png?raw=true" alt="Little Alchemy">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Wordle+.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Wordle+.png?raw=true" alt="Wordle+">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Stack.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Stack.jpg?raw=true" alt="Stack">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+        </a>
+    </div>
+</section>
+
+<section>
+    <h2>Random Games</h2>
+    <div class="row landscape">
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Paper io 2.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Paper%20io%202.jpeg?raw=true" alt="Paper.io 2">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Run 3.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Run%203.jpeg?raw=true" alt="Run 3">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/PVZ.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/PVZ.jpg?raw=true" alt="Plants VS. Zombies">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Time Shooter 2.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Time%20Shooter%202.avif" alt="Time Shooter 2">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Moto X3M.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Moto%20X3M.avif" alt="Moto X3M">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Color Switch.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Color%20Switch.webp" alt="Color Switch">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Among Us.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Among%20Us.jpeg?raw=true" alt="Among Us">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/FNAF.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/FNAF.jpg?raw=true" alt="FNAF">
+        </a>
+    </div>
+</section>
+
+<section>
+    <h2>Basketball Games</h2>
+    <div class="row landscape">
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Basketball Stars.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Basketball%20Stars.avif" alt="Basketball Stars">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Basket Bros.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Basket%20Bros.avif" alt="Basket Bros">
+        </a>
+    </div>
+</section>
+
+<section>
+    <h2>Geometry Dash</h2>
+    <div class="row landscape">
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash Meltdown.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash%20Meltdown.png?raw=true" alt="Geometry Dash Meltdown">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash Subzero.html">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Geometry%20Dash%20Subzero.webp" alt="Geometry Dash Subzero">
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash World Toxic Factory.html">
+            <img src="https://cdn2.scratch.mit.edu/get_image/project/224236914_480x360.png" alt="Geometry Dash World Toxic Factory">
+        </a>
+    </div>
+</section>
+    
     <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top ↑</button>
+
+    <script>window.onscroll = function() {
+        scrollFunction();
+    };
+    
+    function scrollFunction() {
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    }
+    
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }</script>
+
+    <script>
+        // JavaScript for rotating the featured banner and handling dots
+        let currentIndex = 0;
+        const featuredImages = document.querySelectorAll('#featured img');
+        const dots = document.querySelectorAll('#featured-dots span');
+
+        function showSlide(index) {
+            featuredImages[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            featuredImages[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        setInterval(() => {
+            const nextIndex = (currentIndex + 1) % featuredImages.length;
+            showSlide(nextIndex);
+        }, 3000);
+    </script>
 </body>
 </html>
