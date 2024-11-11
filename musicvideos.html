@@ -3,53 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Videos - Unblocked Games 24</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>UG24</title>
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
     <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
-    <script src="scripts.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            position: relative;
+            padding: 20px;
+            background-color: #1c1c1e;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        #featured img.active {
+            display: block;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        #featured-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #featured-dots span.active {
+            background-color: #fff;
+        }
+
+        .row {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        .row img {
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .row img:hover {
+            transform: scale(1.05);
+        }
+
+        .landscape img {
+            width: 300px; /* Adjust width as necessary */
+            height: 168px; /* 16:9 aspect ratio */
+        }
+
+        h2 {
+            padding-left: 20px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align items to the left */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+            padding: 12px; /* Increased padding */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px; /* Increased padding */
+            font-size: 16px; /* Increased font size */
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 0 7px; /* Increased margin */
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* View More Button */
+        .button-85 {
+          padding: 0.6em 2em;
+          border: none;
+          outline: none;
+          color: rgb(255, 255, 255);
+          background: #111;
+          cursor: pointer;
+          position: relative;
+          z-index: 0;
+          border-radius: 10px;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+        }
+        
+        .button-85:before {
+          content: "";
+          background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+          );
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          background-size: 400%;
+          z-index: -1;
+          filter: blur(5px);
+          -webkit-filter: blur(5px);
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          animation: glowing-button-85 20s linear infinite;
+          transition: opacity 0.3s ease-in-out;
+          border-radius: 10px;
+        }
+        
+        @keyframes glowing-button-85 {
+          0% {
+            background-position: 0 0;
+          }
+          50% {
+            background-position: 400% 0;
+          }
+          100% {
+            background-position: 0 0;
+          }
+        }
+        
+        .button-85:after {
+          z-index: -1;
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: #222;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+        }
+
+        /* Button */
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 18px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #555;
+}
+    </style>
 </head>
 <body>
     <header>
-        <h1>Unblocked Games 24</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="movies.html">Movies</a>
-            <a href="tvshows.html">TV Shows</a>
-            <a href="music.html">Music</a>
-            <a href="musicvideos.html">Music Videos</a>
-            <a href="games.html">Games</a>
-            <a href="ebooks.html">Ebooks</a>
-            <a href="livetv.html">Live TV</a>
-        </nav>
-        <input type="text" id="search" placeholder="Search...">
-    </header>
-    <main>
-        <section id="musicvideos">
-            <h2>Music Videos</h2>
-            <div class="row">
-                <article>
-                    <h3>Music Video: Thriller - Michael Jackson</h3>
-                    <img src="img/musicvideos/poster/thriller.jpg" alt="Thriller Music Video Poster">
-                    <p>The music video for Michael Jackson's "Thriller" is known for its iconic dance moves and horror-themed storyline.</p>
-                    <button onclick="playMusicVideo('thriller_music_video.mp4')">Watch Now</button>
-                </article>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Unblocked Games 24</p>
-    </footer>
-    <div id="player">
-        <video id="videoPlayer" controls></video>
-        <div id="player-controls">
-            <button onclick="pauseVideo()">Pause</button>
-            <button onclick="rewindVideo()">Rewind</button>
-            <button onclick="stopVideo()">Stop</button>
+
+<head>
+    <!-- Required Meta Tags for iOS/iPadOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Your App Name">
+
+    <!-- Add a Manifest for Android and modern browsers -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- App Icons for iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png">
+
+    <!-- iOS Splash Screens (Optional) -->
+    <link rel="apple-touch-startup-image" href="/splash/splash-2048x2732.png" media="(device-width: 1024px)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1668x2388.png" media="(device-width: 834px)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1536x2048.png" media="(device-width: 768px)">
+
+    <!-- Ensure the webpage scales correctly on iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+        
+        <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="button-85" class="logo">UG24</div>
+        <div class="nav-links">
+            <a href="https://tvguyx.github.io/FreeTV/index.html">Home</a>
+            <a href="https://tvguyx.github.io/FreeTV/movies.html">Movies</a>
+            <a href="https://tvguyx.github.io/FreeTV/tvshows.html">TV Shows</a>
+            <a href="https://tvguyx.github.io/FreeTV/games.html">Games</a>
+            <a href="https://tvguyx.github.io/FreeTV/sports.html">Sports</a>
+            <a href="https://tvguyx.github.io/FreeTV/cheating-tools.html">Cheating Tools</a>
+            <a href="https://tvguyx.github.io/FreeTV/apps.html">Apps</a>
+            <a href="https://tvguyx.github.io/FreeTV/livetv.html">Live TV</a>
         </div>
     </div>
+
+    </header>
+  <h1>COMING SOON</h1>
+
+    <h1>SORRY THIS NOT READY YET</h1>
+    
+    <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top ↑</button>
+
+    <script>window.onscroll = function() {
+        scrollFunction();
+    };
+    
+    function scrollFunction() {
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    }
+    
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }</script>
+
+    <script>
+        // JavaScript for rotating the featured banner and handling dots
+        let currentIndex = 0;
+        const featuredImages = document.querySelectorAll('#featured img');
+        const dots = document.querySelectorAll('#featured-dots span');
+
+        function showSlide(index) {
+            featuredImages[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            featuredImages[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        setInterval(() => {
+            const nextIndex = (currentIndex + 1) % featuredImages.length;
+            showSlide(nextIndex);
+        }, 3000);
+    </script>
 </body>
 </html>
