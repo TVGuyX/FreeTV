@@ -1,223 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UG24 - Password Protected</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 50px;
-        }
-
-        #password-screen, #risk-screen, #loading-screen {
-            display: none;
-        }
-
-        button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        #disabled-message {
-            display: none;
-            color: red;
-            font-size: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Protected Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .hidden {
+      display: none;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <div id="password-screen">
-        <h1>Password Protected</h1>
-        <p>This page is password protected. To get the password, ask the creator of UG24.</p>
-        <input type="password" id="password" placeholder="Enter Password">
-        <button onclick="checkPassword()">Submit</button>
-        <p id="error-message" style="color: red;"></p>
-        <p id="disabled-message">Too many incorrect attempts. Please refresh the page.</p>
-    </div>
+  <div id="password-section">
+    <h2>Enter Password</h2>
+    <input type="password" id="password-input" placeholder="Password">
+    <button onclick="checkPassword()">Submit</button>
+  </div>
 
-    <div id="risk-screen">
-        <h1>Warning</h1>
-        <p>You are now entering videos that may not be allowed in school and can possibly get you in a lot of trouble.</p>
-        <button onclick="enterPage()">I Accept and Understand the Risks</button>
-        <button onclick="cancel()">Cancel</button>
-    </div>
+  <div id="button-section" class="hidden">
+    <button onclick="confirmNavigation()">Go To Page</button>
+  </div>
 
-    <div id="loading-screen">
-        <h1>Loading...</h1>
-    </div>
+  <script>
+    const correctPassword = "82408";
 
-    <script>
-        let attempts = 0;
-        const correctPassword = "UG24XAA0014619147";
+    function checkPassword() {
+      const passwordInput = document.getElementById("password-input").value;
+      if (passwordInput === correctPassword) {
+        document.getElementById("password-section").classList.add("hidden");
+        document.getElementById("button-section").classList.remove("hidden");
+      } else {
+        alert("Incorrect password. Try again.");
+      }
+    }
 
-        function checkPassword() {
-            const passwordInput = document.getElementById("password").value;
-            const errorMessage = document.getElementById("error-message");
-            const disabledMessage = document.getElementById("disabled-message");
-
-            if (attempts >= 3) {
-                disabledMessage.style.display = "block";
-                return;
-            }
-
-            if (passwordInput === correctPassword) {
-                document.getElementById("password-screen").style.display = "none";
-                document.getElementById("risk-screen").style.display = "block";
-            } else {
-                attempts++;
-                errorMessage.textContent = "Incorrect password. Please try again.";
-            }
-        }
-
-        function cancel() {
-            document.body.style.backgroundColor = "#000";
-            document.body.innerHTML = `
-                <h1>Access Denied</h1>
-                <p><button onclick="window.location.href='index.html'">Go Back Home</button></p>
-            `;
-        }
-
-        function enterPage() {
-            document.getElementById("risk-screen").style.display = "none";
-            document.getElementById("loading-screen").style.display = "block";
-
-            setTimeout(() => {
-                document.getElementById("loading-screen").style.display = "none";
-                document.body.innerHTML = `
-                    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UG24 - Password Protected</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 50px;
-        }
-
-        #password-screen, #risk-screen, #loading-screen {
-            display: none;
-        }
-
-        button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        #disabled-message {
-            display: none;
-            color: red;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div id="password-screen">
-        <h1>Password Protected</h1>
-        <p>This page is password protected. To get the password, ask the creator of UG24.</p>
-        <input type="password" id="password" placeholder="Enter Password">
-        <button onclick="checkPassword()">Submit</button>
-        <p id="error-message" style="color: red;"></p>
-        <p id="disabled-message">Too many incorrect attempts. Please refresh the page.</p>
-    </div>
-
-    <div id="risk-screen">
-        <h1>Warning</h1>
-        <p>You are now entering videos that may not be allowed in school and can possibly get you in a lot of trouble.</p>
-        <button onclick="enterPage()">I Accept and Understand the Risks</button>
-        <button onclick="cancel()">Cancel</button>
-    </div>
-
-    <div id="loading-screen">
-        <h1>Loading...</h1>
-    </div>
-
-    <script>
-        let attempts = 0;
-        const correctPassword = "UG24XAA0014619147";
-
-        function checkPassword() {
-            const passwordInput = document.getElementById("password").value;
-            const errorMessage = document.getElementById("error-message");
-            const disabledMessage = document.getElementById("disabled-message");
-
-            if (attempts >= 3) {
-                disabledMessage.style.display = "block";
-                return;
-            }
-
-            if (passwordInput === correctPassword) {
-                document.getElementById("password-screen").style.display = "none";
-                document.getElementById("risk-screen").style.display = "block";
-            } else {
-                attempts++;
-                errorMessage.textContent = "Incorrect password. Please try again.";
-            }
-        }
-
-        function cancel() {
-            document.body.style.backgroundColor = "#000";
-            document.body.innerHTML = `
-                <h1>Access Denied</h1>
-                <p><button onclick="window.location.href='index.html'">Go Back Home</button></p>
-            `;
-        }
-
-        function enterPage() {
-            document.getElementById("risk-screen").style.display = "none";
-            document.getElementById("loading-screen").style.display = "block";
-
-            setTimeout(() => {
-                document.getElementById("loading-screen").style.display = "none";
-                document.body.innerHTML = `
-                    <header>
-                        <!-- Original header content here -->
-                    </header>
-                    <h1>WELCOME TO UG24</h1>
-                    <!-- Original page content here -->
-                `;
-            }, 3000);
-        }
-
-        // Show the password screen by default
-        document.getElementById("password-screen").style.display = "block";
-    </script>
-</body>
-</html>
-                `;
-            }, 3000);
-        }
-
-        // Show the password screen by default
-        document.getElementById("password-screen").style.display = "block";
-    </script>
+    function confirmNavigation() {
+      const confirmAction = confirm("Are you sure you want to proceed?");
+      if (confirmAction) {
+        // Redirect to the desired page
+        window.location.href = "https://tvguyx.github.io/FreeTV/Embed/TEST/2.html"; // Replace with your page URL
+      }
+    }
+  </script>
 </body>
 </html>
