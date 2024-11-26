@@ -164,11 +164,11 @@
         .snowflakes {
             position: absolute;
             top: 0;
-            left: 50%;
+            left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: -1;
             display: block;
         }
 
@@ -182,20 +182,42 @@
 
         .snowflakes div:nth-child(odd) {
             animation-duration: 15s;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
         }
 
         .snowflakes div:nth-child(even) {
             animation-duration: 12s;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
         }
 
         .snowflakes div {
-            left: calc(50% + (random() * 200px) - 100px);
+            left: calc(50% + (random() * 300px) - 150px);
             top: -10px;
             animation-delay: calc(-5s + (random() * 5s));
+        }
+
+        /* Candy Cane and Christmas Tree Decoration */
+        .candy-cane,
+        .christmas-tree {
+            position: absolute;
+            z-index: -1;
+            width: 80px;
+            height: 80px;
+            top: 30%;
+        }
+
+        .candy-cane {
+            background-image: url('https://example.com/path/to/candy-cane.png');
+            background-size: cover;
+            left: 10%;
+        }
+
+        .christmas-tree {
+            background-image: url('https://example.com/path/to/christmas-tree.png');
+            background-size: cover;
+            right: 10%;
         }
 
         /* Button Styles */
@@ -288,12 +310,6 @@
     </style>
 </head>
 <body>
-    <!-- Snowflakes Background -->
-    <div class="snowflakes">
-        <div></div><div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div><div></div>
-    </div>
-
     <header>
         <div class="navbar">
             <div class="logo">UG24 Christmas Edition</div>
@@ -304,6 +320,18 @@
         </div>
         <h1>Welcome to the Christmas Special Edition of UG24</h1>
     </header>
+
+    <div class="snowflakes">
+        <!-- Add snowflake divs -->
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="candy-cane"></div>
+    <div class="christmas-tree"></div>
 
     <div id="featured">
         <img src="https://example.com/path/to/featured1.jpg" alt="Featured Christmas Content" class="active">
