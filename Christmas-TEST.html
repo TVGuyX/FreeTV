@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RSBT49V7D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3RSBT49V7D');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UG24 Christmas Edition</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #2e2e2e; /* Dark background */
+            color: #fff;
+            background-image: url('https://example.com/path/to/snowflake-background.jpg'); /* Snowy background */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        header {
+            position: relative;
+            padding: 20px;
+            background-color: #b30000; /* Festive red */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #fff;
+            text-align: center;
+        }
+
+        #featured {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border: 5px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        #featured img.active {
+            display: block;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        #featured-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #featured-dots span.active {
+            background-color: #fff;
+        }
+
+        .row {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        .row img {
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .row img:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            padding-left: 20px;
+            color: #ffcc00; /* Gold text for headings */
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: rgba(0, 128, 0, 0.8); /* Green background for Christmas */
+            padding: 12px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            margin-right: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow effect for the logo */
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 0 7px;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            text-decoration: underline;
+        }
+
+        /* Snowflake Animation */
+        @keyframes snowflakes {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            display: block;
+        }
+
+        .snowflakes div {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: snowflakes 10s linear infinite;
+            opacity: 0.8;
+        }
+
+        .snowflakes div:nth-child(odd) {
+            animation-duration: 15s;
+            width: 8px;
+            height: 8px;
+        }
+
+        .snowflakes div:nth-child(even) {
+            animation-duration: 12s;
+            width: 12px;
+            height: 12px;
+        }
+
+        .snowflakes div {
+            left: calc(50% + (random() * 200px) - 100px);
+            top: -10px;
+            animation-delay: calc(-5s + (random() * 5s));
+        }
+
+        /* Button Styles */
+        .button-85 {
+          padding: 0.6em 2em;
+          border: none;
+          outline: none;
+          color: #fff;
+          background: #008000; /* Christmas Green */
+          cursor: pointer;
+          position: relative;
+          z-index: 0;
+          border-radius: 10px;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+        }
+        
+        .button-85:before {
+          content: "";
+          background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+          );
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          background-size: 400%;
+          z-index: -1;
+          filter: blur(5px);
+          -webkit-filter: blur(5px);
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          animation: glowing-button-85 20s linear infinite;
+          transition: opacity 0.3s ease-in-out;
+          border-radius: 10px;
+        }
+        
+        @keyframes glowing-button-85 {
+          0% {
+            background-position: 0 0;
+          }
+          50% {
+            background-position: 400% 0;
+          }
+          100% {
+            background-position: 0 0;
+          }
+        }
+
+        .button-85:after {
+          z-index: -1;
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: #222;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Snowflakes Background -->
+    <div class="snowflakes">
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+    </div>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">UG24 Christmas Edition</div>
+            <a href="#">Home</a>
+            <a href="#">Games</a>
+            <a href="#">Movies</a>
+            <a href="#">Music</a>
+        </div>
+        <h1>Welcome to the Christmas Special Edition of UG24</h1>
+    </header>
+
+    <div id="featured">
+        <img src="https://example.com/path/to/featured1.jpg" alt="Featured Christmas Content" class="active">
+        <img src="https://example.com/path/to/featured2.jpg" alt="Featured Christmas Content">
+        <img src="https://example.com/path/to/featured3.jpg" alt="Featured Christmas Content">
+        <div id="featured-dots">
+            <span class="active"></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2>Popular Christmas Games</h2>
+        <img src="https://example.com/path/to/game1.jpg" alt="Game 1">
+        <img src="https://example.com/path/to/game2.jpg" alt="Game 2">
+        <img src="https://example.com/path/to/game3.jpg" alt="Game 3">
+        <img src="https://example.com/path/to/game4.jpg" alt="Game 4">
+    </div>
+
+    <button id="scrollToTopBtn">↑</button>
+
+    <script>
+        // Scroll to top button functionality
+        window.onscroll = function() {
+            const btn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        document.getElementById("scrollToTopBtn").addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Featured content slider
+        let index = 0;
+        const images = document.querySelectorAll("#featured img");
+        const dots = document.querySelectorAll("#featured-dots span");
+
+        setInterval(() => {
+            images[index].classList.remove("active");
+            dots[index].classList.remove("active");
+            index = (index + 1) % images.length;
+            images[index].classList.add("active");
+            dots[index].classList.add("active");
+        }, 5000); // Change every 5 seconds
+    </script>
+</body>
+</html>
