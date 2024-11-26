@@ -1,164 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RSBT49V7D"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-3RSBT49V7D');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UG24 Christmas Edition</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
-    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
     <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #2e2e2e; /* Dark background */
-            color: #fff;
-            background-image: url('https://example.com/path/to/snowflake-background.jpg'); /* Snowy background */
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
+            background: #fff;
+            color: #333;
+            overflow-x: hidden;
         }
 
         header {
-            position: relative;
-            padding: 20px;
-            background-color: #b30000; /* Festive red */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            color: #fff;
             text-align: center;
-        }
-
-        #featured {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            border: 5px solid #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        #featured img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s ease-in-out;
-            display: none;
-        }
-
-        #featured img.active {
-            display: block;
-        }
-
-        #featured-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-
-        #featured-dots span {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        #featured-dots span.active {
-            background-color: #fff;
-        }
-
-        .row {
-            display: flex;
-            overflow-x: auto;
             padding: 20px;
+            background: #006400; /* Dark Green */
+            color: white;
+            position: relative;
         }
 
-        .row img {
-            width: 200px;
-            height: 300px;
-            margin-right: 10px;
-            object-fit: cover;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .row img:hover {
-            transform: scale(1.05);
-        }
-
-        h2 {
-            padding-left: 20px;
-            color: #ffcc00; /* Gold text for headings */
-        }
-
-        /* Navigation Bar */
         .navbar {
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: rgba(0, 128, 0, 0.8); /* Green background for Christmas */
-            padding: 12px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar .logo {
-            font-size: 22px;
-            font-weight: bold;
-            margin-right: 20px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow effect for the logo */
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .navbar a {
-            color: #fff;
             text-decoration: none;
-            padding: 12px 18px;
-            font-size: 16px;
-            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px;
+            background-color: #008000; /* Green */
             border-radius: 5px;
-            margin: 0 7px;
+            transition: background-color 0.3s;
         }
 
         .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            text-decoration: underline;
+            background-color: #004d00; /* Darker Green */
         }
 
-        /* Snowflake Animation */
-        @keyframes snowflakes {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(100vh);
-            }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            position: relative;
+            padding: 20px;
+            background-color: #8B0000; /* Dark Red */
+            border-radius: 50%;
+            color: white;
+            display: inline-block;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 100%;
+            height: 100%;
+            background: url('https://example.com/path/to/wreath.png') no-repeat center center;
+            background-size: contain;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 2.2em;
         }
 
         .snowflakes {
@@ -167,141 +80,127 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             z-index: -1;
-            display: block;
         }
 
         .snowflakes div {
             position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: snowflakes 10s linear infinite;
-            opacity: 0.8;
+            background: url('https://example.com/path/to/snowflake.png') no-repeat center center;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            animation: fall 5s linear infinite;
         }
 
-        .snowflakes div:nth-child(odd) {
-            animation-duration: 15s;
-            width: 10px;
-            height: 10px;
-        }
-
-        .snowflakes div:nth-child(even) {
-            animation-duration: 12s;
-            width: 14px;
-            height: 14px;
-        }
-
-        .snowflakes div {
-            left: calc(50% + (random() * 300px) - 150px);
-            top: -10px;
-            animation-delay: calc(-5s + (random() * 5s));
-        }
-
-        /* Candy Cane and Christmas Tree Decoration */
-        .candy-cane,
-        .christmas-tree {
-            position: absolute;
-            z-index: -1;
-            width: 80px;
-            height: 80px;
-            top: 30%;
+        @keyframes fall {
+            0% {
+                top: -20px;
+            }
+            100% {
+                top: 100%;
+            }
         }
 
         .candy-cane {
-            background-image: url('https://example.com/path/to/candy-cane.png');
-            background-size: cover;
-            left: 10%;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background: url('https://example.com/path/to/candy-cane.png') no-repeat center center;
+            background-size: contain;
+            z-index: -2;
         }
 
         .christmas-tree {
-            background-image: url('https://example.com/path/to/christmas-tree.png');
-            background-size: cover;
-            right: 10%;
+            position: absolute;
+            top: 150px;
+            right: 10px;
+            width: 120px;
+            height: 120px;
+            background: url('https://example.com/path/to/christmas-tree.png') no-repeat center center;
+            background-size: contain;
+            z-index: -2;
         }
 
-        /* Button Styles */
-        .button-85 {
-          padding: 0.6em 2em;
-          border: none;
-          outline: none;
-          color: #fff;
-          background: #008000; /* Christmas Green */
-          cursor: pointer;
-          position: relative;
-          z-index: 0;
-          border-radius: 10px;
-          user-select: none;
-          -webkit-user-select: none;
-          touch-action: manipulation;
-        }
-        
-        .button-85:before {
-          content: "";
-          background: linear-gradient(
-            45deg,
-            #ff0000,
-            #ff7300,
-            #fffb00,
-            #48ff00,
-            #00ffd5,
-            #002bff,
-            #7a00ff,
-            #ff00c8,
-            #ff0000
-          );
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          background-size: 400%;
-          z-index: -1;
-          filter: blur(5px);
-          -webkit-filter: blur(5px);
-          width: calc(100% + 4px);
-          height: calc(100% + 4px);
-          animation: glowing-button-85 20s linear infinite;
-          transition: opacity 0.3s ease-in-out;
-          border-radius: 10px;
-        }
-        
-        @keyframes glowing-button-85 {
-          0% {
-            background-position: 0 0;
-          }
-          50% {
-            background-position: 400% 0;
-          }
-          100% {
-            background-position: 0 0;
-          }
+        #featured {
+            position: relative;
+            margin: 20px auto;
+            max-width: 1200px;
         }
 
-        .button-85:after {
-          z-index: -1;
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background: #222;
-          left: 0;
-          top: 0;
-          border-radius: 10px;
-        }
-
-        /* Scroll to Top Button */
-        #scrollToTopBtn {
+        #featured img {
+            width: 100%;
+            height: auto;
             display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #featured img.active {
+            display: block;
+            opacity: 1;
+        }
+
+        #featured-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        #featured-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        #featured-dots span.active {
+            opacity: 1;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .row img {
+            width: 250px;
+            height: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .row img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.8), 0 0 10px 5px rgba(0, 255, 0, 0.8), 0 0 10px 5px rgba(255, 255, 0, 0.8);
+        }
+
+        .row img:hover {
+            border: 5px solid transparent;
+            box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8), 0 0 15px 5px rgba(255, 0, 0, 0.8), 0 0 15px 5px rgba(0, 255, 0, 0.8), 0 0 15px 5px rgba(255, 255, 0, 0.8);
+        }
+
+        /* Scroll to top button */
+        #scrollToTopBtn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 99;
-            font-size: 18px;
-            background-color: #333;
+            background-color: #8B0000;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
             padding: 10px;
+            font-size: 24px;
             cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
         }
 
         #scrollToTopBtn:hover {
@@ -378,7 +277,7 @@
             index = (index + 1) % images.length;
             images[index].classList.add("active");
             dots[index].classList.add("active");
-        }, 5000); // Change every 5 seconds
+        }, 3000);
     </script>
 </body>
 </html>
