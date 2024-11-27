@@ -20,14 +20,68 @@
     <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
     <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-        }
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(20, 20, 25, 1);
+}
 
-        header {
+body,
+html {
+    overflow-x: hidden;
+    width: 100vw;
+    height: auto;
+}
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes diagonal-fall {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.25;
+        transform: translate(10vw, 100vh);
+    }
+}
+
+header {
             position: relative;
             padding: 20px;
             background-color: #1c1c1e;
@@ -277,6 +331,79 @@
 #scrollToTopBtn:hover {
     background-color: #555;
 }
+
+
+.candy-cane-text {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff0000, #ffffff, #ff0000);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    animation: candy-cane 1s linear infinite;
+    margin: 20px;
+}
+
+@keyframes candy-cane {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+/* General Button Styling */
+.button {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Green Button */
+.button.green {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.button.green:hover {
+    background-color: #218838;
+}
+
+/* Red Button */
+.button.red {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.button.red:hover {
+    background-color: #c82333;
+}
+
+/* Glowing Button */
+.button.glow {
+    background-color: #ffffff;
+    color: #000;
+    animation: glowEffect 1s infinite alternate;
+}
+
+/* Glow Effect Animation */
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
+    }
+    50% {
+        box-shadow: 0 0 10px #dc3545, 0 0 20px #dc3545, 0 0 30px #dc3545;
+    }
+    100% {
+        box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
+    }
+}
     </style>
 </head>
 <body>
@@ -307,16 +434,16 @@
         
         <!-- Navigation Bar -->
     <div class="navbar">
-        <div class="button-85" class="logo">UG24</div>
+        <div class="button red" class="logo">UG24</div>
         <div class="nav-links">
-            <a href="https://tvguyx.github.io/FreeTV/index.html">Home</a>
-            <a href="https://tvguyx.github.io/FreeTV/movies.html">Movies</a>
-            <a href="https://tvguyx.github.io/FreeTV/tvshows.html">TV Shows</a>
-            <a href="https://tvguyx.github.io/FreeTV/games.html">Games</a>
-            <a href="https://tvguyx.github.io/FreeTV/sports.html">Sports</a>
-            <a href="https://tvguyx.github.io/FreeTV/cheating-tools.html">Cheating Tools</a>
-            <a href="https://tvguyx.github.io/FreeTV/apps.html">Apps</a>
-            <a href="https://tvguyx.github.io/FreeTV/livetv.html">Live TV</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/index.html">Home</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/movies.html">Movies</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/tvshows.html">TV Shows</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/games.html">Games</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/sports.html">Sports</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/cheating-tools.html">Cheating Tools</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/apps.html">Apps</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/livetv.html">Live TV</a>
         </div>
     </div>
 
@@ -349,6 +476,9 @@
             <span data-index="5"></span>
         </div>
     </section>
+
+    <div class="snow-container"></div>
+    <div style="height: 200vh;">
     
 <!-- New 16:9 landscape rows for Apps -->
 <section>
@@ -417,5 +547,87 @@
             showSlide(nextIndex);
         }, 3000);
     </script>
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+    const snowContainer = document.querySelector(".snow-container");
+
+    const particlesPerThousandPixels = 0.1;
+    const fallSpeed = 1.25;
+    const pauseWhenNotActive = true;
+    const maxSnowflakes = 200;
+    const snowflakes = [];
+
+    let snowflakeInterval;
+    let isTabActive = true;
+
+    function resetSnowflake(snowflake) {
+        const size = Math.random() * 5 + 1;
+        const viewportWidth = window.innerWidth - size; // Adjust for snowflake size
+        const viewportHeight = window.innerHeight;
+
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${Math.random() * viewportWidth}px`; // Constrain within viewport width
+        snowflake.style.top = `-${size}px`;
+
+        const animationDuration = (Math.random() * 3 + 2) / fallSpeed;
+        snowflake.style.animationDuration = `${animationDuration}s`;
+        snowflake.style.animationTimingFunction = "linear";
+        snowflake.style.animationName =
+            Math.random() < 0.5 ? "fall" : "diagonal-fall";
+
+        setTimeout(() => {
+            if (parseInt(snowflake.style.top, 10) < viewportHeight) {
+                resetSnowflake(snowflake);
+            } else {
+                snowflake.remove(); // Remove when it goes off the bottom edge
+            }
+        }, animationDuration * 1000);
+    }
+
+    function createSnowflake() {
+        if (snowflakes.length < maxSnowflakes) {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+            snowflakes.push(snowflake);
+            snowContainer.appendChild(snowflake);
+            resetSnowflake(snowflake);
+        }
+    }
+
+    function generateSnowflakes() {
+        const numberOfParticles =
+            Math.ceil((window.innerWidth * window.innerHeight) / 1000) *
+            particlesPerThousandPixels;
+        const interval = 5000 / numberOfParticles;
+
+        clearInterval(snowflakeInterval);
+        snowflakeInterval = setInterval(() => {
+            if (isTabActive && snowflakes.length < maxSnowflakes) {
+                requestAnimationFrame(createSnowflake);
+            }
+        }, interval);
+    }
+
+    function handleVisibilityChange() {
+        if (!pauseWhenNotActive) return;
+
+        isTabActive = !document.hidden;
+        if (isTabActive) {
+            generateSnowflakes();
+        } else {
+            clearInterval(snowflakeInterval);
+        }
+    }
+
+    generateSnowflakes();
+
+    window.addEventListener("resize", () => {
+        clearInterval(snowflakeInterval);
+        setTimeout(generateSnowflakes, 1000);
+    });
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+});</script>
 </body>
 </html>
