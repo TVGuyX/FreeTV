@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RSBT49V7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3RSBT49V7D');
+</script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UG24</title>
@@ -10,14 +20,68 @@
     <meta name="apple-mobile-web-app-title" content="Unblocked Games 24">
     <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-        }
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(20, 20, 25, 1);
+}
 
-        header {
+body,
+html {
+    overflow-x: hidden;
+    width: 100vw;
+    height: auto;
+}
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes diagonal-fall {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.25;
+        transform: translate(10vw, 100vh);
+    }
+}
+
+header {
             position: relative;
             padding: 20px;
             background-color: #1c1c1e;
@@ -267,22 +331,292 @@
 #scrollToTopBtn:hover {
     background-color: #555;
 }
+
+
+.candy-cane-text {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff0000, #ffffff, #ff0000);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    animation: candy-cane 1s linear infinite;
+    margin: 20px;
+}
+
+@keyframes candy-cane {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+/* General Button Styling */
+.button {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Green Button */
+.button.green {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.button.green:hover {
+    background-color: #218838;
+}
+
+/* Red Button */
+.button.red {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.button.red:hover {
+    background-color: #c82333;
+}
+
+/* Glowing Button */
+.button.glow {
+    background-color: #ffffff;
+    color: #000;
+    animation: glowEffect 1s infinite alternate;
+}
+
+/* Glow Effect Animation */
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
+    }
+    50% {
+        box-shadow: 0 0 10px #dc3545, 0 0 20px #dc3545, 0 0 30px #dc3545;
+    }
+    100% {
+        box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
+    }
+}
+
+
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #3e8c3e, #b22424); /* Festive background */
+    overflow-x: hidden;
+}
+
+/* Section Container */
+.christmas-movie-section {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    position: relative;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #f7e417; /* Gold text */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Movie Grid */
+.movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Movie Card */
+.movie-card {
+    background: #ffffff;
+    border: 5px solid #d32f2f;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Movie Poster */
+.movie-poster {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Movie Title */
+.movie-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #b22424;
+}
+
+/* Watch Now Button */
+.watch-now-btn {
+    background: linear-gradient(45deg, #3e8c3e, #b22424);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.watch-now-btn:hover {
+    background: linear-gradient(45deg, #b22424, #3e8c3e);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Make Responsive */
+@media screen and (max-width: 768px) {
+    .movie-card {
+        width: 150px;
+    }
+    .movie-title {
+        font-size: 1rem;
+    }
+    .watch-now-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
+
+
+.watch-now-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #3e8c3e, #b22424);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.watch-now-btn:hover {
+    background: linear-gradient(45deg, #b22424, #3e8c3e);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Section for Christmas Episodes */
+.christmas-episodes-section {
+    background-color: #e7000098;
+    padding: 50px 20px;
+    text-align: center;
+    background-image: url('https://example.com/christmas-background.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    position: relative;
+    border: 4px solid #00cc00; /* Green border around the section */
+}
+
+.episode-card {
+    background-color: rgba(207, 207, 207, 0.8);
+    border: 2px solid #ff0000; /* Red border around the episode card */
+    border-radius: 10px;
+    width: 320px; /* Adjusted width for landscape */
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-bottom: 30px; /* Space between cards */
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block; /* To align episodes horizontally */
+}
+
+.episode-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+.episode-poster {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 180px; /* Adjust to fit landscape format */
+    object-fit: cover;
+    border-bottom: 2px solid #ff0000;
+    margin-bottom: 15px;
+}
+
+.episode-title {
+    font-size: 1.5rem;
+    color: #ff0000;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.watch-episode-btn {
+    background-color: #00cc00;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box; /* Ensures button stays inside the card */
+    margin-top: 10px; /* Adds space above the button */
+}
+
+.watch-episode-btn:hover {
+    background-color: #ff0000;
+}
+
+.watch-episode-btn:focus {
+    outline: none;
+}
+
+/* Container to center the episode cards */
+.episode-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
     </style>
 </head>
 <body>
     <header>
 
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RSBT49V7D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3RSBT49V7D');
-</script>
-    
     <!-- Required Meta Tags for iOS/iPadOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -304,19 +638,19 @@
     <!-- Ensure the webpage scales correctly on iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
-        
+
         <!-- Navigation Bar -->
     <div class="navbar">
-        <div class="button-85" class="logo">UG24</div>
+        <div class="button red" class="logo">UG24</div>
         <div class="nav-links">
-            <a href="https://tvguyx.github.io/FreeTV/index.html">Home</a>
-            <a href="https://tvguyx.github.io/FreeTV/movies.html">Movies</a>
-            <a href="https://tvguyx.github.io/FreeTV/tvshows.html">TV Shows</a>
-            <a href="https://tvguyx.github.io/FreeTV/games.html">Games</a>
-            <a href="https://tvguyx.github.io/FreeTV/sports.html">Sports</a>
-            <a href="https://tvguyx.github.io/FreeTV/Cheating Tools.html">Cheating Tools</a>
-            <a href="https://tvguyx.github.io/FreeTV/apps.html">Apps</a>
-            <a href="https://tvguyx.github.io/FreeTV/livetv.html">Live TV</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/index.html">Home</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/movies.html">Movies</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/tvshows.html">TV Shows</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/games.html">Games</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/sports.html">Sports</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/cheating-tools.html">Cheating Tools</a>
+            <a class="button green" href="https://tvguyx.github.io/FreeTV/apps.html">Apps</a>
+            <a class="button red" href="https://tvguyx.github.io/FreeTV/livetv.html">Live TV</a>
         </div>
     </div>
 
@@ -325,26 +659,26 @@
     <section id="featured">
         <!-- Rotating banner for featured content -->
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Adventure Capitalist.html">
-                <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346900/header.jpg?t=1721150731" alt="Adventure Capitalist">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346900/header.jpg?t=1721150731" alt="Adventure Capitalist">
         </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Bitlife.html">
-            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Bitlife.html">
+        <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp" alt="Bitlife">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Wordle+.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Wordle+.png?raw=true" alt="Wordle+">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz 2.html">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz%202.jpeg?raw=true" alt="The Impossible Quiz 2">
         </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Wordle+.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Wordle+.png?raw=true" alt="Wordle+">
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Adventure Capitalist.html">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346900/header.jpg?t=1721150731" alt="Adventure Capitalist">
         </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz 2.html">
-                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz%202.jpeg?raw=true" alt="The Impossible Quiz 2">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Adventure Capitalist.html">
-                <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346900/header.jpg?t=1721150731" alt="Adventure Capitalist">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Ghostbusters Frozen Empire (2024).html"></a>
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Banner/Ghostbusters%20Frozen%20Empire%20(2024).jpg?raw=true" alt="Ghostbusters Frozen Empire (2024)">
-        </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Ghostbusters Frozen Empire (2024).html"></a>
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Banner/Ghostbusters%20Frozen%20Empire%20(2024).jpg?raw=true" alt="Ghostbusters Frozen Empire (2024)">
+    </a>
 
         <div id="featured-dots">
             <span class="active" data-index="0"></span>
@@ -357,50 +691,89 @@
         </div>
     </section>
     
-<!-- New 16:9 landscape rows for Games -->
+    <div class="snow-container"></div>
+    <div style="height: 200vh;">
+
+<!-- New 16:9 landscape rows for Apps -->
 <section>
-    <h2>Featured Games</h2>
+    <h2 class="candy-cane-text">Featured Games</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Adventure Capitalist.html">
-                <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346900/header.jpg?t=1721150731" alt="Adventure Capitalist">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz.png?raw=true" alt="The Impossible Quiz">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346900/header.jpg?t=1721150731" alt="Adventure Capitalist">
         </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Tiny Fishing.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tiny%20Fishing.jpg?raw=true" alt="Tiny Fishing">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Crossy Road.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Crossy%20Road.jpg?raw=true" alt="Crossy Road">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Time Shooter 2.html">
-            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Time%20Shooter%202.avif" alt="Time Shooter 2">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Happy Wheels.html">
-            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Happy%20Wheels.avif" alt="Happy Wheels">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Fruit Ninja.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Fruit%20Ninja.png?raw=true" alt="Fruit Ninja">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Moto X3M.html">
-            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Moto%20X3M.avif" alt="Moto X3M">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash.html">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
-        </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Minecraft.html">
-            <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Minecraft.webp" alt="Minecraft">
-        </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/The Impossible Quiz.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/The%20Impossible%20Quiz.png?raw=true" alt="The Impossible Quiz">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Tiny Fishing.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Tiny%20Fishing.jpg?raw=true" alt="Tiny Fishing">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Crossy Road.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Crossy%20Road.jpg?raw=true" alt="Crossy Road">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Time Shooter 2.html">
+        <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Time%20Shooter%202.avif" alt="Time Shooter 2">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Happy Wheels.html">
+        <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Happy%20Wheels.avif" alt="Happy Wheels">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Fruit Ninja.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Fruit%20Ninja.png?raw=true" alt="Fruit Ninja">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Moto X3M.html">
+        <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Moto%20X3M.avif" alt="Moto X3M">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Geometry Dash.html">
+        <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true" alt="Geometry Dash">
+    </a>
+    <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Minecraft.html">
+        <img src="https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Minecraft.webp" alt="Minecraft">
+    </a>
     </div>
 </section>
 <br><a href="https://tvguyx.github.io/FreeTV/games.html"><button class="button-64" role="button" ><span class="text">View More Games</span></button></a>
 
+
+
+<div class="christmas-movie-section">
+    <h1 class="section-title">🎄 Christmas Movies 🎅</h1>
+    <div class="movie-grid">
+        <!-- Example Movie -->
+        <div class="movie-card">
+            <img src="https://xl.movieposterdb.com/13_12/1989/97958/xl_97958_1d200186.jpg?v=2024-11-07%2017:40:32" alt="Movie Poster" class="movie-poster">
+            <h2 class="movie-title">National Lampoon's Christmas Vacation</h2>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/National%20Lampoon's%20Christmas%20Vacation%20(1989).html" class="watch-now-btn">Watch Now</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://xl.movieposterdb.com/15_12/1990/99785/xl_99785_a7ec13a6.jpg" alt="Movie Poster" class="movie-poster">
+            <h2 class="movie-title">Home Alone</h2>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Home%20Alone%20(1990).html" class="watch-now-btn">Watch Now</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://xl.movieposterdb.com/07_12/1992/104431/xl_104431_510949b3.jpg?v=2024-01-08%2012:25:37" alt="Movie Poster" class="movie-poster">
+            <h2 class="movie-title">Home Alone 2: Lost in New York</h2>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Home%20Alone%202:%20Lost%20in%20New%20York%20(1992).html" class="watch-now-btn">Watch Now</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://posters.movieposterdb.com/22_02/2003/319343/l_319343_5381fa30.jpg" alt="Movie Poster" class="movie-poster">
+            <h2 class="movie-title">Elf</h2>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Elf%20(2003).html" class="watch-now-btn">Watch Now</a>
+        </div>
+        <div class="movie-card">
+            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/How%20the%20Grinch%20Stole%20Christmas!%20(1966).jpeg?raw=true" alt="Movie Poster" class="movie-poster">
+            <h2 class="movie-title">How the Grinch Stole Christmas!</h2>
+            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/How%20the%20Grinch%20Stole%20Christmas!%20(1966).html" class="watch-now-btn">Watch Now</a>
+        </div>        
+    </div>
+</div>
+
+
+
 <!-- New 16:9 landscape rows for Games -->
 <section>
-    <h2>Recently Added Games</h2>
+    <h2 class="candy-cane-text">Recently Added Games</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Earn To Die.html">
                 <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Earn%20To%20Die.png?raw=true" alt="Earn To Die">
@@ -416,7 +789,7 @@
             </a>
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Candy Crush.html">
             <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Candy%20Crush.jpeg?raw=true" alt="Candy Crush">
-        </a
+        </a>
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Diggy.html">
             <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Banner/diggy.jpg?raw=true" alt="Diggy">
         </a>
@@ -456,31 +829,30 @@
     </div>
 </section>
 <br><a href="https://tvguyx.github.io/FreeTV/games.html"><button class="button-64" role="button" ><span class="text">View More Games</span></button></a>
+    
+<div class="christmas-episodes-section">
+    <h2 class="section-title">🎅 Christmas Episodes 🎄</h2>
+    <div class="episode-card-container">
+        <div class="episode-card">
+            <img src="https://m.media-amazon.com/images/M/MV5BMjE4MDczMTM4NF5BMl5BanBnXkFtZTcwNjE5NzU4NA@@._V1_QL75_UX1000_CR0,92,1000,563_.jpg" alt="Episode Poster" class="episode-poster">
+            <h3 class="episode-title">American Dad! - S03E08 - The Most Adequate Christmas Ever</h3>
+            <button class="watch-episode-btn" onclick="window.location.href='https://tvguyx.github.io/FreeTV/Embed/Episodes/American%20Dad!%20-%20S03E08%20-%20The%20Most%20Adequate%20Christmas%20Ever.html'">Watch Now</button>
+        </div>
+        <div class="episode-card">
+            <img src="https://m.media-amazon.com/images/M/MV5BMmNkNmQ1OGMtM2ZhNC00MmFmLWE2ZTctNjczZDlmYzhiMDI1XkEyXkFqcGc@._V1_QL75_UX1000_CR0,52,1000,563_.jpg" alt="Episode Poster" class="episode-poster">
+            <h3 class="episode-title">The Middle - S02E10 - A Simple Christmas</h3>
+            <button class="watch-episode-btn" onclick="window.location.href='https://tvguyx.github.io/FreeTV/Embed/Episodes/The Middle - S02E10 - A Simple Christmas.html'">Watch Now</button>
+        </div>
+        <div class="episode-card">
+            <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/Embed/Episodes/vlcsnap-2016-12-24-10h33m59s656.webp" alt="Episode Poster" class="episode-poster">
+            <h3 class="episode-title">Rick and Morty - S06E10 - Ricktional Mortpoon's Rickmas Mortcation</h3>
+            <button class="watch-episode-btn" onclick="window.location.href='https://tvguyx.github.io/FreeTV/Embed/Episodes/Rick and Morty - S06E10 - Ricktional Mortpoons Rickmas Mortcation.html'">Watch Now</button>
+        </div>
+    </div>
+</div>
 
 <section>
-    <h2>Christmas Movies</h2>
-    <div class="row">
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/National Lampoon's Christmas Vacation (1989).html">
-                <img src="https://xl.movieposterdb.com/13_12/1989/97958/xl_97958_1d200186.jpg?v=2024-11-07%2017:40:32" alt="National Lampoon's Christmas Vacation (1989)">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Home Alone (1990).html">
-                <img src="https://xl.movieposterdb.com/15_12/1990/99785/xl_99785_a7ec13a6.jpg" alt="Home Alone (1990)">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Home Alone 2: Lost in New York (1992).html">
-                <img src="https://xl.movieposterdb.com/07_12/1992/104431/xl_104431_510949b3.jpg?v=2024-01-08%2012:25:37" alt="Home Alone 2: Lost in New York (1992)">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Elf (2003).html">
-                <img src="https://posters.movieposterdb.com/22_02/2003/319343/l_319343_5381fa30.jpg" alt="Elf (2003)">
-            </a>
-        <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/How the Grinch Stole Christmas! (1966).html">
-                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/How%20the%20Grinch%20Stole%20Christmas!%20(1966).jpeg?raw=true" alt="How the Grinch Stole Christmas! (1966)">
-            </a>
-    </div>
-</section>
-<br><a href="https://tvguyx.github.io/FreeTV/movies.html"><button class="button-64" role="button" ><span class="text">View More Movies</span></button></a>
-    
-<section>
-        <h2>ALL Games</h2>
+        <h2 class="candy-cane-text">ALL Games</h2>
         <div class="row landscape">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html">
                 <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true" alt="Subway Surfers">
@@ -666,7 +1038,7 @@
      </section>
 
 <section>
-        <h2>All Movies</h2>
+        <h2 class="candy-cane-text">All Movies</h2>
         <div class="row">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Nightmare On Elm Street (1984).html">
                 <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/A%20Nightmare%20On%20Elm%20Street%20(1984).jpg?raw=true" alt="A Nightmare On Elm Street (1984)">
@@ -880,7 +1252,7 @@
 
     <!-- New 16:9 landscape rows for Apps -->
 <section>
-    <h2>Cheating Tools</h2>
+    <h2 class="candy-cane-text">Cheating Tools</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Cheating%20Tools/Cymath.html">
             <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Cheating%20Tools/Cymath.png?raw=true" alt="cymath">
@@ -892,7 +1264,7 @@
 </section>
     
 <section>
-        <h2>Unreleased Movies</h2>
+        <h2 class="candy-cane-text">Unreleased Movies</h2>
         <div class="row">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Plankton The Movie (2025).html">
                 <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Plankton%20The%20Movie%20(2025).png?raw=true" alt="Plankton: The Movie (2025)">
@@ -901,14 +1273,14 @@
     </section>
     
 <section>
-    <h2>Recently Added Movies</h2>
+    <h2 class="candy-cane-text">Recently Added Movies</h2>
     <div class="row">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Joker Folie à Deux (2024).html">
                 <img src="https://posters.movieposterdb.com/24_06/2024/11315808/l_joker-folie-a-deux-movie-poster_8b8497ec.jpg" alt="Joker Folie à Deux (2024)">
             </a>
         <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/The Blair Witch Project (1999).html">
                 <img src="https://posters.movieposterdb.com/07_10/1999/185937/l_185937_d2fca1d7.jpg" alt="The Blair Witch Project (1999)">
-            </a
+        </a>
         <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Home Alone (1990).html">
                 <img src="https://xl.movieposterdb.com/15_12/1990/99785/xl_99785_a7ec13a6.jpg" alt="Home Alone (1990)">
             </a>
@@ -971,7 +1343,7 @@
 <br><a href="https://tvguyx.github.io/FreeTV/movies.html"><button class="button-64" role="button" ><span class="text">View More Movies</span></button></a>
 
     <section>
-        <h2>Movies</h2>
+        <h2 class="candy-cane-text">Movies</h2>
         <div class="row">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Monkey Man (2024).html">
                 <img src="https://xl.movieposterdb.com/24_08/2023/9214772/xl_monkey-man-movie-poster_a53c3371.jpg?v=2024-08-13%2015:16:13" alt="Monkey Man (2024)">
@@ -1021,7 +1393,7 @@
 
 <!-- New 16:9 landscape rows for SpongeBob Games -->
 <section>
-    <h2>SpongeBob Games</h2>
+    <h2 class="candy-cane-text">SpongeBob Games</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/SpongeBob Trail of the Snail.html">
             <img src="https://ia801705.us.archive.org/26/items/trail_swf/00_coverscreenshot.png" alt="SpongeBob: Trail of the Snail">
@@ -1043,7 +1415,7 @@
     
 <!-- New 16:9 landscape rows for Apps -->
 <section>
-    <h2>Apps</h2>
+    <h2 class="candy-cane-text">Apps</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Unblocked-Websites/https:/www.coolmathgames.com">
             <img src="https://www.coolmathgames.com/themes/custom/coolmath/logo-stacked.svg" alt="coolmathgames">
@@ -1064,7 +1436,7 @@
 </section>
     
     <section>
-        <h2>TV Shows</h2>
+        <h2 class="candy-cane-text">TV Shows</h2>
         <div class="row">
             <a href="https://tvguyx.github.io/FreeTV/Embed/TV Shows/South Park.html">
                 <img src="https://m.media-amazon.com/images/M/MV5BZjNhODYzZGItZWQ3Ny00ZjViLTkxMTUtM2EzN2RjYjU2OGZiXkEyXkFqcGdeQXVyMTI5MTc0OTIy._V1_FMjpg_UX1000_.jpg" alt="South Park">
@@ -1087,7 +1459,7 @@
 
 <!-- New 16:9 landscape rows for Operating Systems -->
 <section>
-    <h2>Operating Systems</h2>
+    <h2 class="candy-cane-text">Operating Systems</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/OS/Windows 11.html">
             <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/OS/Windows%2011.jpg?raw=true" alt="Windows 11">
@@ -1104,7 +1476,7 @@
 
 <!-- New 16:9 landscape rows for Games -->
 <section>
-    <h2>Featured Games</h2>
+    <h2 class="candy-cane-text">Featured Games</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Among Us.html">
             <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Among%20Us.jpeg?raw=true" alt="Among Us">
@@ -1145,7 +1517,7 @@
 
     <!-- New 16:9 landscape rows for Movies -->
     <section>
-        <h2>Featured Movies</h2>
+        <h2 class="candy-cane-text">Featured Movies</h2>
         <div class="row landscape">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Ghostbusters: Frozen Empire (2024).html">
                 <img src="https://i.ytimg.com/vi/edyAQfczCJI/maxresdefault.jpg" alt="Ghostbusters: Frozen Empire (2024)">
@@ -1186,7 +1558,7 @@
 
     <!-- New 16:9 landscape rows for TV Shows -->
     <section>
-        <h2>Featured TV Shows</h2>
+        <h2 class="candy-cane-text">Featured TV Shows</h2>
         <div class="row landscape">
             <a href="https://tvguyx.github.io/FreeTV/Embed/TV Shows/South Park.html">
                 <img src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/fd30a89f-173e-459a-a5bd-ad9748b7f07f/d8c78925e81212787f0f227de4e9885cbd82903b.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom" alt="South Park">
@@ -1203,7 +1575,7 @@
 
 <!-- New 16:9 landscape rows for Games -->
 <section>
-    <h2>Even More Games</h2>
+    <h2 class="candy-cane-text">Even More Games</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Angry Birds.html">
             <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Angry%20Birds.jpg?raw=true" alt="Angry Birds">
@@ -1225,7 +1597,7 @@
 <br><a href="https://tvguyx.github.io/FreeTV/games.html"><button class="button-64" role="button" ><span class="text">View More Games</span></button></a>
     
     <section>
-        <h2>Horror Movies</h2>
+        <h2 class="candy-cane-text">Horror Movies</h2>
         <div class="row">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Scream VI (2023).html">
                 <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/Scream%20VI%20(2023).jpeg?raw=true" alt="Scream VI (2023)">
@@ -1258,22 +1630,9 @@
     </section>
     <br><a href="https://tvguyx.github.io/FreeTV/movies.html"><button class="button-64" role="button" ><span class="text">View More Movies</span></button></a>
 
-    <section>
-        <h2>Books</h2>
-        <div class="row">
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Books/Stay Out of the Basement.html">
-                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Books/Stay%20Out%20of%20the%20Basement.jpg?raw=true" alt="Stay Out of the Basement">
-            </a>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Books/Welcome to Dead House.html">
-                <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Books/Welcome%20to%20Dead%20House.jpg?raw=true" alt="Welcome to Dead House">
-            </a>
-        </div>
-    </section>
-    <br><a href="https://tvguyx.github.io/FreeTV/ebooks.html"><button class="button-64" role="button" ><span class="text">View More Books</span></button></a>
-
 <!-- New 16:9 landscape rows for Games -->
 <section>
-    <h2>More Games</h2>
+    <h2 class="candy-cane-text">More Games</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Doodle Jump.html">
             <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Doodle%20Jump.jpeg?raw=true" alt="Doodle Jump">
@@ -1322,7 +1681,7 @@
 <br><a href="https://tvguyx.github.io/FreeTV/games.html"><button class="button-64" role="button" ><span class="text">View More Games</span></button></a>
 
 <section>
-    <h2>Some More Games</h2>
+    <h2 class="candy-cane-text">Some More Games</h2>
     <div class="row landscape">
         <a href="https://tvguyx.github.io/FreeTV/Embed/Games/Street Fighter 2.html">
                 <img src="https://github.com/TVGuyX/FreeTV/raw/refs/heads/main/IMG/Games/Street%20Fighter%202.webp" alt="Street Fighter 2">
@@ -1383,7 +1742,7 @@
     <br><a href="https://tvguyx.github.io/FreeTV/games.html"><button class="button-64" role="button" ><span class="text">View More Games</span></button></a>
 
 <section>
-        <h2>User Requested Movies</h2>
+        <h2 class="candy-cane-text">User Requested Movies</h2>
         <div class="row">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Coraline (2009).html">
                 <img src="https://xl.movieposterdb.com/23_01/2009/1401106/xl_coraline-movie-poster_20cf87d0.jpg?v=2024-07-27%2021:37:44" alt="Coraline (2009)">
@@ -1422,7 +1781,7 @@
     </section>
     
 <section>
-        <h2>Minions Movies</h2>
+        <h2 class="candy-cane-text">Minions Movies</h2>
         <div class="row">
             <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Minions (2015).html">
                 <img src="https://xl.movieposterdb.com/15_07/2015/2293640/xl_2293640_2cb972e4.jpg" alt="Minions (2015)">
@@ -1438,10 +1797,9 @@
 
     <br>
     <br>
-    <br><a href="https://tvguyx.github.io/FreeTV/Embed/TEST/1.html"><button class="button-64" role="button" ><span class="text">View More Content (Authorized Access Only) (Ask For Access From Owner)</span></button></a>
+    <br><a href="https://tvguyx.github.io/FreeTV/Embed/TEST/1.html"><button class="button red" role="button" ><span class="text">View More Content (Authorized Access Only) (Ask For Access From Owner)</span></button></a>
     
     <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top ↑</button>
-
     <script>window.onscroll = function() {
         scrollFunction();
     };
@@ -1485,5 +1843,87 @@
             showSlide(nextIndex);
         }, 3000);
     </script>
+
+    <script>document.addEventListener("DOMContentLoaded", function () {
+        const snowContainer = document.querySelector(".snow-container");
+    
+        const particlesPerThousandPixels = 0.1;
+        const fallSpeed = 1.25;
+        const pauseWhenNotActive = true;
+        const maxSnowflakes = 200;
+        const snowflakes = [];
+    
+        let snowflakeInterval;
+        let isTabActive = true;
+    
+        function resetSnowflake(snowflake) {
+            const size = Math.random() * 5 + 1;
+            const viewportWidth = window.innerWidth - size; // Adjust for snowflake size
+            const viewportHeight = window.innerHeight;
+    
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${Math.random() * viewportWidth}px`; // Constrain within viewport width
+            snowflake.style.top = `-${size}px`;
+    
+            const animationDuration = (Math.random() * 3 + 2) / fallSpeed;
+            snowflake.style.animationDuration = `${animationDuration}s`;
+            snowflake.style.animationTimingFunction = "linear";
+            snowflake.style.animationName =
+                Math.random() < 0.5 ? "fall" : "diagonal-fall";
+    
+            setTimeout(() => {
+                if (parseInt(snowflake.style.top, 10) < viewportHeight) {
+                    resetSnowflake(snowflake);
+                } else {
+                    snowflake.remove(); // Remove when it goes off the bottom edge
+                }
+            }, animationDuration * 1000);
+        }
+    
+        function createSnowflake() {
+            if (snowflakes.length < maxSnowflakes) {
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflakes.push(snowflake);
+                snowContainer.appendChild(snowflake);
+                resetSnowflake(snowflake);
+            }
+        }
+    
+        function generateSnowflakes() {
+            const numberOfParticles =
+                Math.ceil((window.innerWidth * window.innerHeight) / 1000) *
+                particlesPerThousandPixels;
+            const interval = 5000 / numberOfParticles;
+    
+            clearInterval(snowflakeInterval);
+            snowflakeInterval = setInterval(() => {
+                if (isTabActive && snowflakes.length < maxSnowflakes) {
+                    requestAnimationFrame(createSnowflake);
+                }
+            }, interval);
+        }
+    
+        function handleVisibilityChange() {
+            if (!pauseWhenNotActive) return;
+    
+            isTabActive = !document.hidden;
+            if (isTabActive) {
+                generateSnowflakes();
+            } else {
+                clearInterval(snowflakeInterval);
+            }
+        }
+    
+        generateSnowflakes();
+    
+        window.addEventListener("resize", () => {
+            clearInterval(snowflakeInterval);
+            setTimeout(generateSnowflakes, 1000);
+        });
+    
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+    });</script>
 </body>
 </html>
