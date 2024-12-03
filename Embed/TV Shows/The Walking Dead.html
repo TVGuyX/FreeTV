@@ -1,0 +1,201 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RSBT49V7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3RSBT49V7D');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Walking Dead</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        #video-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        #bottom-bar.hidden {
+            opacity: 0;
+        }
+        #bottom-bar a, #episode-button {
+            text-decoration: none;
+        }
+        #bottom-bar button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        #bottom-bar button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        #episode-button {
+            background-color: #fff;
+            color: #333;
+        }
+        #episode-button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        #episode-modal, #season-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+        }
+        #episode-list, #season-list {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            height: 80%;
+            overflow-y: scroll;
+            color: #333;
+        }
+        .episode, .season {
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .episode:hover, .season:hover {
+            background-color: #f0f0f0;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <iframe id="episode-frame" src="https://drive.google.com/file/d/1gOHFsSdALLbgcz4bc-12P2oFvKNAV7Gp/preview" allowfullscreen></iframe>
+    </div>
+    <div id="bottom-bar">
+        <a href="https://tvguyx.github.io/FreeTV/index.html">
+            <button>Back To Home</button>
+        </a>
+        <a href="https://tvguyx.github.io/FreeTV/shows.html">
+            <button>More Shows</button>
+        </a>
+        <button id="episode-button">Choose Episode</button>
+        <button id="season-button">Choose Season</button>
+    </div>
+
+    <!-- Episode Modal -->
+    <div id="episode-modal">
+        <div id="episode-list">
+            <span class="close" id="episode-close">&times;</span>
+            <h2>Season 1 Episodes</h2>
+            <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1gOHFsSdALLbgcz4bc-12P2oFvKNAV7Gp/preview', 'Days Gone Bye')">Episode 1: Days Gone Bye</div>
+    </div>
+
+    <!-- Season Modal -->
+    <div id="season-modal">
+        <div id="season-list">
+            <span class="close" id="season-close">&times;</span>
+            <h2>Seasons</h2>
+            <div class="season" onclick="showSeason('season1')">Season 1</div>
+        </div>
+    </div>
+
+    <script>
+        function changeEpisode(url, title) {
+            document.getElementById('episode-frame').src = url;
+            document.title = `The Walking Dead - ${title}`;
+            document.getElementById('episode-modal').style.display = 'none';
+        }
+
+        function showSeason(season) {
+            if (season === 'season1') {
+                document.getElementById('episode-list').innerHTML = `
+                    <span class="close" id="episode-close">&times;</span>
+                    <h2>Season 1 Episodes</h2>
+                    <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1gOHFsSdALLbgcz4bc-12P2oFvKNAV7Gp/preview', 'Days Gone Bye')">Episode 1: Days Gone Bye</div>
+            `;
+        }
+        document.getElementById('season-modal').style.display = 'none';
+        document.getElementById('episode-modal').style.display = 'block';
+    }
+
+    document.getElementById('episode-button').addEventListener('click', function() {
+        document.getElementById('episode-modal').style.display = 'block';
+    });
+
+    document.getElementById('season-button').addEventListener('click', function() {
+        document.getElementById('season-modal').style.display = 'block';
+    });
+
+    document.getElementById('episode-close').addEventListener('click', function() {
+        document.getElementById('episode-modal').style.display = 'none';
+    });
+
+    document.getElementById('season-close').addEventListener('click', function() {
+        document.getElementById('season-modal').style.display = 'none';
+    });
+</script>
+</body>
+</html>
