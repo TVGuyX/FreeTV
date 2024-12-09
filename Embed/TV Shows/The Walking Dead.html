@@ -164,6 +164,7 @@
             <span class="close" id="season-close">&times;</span>
             <h2>Seasons</h2>
             <div class="season" onclick="showSeason('season1')">Season 1</div>
+            <div class="season" onclick="showSeason('season2')">Season 2</div>
         </div>
     </div>
 
@@ -185,6 +186,16 @@
                     <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/120CvLbgnB9AH5461ROwmtgBylxKy0TB1/preview', 'Vatos')">Episode 4: Vatos</div>
                     <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1U08BFx0eFbeW8bTY1teDVMM5xSEdeidh/preview', 'Wildfire')">Episode 5: Wildfire</div>
                     <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1D-EXGBaDZvVa5So9q7gpPN2WmYWpnxU2/preview', 'TS-19')">Episode 6: TS-19</div>
+            `;
+             } else if (season === 'season2') {
+            document.getElementById('episode-list').innerHTML = `
+                <span class="close" id="episode-close">&times;</span>
+                <h2>Season 2 Episodes</h2>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1Xl-SgtejfP40KT_mqkytK7OhEodTMb_S/preview', 'What Lies Ahead')">Episode 1: What Lies Ahead</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/18zqEFzdj9vsmrtDff_gOFKcFwSXtOuik/preview', 'Bloodletting')">Episode 2: Bloodletting</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1_XXZC9hbaI7XLZlV4m0zAGtMq9HcwJWL/preview', 'Save the Last One')">Episode 3: Save the Last One</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1HnaCpm-VqLDLBtNMk0PxjFoT10eNZK8b/preview', 'Cherokee Rose')">Episode 4: Cherokee Rose</div>
+                <div class="episode" onclick="changeEpisode('https://drive.google.com/file/d/1sVbGWgPrHzNlvjwmzaDfmHaaQb3jtKbs/preview', 'Chupacabra')">Episode 5: Chupacabra</div>
             `;
         }
         document.getElementById('season-modal').style.display = 'none';
