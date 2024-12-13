@@ -611,7 +611,7 @@ body {
     gap: 20px;
 }
 
-      .overlay {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -1978,8 +1978,7 @@ body {
     
     <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top ↑</button>
 
-      
-      <div id="addToHomeScreen" class="overlay">
+      <div id="addToHomeScreen" class="overlay" style="display: none;">
   <div class="instructions">
     <h1>UG24</h1>
     <p>To use this app:</p>
@@ -1987,11 +1986,10 @@ body {
       <li>Tap the <strong>Share</strong> icon in Safari.</li>
       <li>Select <strong>Add to Home Screen</strong>.</li>
       <li>Enjoy UG24 as a full-screen app!</li>
-      <br>
-      <li><strong>If you are using the app please wait a second or contact me</strong></li>
     </ol>
   </div>
 </div>
+
     <script>window.onscroll = function() {
         scrollFunction();
     };
@@ -2118,16 +2116,16 @@ body {
         document.addEventListener("visibilitychange", handleVisibilityChange);
     });</script>
 
-      <script>window.addEventListener("load", function () {
-  // Check if the site is opened as an app
-  const isInStandaloneMode = window.matchMedia("(display-mode: standalone)").matches;
+      <script>document.addEventListener("DOMContentLoaded", function () {
+    // Check if the site is opened as an app
+    const isInStandaloneMode = window.matchMedia("(display-mode: standalone)").matches;
 
-  // Show the overlay only if not in standalone mode
-  if (!isInStandaloneMode) {
-    document.getElementById("addToHomeScreen").style.display = "flex";
-  } else {
-    document.getElementById("addToHomeScreen").style.display = "none";
-  }
-});</script>
+    // Show the overlay only if not in standalone mode
+    if (!isInStandaloneMode) {
+      document.getElementById("addToHomeScreen").style.display = "flex";
+    } else {
+      document.getElementById("addToHomeScreen").style.display = "none";
+    }
+  });</script>
 </body>
 </html>
