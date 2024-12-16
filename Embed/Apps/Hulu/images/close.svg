@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>DB0B6FDA-10CF-4DF0-A028-AD174422B945</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <circle id="path-1" cx="8" cy="8" r="8"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="16" height="16" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="DESKTOP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02a---View-Networks-Logos" transform="translate(-540.000000, -1188.000000)" stroke="#AEB4BF">
+            <g id="ZIP-FIELD" transform="translate(406.000000, 1175.000000)">
+                <g id="Close" transform="translate(134.000000, 13.000000)">
+                    <path d="M5.18748512,10.6768751 L10.8120388,5.183125" id="Line" stroke-linecap="square"></path>
+                    <path d="M5.18748512,5.183125 L10.8120388,10.6768751" id="Line" stroke-linecap="square"></path>
+                    <use id="Oval" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
