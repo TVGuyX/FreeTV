@@ -130,75 +130,71 @@
       const knowledgeBase = [
         // History Questions
         {
-          question: /who was the first president of the united states/i,
+          questions: [/who was the first president of the united states/i, /who was the first president/i],
           answer: "The first president of the United States was George Washington (1789-1797)."
         },
         {
-          question: /who was the 16th president of the united states/i,
+          questions: [/who was the 16th president of the united states/i, /who was the 16th president/i],
           answer: "The 16th president of the United States was Abraham Lincoln (1861-1865)."
         },
         {
-          question: /who was the president during world war ii/i,
+          questions: [/who was the president during world war ii/i, /who was the president during wwii/i],
           answer: "Franklin D. Roosevelt was the president of the United States during most of World War II (1933-1945)."
         },
         {
-          question: /when was the declaration of independence signed/i,
+          questions: [/when was the declaration of independence signed/i, /when was the declaration signed/i],
           answer: "The Declaration of Independence was signed on July 4, 1776."
         },
         
         // Science Questions
         {
-          question: /what is the chemical symbol for water/i,
+          questions: [/what is the chemical symbol for water/i, /what is water's chemical symbol/i],
           answer: "The chemical symbol for water is H2O."
         },
         {
-          question: /what is the speed of light/i,
+          questions: [/what is the speed of light/i, /how fast is light/i],
           answer: "The speed of light is approximately 299,792 kilometers per second (km/s)."
         },
 
         // English Questions
         {
-          question: /what is a noun/i,
+          questions: [/what is a noun/i, /define a noun/i],
           answer: "A noun is a word that represents a person, place, thing, or idea."
         },
         {
-          question: /what is an adjective/i,
+          questions: [/what is an adjective/i, /define an adjective/i],
           answer: "An adjective is a word that describes a noun, such as 'big', 'blue', or 'beautiful'."
         },
 
         // Geography
         {
-          question: /what is the capital of france/i,
+          questions: [/what is the capital of france/i, /where is the capital of france/i],
           answer: "The capital of France is Paris."
         },
         {
-          question: /where is the great barrier reef/i,
+          questions: [/where is the great barrier reef/i, /what is the location of the great barrier reef/i],
           answer: "The Great Barrier Reef is located off the coast of Queensland, Australia."
         },
 
         // Pop Culture
         {
-          question: /who won the 2020 oscars/i,
+          questions: [/who won the 2020 oscars/i, /who won best picture in 2020/i],
           answer: "The 2020 Oscar for Best Picture went to 'Parasite' directed by Bong Joon-ho."
         },
         {
-          question: /who was the lead singer of queen/i,
+          questions: [/who was the lead singer of queen/i, /who sang for queen/i],
           answer: "The lead singer of Queen was Freddie Mercury."
         },
         
         // Presidents & Current Affairs
         {
-          question: /who is the current president of the usa/i,
-          answer: "The current president of the United States is Joe Biden (as of 2024)."
-        },
-        {
-          question: /who is the president of the united states/i,
+          questions: [/who is the current president of the usa/i, /who is the current president/i, /who is president right now/i],
           answer: "The current president of the United States is Joe Biden (as of 2024)."
         },
 
         // Square Root
         {
-          question: /square root of (\d+)/i,
+          questions: [/square root of (\d+)/i],
           answer: function(match) {
             const num = match[1];
             return `The square root of ${num} is ${Math.sqrt(num)}.`;
@@ -207,20 +203,22 @@
         
         // Custom Questions
         {
-          question: /what is the largest planet in our solar system/i,
+          questions: [/what is the largest planet in our solar system/i, /what planet is the largest in our solar system/i, /what's the largest planet in our solar system/i],
           answer: "The largest planet in our solar system is Jupiter."
         },
         {
-          question: /what is the tallest mountain in the world/i,
+          questions: [/what is the tallest mountain in the world/i, /what is the highest mountain in the world/i],
           answer: "The tallest mountain in the world is Mount Everest, standing at 8,848 meters (29,029 feet)."
         }
       ];
 
       // Loop through the knowledge base and check if the input matches any question
       for (const item of knowledgeBase) {
-        const match = input.match(item.question);
-        if (match) {
-          return typeof item.answer === 'function' ? item.answer(match) : item.answer;
+        for (const question of item.questions) {
+          const match = input.match(question);
+          if (match) {
+            return typeof item.answer === 'function' ? item.answer(match) : item.answer;
+          }
         }
       }
 
