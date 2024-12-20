@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledgeable Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2c2f38;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+
+    #chat-container {
+      width: 350px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #chatbox {
+      height: 300px;
+      overflow-y: auto;
+      border-bottom: 1px solid #444;
+      padding: 10px;
+    }
+
+    #chat-log {
+      padding: 10px;
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    #user-input {
+      width: calc(100% - 60px);
+      padding: 10px;
+      background-color: #555;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    #send-btn {
+      padding: 10px;
+      margin-left: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #send-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <div id="chatbox">
+      <div id="chat-log"></div>
+    </div>
+    <input type="text" id="user-input" placeholder="Ask me anything" />
+    <button id="send-btn">Send</button>
+  </div>
+
+  <script>
+    document.getElementById('send-btn').addEventListener('click', function() {
+      const userInput = document.getElementById('user-input').value.trim().toLowerCase();
+      if (userInput) {
+        document.getElementById('user-input').value = ''; // Clear input field
+        appendMessage('You: ' + userInput);
+        processInput(userInput);
+      }
+    });
+
+    function appendMessage(message) {
+      const chatLog = document.getElementById('chat-log');
+      chatLog.innerHTML += `<div>${message}</div>`;
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function processInput(input) {
+      // Check if it's a math problem first
+      const mathProblem = parseMathProblem(input);
+      if (mathProblem) {
+        const answer = evaluateMathProblem(mathProblem);
+        appendMessage('Bot: ' + answer);
+      } else {
+        // Check if it's a general knowledge question
+        const knowledgeAnswer = getGeneralKnowledgeAnswer(input);
+        if (knowledgeAnswer) {
+          appendMessage('Bot: ' + knowledgeAnswer);
+        } else {
+          appendMessage('Bot: I don\'t know that one yet.');
+        }
+      }
+    }
+
+    function parseMathProblem(input) {
+      // Normalize input by removing unwanted characters and mapping to a standard format
+      input = input.replace(/[^0-9+\-*/(). ]/g, '')
+                   .replace(/plus/g, '+')
+                   .replace(/minus/g, '-')
+                   .replace(/times/g, '*')
+                   .replace(/divide/g, '/')
+                   .replace(/equals/g, '=');
+
+      const mathRegex = /(\d+(\.\d+)?[\+\-\*\/\(\)\s]*\d+(\.\d+)?)/;
+      const match = input.match(mathRegex);
+      
+      return match ? match[0] : null;
+    }
+
+    function evaluateMathProblem(problem) {
+      try {
+        // Use JavaScript's eval to evaluate the math expression
+        return eval(problem);
+      } catch (error) {
+        return 'Error in calculation.';
+      }
+    }
+
+    function getGeneralKnowledgeAnswer(input) {
+      const knowledgeBase = [
+        // History Questions
+        {
+          question: /who was the first president of the united states/i,
+          answer: "The first president of the United States was George Washington (1789-1797)."
+        },
+        {
+          question: /who was the 16th president of the united states/i,
+          answer: "The 16th president of the United States was Abraham Lincoln (1861-1865)."
+        },
+        {
+          question: /who was the president during world war ii/i,
+          answer: "Franklin D. Roosevelt was the president of the United States during most of World War II (1933-1945)."
+        },
+        {
+          question: /when was the declaration of independence signed/i,
+          answer: "The Declaration of Independence was signed on July 4, 1776."
+        },
+        
+        // Science Questions
+        {
+          question: /what is the chemical symbol for water/i,
+          answer: "The chemical symbol for water is H2O."
+        },
+        {
+          question: /what is the speed of light/i,
+          answer: "The speed of light is approximately 299,792 kilometers per second (km/s)."
+        },
+
+        // English Questions
+        {
+          question: /what is a noun/i,
+          answer: "A noun is a word that represents a person, place, thing, or idea."
+        },
+        {
+          question: /what is an adjective/i,
+          answer: "An adjective is a word that describes a noun, such as 'big', 'blue', or 'beautiful'."
+        },
+
+        // Geography
+        {
+          question: /what is the capital of france/i,
+          answer: "The capital of France is Paris."
+        },
+        {
+          question: /where is the great barrier reef/i,
+          answer: "The Great Barrier Reef is located off the coast of Queensland, Australia."
+        },
+
+        // Pop Culture
+        {
+          question: /who won the 2020 oscars/i,
+          answer: "The 2020 Oscar for Best Picture went to 'Parasite' directed by Bong Joon-ho."
+        },
+        {
+          question: /who was the lead singer of queen/i,
+          answer: "The lead singer of Queen was Freddie Mercury."
+        },
+        
+        // Presidents & Current Affairs
+        {
+          question: /who is the current president of the usa/i,
+          answer: "The current president of the United States is Joe Biden (as of 2024)."
+        },
+        {
+          question: /who is the president of the united states/i,
+          answer: "The current president of the United States is Joe Biden (as of 2024)."
+        },
+
+        // Square Root
+        {
+          question: /square root of (\d+)/i,
+          answer: function(match) {
+            const num = match[1];
+            return `The square root of ${num} is ${Math.sqrt(num)}.`;
+          }
+        },
+        
+        // Custom Questions
+        {
+          question: /what is the largest planet in our solar system/i,
+          answer: "The largest planet in our solar system is Jupiter."
+        },
+        {
+          question: /what is the tallest mountain in the world/i,
+          answer: "The tallest mountain in the world is Mount Everest, standing at 8,848 meters (29,029 feet)."
+        }
+      ];
+
+      // Loop through the knowledge base and check if the input matches any question
+      for (const item of knowledgeBase) {
+        const match = input.match(item.question);
+        if (match) {
+          return typeof item.answer === 'function' ? item.answer(match) : item.answer;
+        }
+      }
+
+      return null; // No match found
+    }
+  </script>
+</body>
+</html>
