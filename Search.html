@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <header>
+        <h1>Search UG24</h1>
+    </header>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for Games, Movies, TV Shows, and more..." onkeyup="searchDatabase()">
+    </div>
+    
+    <div id="search-results"></div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .search-container {
+            margin: 20px;
+            text-align: center;
+        }
+        
+        #search-input {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        
+        #search-input:focus {
+            border-color: #666;
+        }
+        
+        #search-results {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        
+        .result-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .result-item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        
+        /* 16:9 Aspect Ratio for Games, Movies, TV Shows, etc. */
+        .result-item img:not(.music-album) {
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+        
+        /* Music Albums - Normal Aspect Ratio (typically square or similar) */
+        .music-album {
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Ensures the image fills the space without distortion */
+        }
+        
+        .result-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        
+        .result-item p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .result-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .result-item a:hover {
+            background-color: #555;
+        }
+    </style>
+
+    <script>
+        const database = [
+            //Games
+            {
+                category: 'Games',
+                title: 'Subway Surfers',
+                thumbnail: 'https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Subway%20Surfers.png?raw=true',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Games/Subway Surfers.html'
+            },
+            {
+                category: 'Games',
+                title: 'Geometry Dash',
+                thumbnail: 'https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Geometry%20Dash.jpg?raw=true',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Games/Minecraft.html'
+            },
+            {
+                category: 'Games',
+                title: 'Among Us',
+                thumbnail: 'https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/Among%20Us.jpeg?raw=true',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Games/Among Us.html'
+            },
+            {
+                category: 'Games',
+                title: 'Bitlife',
+                thumbnail: 'https://github.com/TVGuyX/FreeTV/raw/main/IMG/Games/Bitlife.webp',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Games/Bitlife.html'
+            },
+            {
+                category: 'Games',
+                title: '8 Ball Pool',
+                thumbnail: 'https://github.com/TVGuyX/FreeTV/blob/main/IMG/Games/8%20Ball%20Pool.jpg?raw=true',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Games/8 Ball Pool.html'
+            },
+            {
+                category: 'Games',
+                title: 'Cut the Rope',
+                thumbnail: '',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Games/Cut the Rope.html'
+            },
+            {
+                category: 'Games',
+                title: '',
+                thumbnail: '',
+                link: ''
+            },
+            {
+                category: 'Games',
+                title: '',
+                thumbnail: '',
+                link: ''
+            },
+            {
+                category: 'Games',
+                title: '',
+                thumbnail: '',
+                link: ''
+            },
+            //Movies
+            {
+                category: 'Movies',
+                title: '8-Bit Christmas',
+                year: 2021,
+                thumbnail: 'https://m.media-amazon.com/images/S/pv-target-images/b2cdbba68c4d81435404c939bd305b32a52e379bc8f88866980cc8f3364d3470.jpg',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Movies/8-Bit Christmas (2021).html'
+            },
+            {
+                category: 'Movies',
+                title: 'A Christmas Story',
+                year: 1983,
+                thumbnail: 'https://m.media-amazon.com/images/S/pv-target-images/98e15687aaffd1f09e3b9d83d6d932f52bc91440c0b9ca00511c71adfaa50479.jpg',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Movies/A Christmas Story (1983).html'
+            },
+            {
+                category: 'Movies',
+                title: 'A Nightmare On Elm Street',
+                year: 1984,
+                thumbnail: 'https://m.media-amazon.com/images/S/pv-target-images/fdf35bbc1f5fff8ce6464004f4ff2e6972303f8aabf018225bd1e9e536d34c11._UR1920,1080_.jpg',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Movies/A Nightmare On Elm Street (1984).html'
+            },
+            {
+                category: 'Movies',
+                title: 'A Quiet Place Day One',
+                year: 2024,
+                thumbnail: 'https://m.media-amazon.com/images/S/pv-target-images/cc6c603d0777a82afe78e948ea05bf45fefedb9a5d364549473ca5f891ede305._UR1920,1080_.jpg',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Movies/A Quiet Place Day One (2024).html'
+            },
+            {
+                category: 'Movies',
+                title: 'Avengers Endgame',
+                year: 2019,
+                thumbnail: 'https://m.media-amazon.com/images/S/pv-target-images/b6c7c659e1a3a526a6b535344af5849f6e03c0c1a0fd633d121205ccba85b916.png',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Movies/Avengers Endgame (2019).html'
+            },
+            {
+                category: 'Movies',
+                title: 'Bad Boys',
+                year: 1995,
+                thumbnail: 'https://m.media-amazon.com/images/S/pv-target-images/e1ea911952633020a690c323a84f5b1b18347186028d42b9e738a21f8c75dbbe.jpg',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Movies/Bad Boys (1995).html'
+            },
+            {
+                category: 'Movies',
+                title: '',
+                year: 2010,
+                thumbnail: '',
+                link: ''
+            },
+            //TV Shows
+            {
+                category: 'TV Shows',
+                title: 'South Park',
+                seasons: 2,
+                thumbnail: 'https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/fd30a89f-173e-459a-a5bd-ad9748b7f07f/d8c78925e81212787f0f227de4e9885cbd82903b.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/TV Shows/South Park.html'
+            },
+            //Apps
+            {
+                category: 'Apps',
+                title: 'Netflix',
+                thumbnail: 'https://cdn.wccftech.com/wp-content/uploads/2024/07/Netflix.jpg',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Apps/Netflix.html'
+            },
+            {
+                category: 'Apps',
+                title: 'coolmathgames',
+                thumbnail: 'https://www.coolmathgames.com/themes/custom/coolmath/logo-stacked.svg',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Unblocked-Websites/https:/www.coolmathgames.com'
+            },
+            {
+                category: 'Apps',
+                title: 'hudl',
+                thumbnail: 'https://github.com/TVGuyX/FreeTV/blob/main/IMG/Apps/hudl.jpeg?raw=true',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Apps/hudl.html'
+            },
+            {
+                category: 'Apps',
+                title: 'cymath',
+                thumbnail: 'https://github.com/TVGuyX/FreeTV/blob/main/IMG/Cheating%20Tools/Cymath.png?raw=true',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Cheating Tools/cymath.html'
+            },
+            {
+                category: 'Apps',
+                title: 'Visual Code Studio',
+                thumbnail: 'https://gerardorenteria.blog/wp-content/uploads/2023/06/vsclogo-1.png?w=1024',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Apps/Visual Code Studio.html'
+            },
+            {
+                category: 'Apps',
+                title: 'JS Paint',
+                thumbnail: 'https://code.hackerspace.pl/radex/jspaint/media/commit/2081393c2d620623aa6444d60b18976b2c184199/images/meta/main-screenshot.png',
+                link: 'https://tvguyx.github.io/FreeTV/Embed/Apps/JS Paint.html'
+            },
+            //Music Videos
+            {
+                category: 'Music Videos',
+                title: 'Thriller',
+                year: 1982,
+                artist: 'Michael Jackson',
+                thumbnail: 'https://via.placeholder.com/150',
+                link: '#'
+            },
+            //Music Albums
+            {
+                category: 'Music Albums',
+                title: 'Baby On Baby',
+                year: 2019,
+                artist: 'DaBaby',
+                thumbnail: 'https://ia600105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg',
+                link: '#'
+            },
+            // Add more items as needed
+        ];
+
+        function searchDatabase() {
+            const query = document.getElementById("search-input").value.toLowerCase();
+            const results = database.filter(item =>
+                item.title.toLowerCase().includes(query) || 
+                item.category.toLowerCase().includes(query) ||
+                (item.artist && item.artist.toLowerCase().includes(query))
+            );
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsContainer = document.getElementById("search-results");
+            resultsContainer.innerHTML = "";  // Clear previous results
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = "<p>No results found.</p>";
+            } else {
+                results.forEach(result => {
+                    const resultItem = document.createElement("div");
+                    resultItem.classList.add("result-item");
+
+                    // Check if it's a music album to apply the specific class
+                    const imageClass = result.category === 'Music Albums' ? 'music-album' : '';
+
+                    resultItem.innerHTML = `
+                        <img class="${imageClass}" src="${result.thumbnail}" alt="${result.title}">
+                        <h3>${result.title}</h3>
+                        <p>${result.category} - ${result.year}</p>
+                        ${result.seasons ? `<p>Seasons Available: ${result.seasons}</p>` : ''}
+                        <a href="${result.link}" target="_blank">View</a>
+                    `;
+                    resultsContainer.appendChild(resultItem);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
