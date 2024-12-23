@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DaBaby - Baby On Baby (2019)</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #121212;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: #000301bb;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .song-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .song-list li {
+      padding: 10px;
+      margin: 5px 0;
+      background: #1e1e1e;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .song-list li:hover {
+      background: #333;
+    }
+
+    /* Music Player Styles */
+    .music-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #181818;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .music-player img {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .player-info {
+      flex: 1;
+    }
+
+    .player-info h4 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .player-info p {
+      margin: 0;
+      font-size: 12px;
+      color: #b3b3b3;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+    }
+
+    .player-controls button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      margin: 0 20px;
+    }
+
+    .progress-bar input {
+      width: 100%;
+    }
+
+    .time-info {
+      font-size: 12px;
+      color: #b3b3b3;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DaBaby - Baby On Baby (2019)</h1>
+  </header>
+  <main>
+    <ul class="song-list" id="song-list">
+      <li onclick="playSong(0)">Taking It Out</li>
+      <li onclick="playSong(1)">Suge</li>
+      <li onclick="playSong(2)">Goin Baby</li>
+      <li onclick="playSong(3)">Pony</li>
+      <li onclick="playSong(4)">Deal wit It</li>
+      <li onclick="playSong(5)">Baby Sitter (Ft. Offset)</li>
+      <li onclick="playSong(6)">Celebrate (Ft. Rich Homie Quan)</li>
+      <li onclick="playSong(7)">Joggers (Ft. Stunna 4 Vegas)</li>
+      <li onclick="playSong(8)">Carpet Burn</li>
+      <li onclick="playSong(9)">Best Friend (Remix) (Ft. Rich The Kid)</li>
+      <li onclick="playSong(10)">Tupac</li>
+      <li onclick="playSong(11)">Backend</li>
+      <li onclick="playSong(12)">Walker Texas Ranger</li>
+    </ul>
+  </main>
+  <div class="music-player">
+    <img id="album-art" src="https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg" alt="Album Art">
+    <div class="player-info">
+      <h4 id="song-title">Song Title</h4>
+      <p id="song-artist">DaBaby</p>
+    </div>
+    <div class="player-controls">
+      <button onclick="prevSong()">⏮️</button>
+      <button id="play-pause-btn" onclick="togglePlayPause()">▶️</button>
+      <button onclick="nextSong()">⏭️</button>
+    </div>
+    <div class="progress-bar">
+      <div class="time-info">
+        <span id="current-time">0:00</span>
+        <span id="duration">0:00</span>
+      </div>
+      <input type="range" id="progress-bar" value="0" max="100" step="0.1" onchange="seekAudio(event)">
+    </div>
+  </div>
+  <script>
+    const songs = [
+      {
+        title: "Taking It Out",
+        artist: "DaBaby",
+        src: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/01%20-%20DaBaby%20-%20Taking%20It%20Out%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Suge",
+        artist: "DaBaby",
+        src: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/02%20-%20DaBaby%20-%20Suge%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Goin Baby",
+        artist: "DaBaby",
+        src: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/03%20-%20DaBaby%20-%20Goin%20Baby%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Pony",
+        artist: "DaBaby",
+        src: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/04%20-%20DaBaby%20-%20Pony%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Deal wit It",
+        artist: "DaBaby",
+        src: "https://ia600105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/05%20-%20DaBaby%20-%20Deal%20Wit%20It%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Baby Sitter (Ft. Offset)",
+        artist: "DaBaby",
+        src: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/06%20-%20DaBaby%20-%20Baby%20Sitter%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Celebrate (Ft. Rich Homie Quan)",
+        artist: "DaBaby",
+        src: "https://ia600105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/07%20-%20DaBaby%20-%20Celebrate%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Joggers (Ft. Stunna 4 Vegas)",
+        artist: "DaBaby",
+        src: "https://ia600105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/08%20-%20DaBaby%20-%20Joggers%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Carpet Burn",
+        artist: "DaBaby",
+        src: "https://ia600105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/09%20-%20DaBaby%20-%20Carpet%20Burn%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Best Friend (Remix) (Ft. Rich The Kid)",
+        artist: "DaBaby",
+        src: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/10%20-%20DaBaby%20-%20Best%20Friend%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Tupac",
+        artist: "DaBaby",
+        src: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/11%20-%20DaBaby%20-%20Tupac%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Backend",
+        artist: "DaBaby",
+        src: "https://ia600105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/12%20-%20DaBaby%20-%20Backend%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+      {
+        title: "Walker Texas Ranger",
+        artist: "DaBaby",
+        src: "https://ia600105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/13%20-%20DaBaby%20-%20Walker%20Texas%20Ranger%28Explicit%29.mp3",
+        albumArt: "https://ia800105.us.archive.org/10/items/01.-ball-if-i-want-to/DaBaby%20-%20Baby%20On%20Baby%20%282019%29/cover.jpeg",
+      },
+    ];
+
+    let currentSongIndex = 0;
+    const audio = new Audio();
+
+    function loadSong(index) {
+      const song = songs[index];
+      audio.src = song.src;
+      document.getElementById("song-title").textContent = song.title;
+      document.getElementById("song-artist").textContent = song.artist;
+      document.getElementById("album-art").src = song.albumArt;
+    }
+
+    function playSong(index) {
+      currentSongIndex = index;
+      loadSong(currentSongIndex);
+      audio.play();
+      document.getElementById("play-pause-btn").textContent = "⏸️";
+    }
+
+    function playCurrentSong() {
+      audio.play();
+      document.getElementById("play-pause-btn").textContent = "⏸️";
+    }
+
+    function pauseSong() {
+      audio.pause();
+      document.getElementById("play-pause-btn").textContent = "▶️";
+    }
+
+    function togglePlayPause() {
+      if (audio.paused) playCurrentSong();
+      else pauseSong();
+    }
+
+    function prevSong() {
+      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+      playSong(currentSongIndex);
+    }
+
+    function nextSong() {
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      playSong(currentSongIndex);
+    }
+
+    function updateProgressBar() {
+      const progressBar = document.getElementById("progress-bar");
+      progressBar.value = (audio.currentTime / audio.duration) * 100;
+
+      const currentTime = document.getElementById("current-time");
+      currentTime.textContent = formatTime(audio.currentTime);
+
+      const duration = document.getElementById("duration");
+      if (!isNaN(audio.duration)) {
+        duration.textContent = formatTime(audio.duration);
+      }
+    }
+
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, "0");
+      return `${minutes}:${remainingSeconds}`;
+    }
+
+    function seekAudio(event) {
+      const progressBar = event.target;
+      const seekTime = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = seekTime;
+    }
+
+    audio.addEventListener("timeupdate", updateProgressBar);
+
+    loadSong(currentSongIndex);
+  </script>
+</body>
+</html>
