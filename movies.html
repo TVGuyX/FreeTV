@@ -34,53 +34,6 @@ html {
     height: auto;
 }
 
-.snow-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-    z-index: 99999;
-    pointer-events: none;
-}
-
-.snowflake {
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    opacity: 0.8;
-    pointer-events: none;
-}
-
-@keyframes fall {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.5;
-        transform: translateY(100vh);
-    }
-}
-
-@keyframes diagonal-fall {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.25;
-        transform: translate(10vw, 100vh);
-    }
-}
-
 header {
             position: relative;
             padding: 20px;
@@ -333,284 +286,14 @@ header {
 }
 
 
-.candy-cane-text {
-    font-size: 4rem;
-    font-weight: bold;
-    background: linear-gradient(to right, #ff0000, #ffffff, #ff0000);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-align: center;
-    animation: candy-cane 1s linear infinite;
-    margin: 20px;
-}
-
-@keyframes candy-cane {
-    0% { background-position: 0 0; }
-    50% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
-}
-
-
-
-/* General Button Styling */
-.button {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-
-/* Green Button */
-.button.green {
-    background-color: #28a745;
-    color: #fff;
-}
-
-.button.green:hover {
-    background-color: #218838;
-}
-
-/* Red Button */
-.button.red {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-.button.red:hover {
-    background-color: #c82333;
-}
-
-/* Glowing Button */
-.button.glow {
-    background-color: #ffffff;
-    color: #000;
-    animation: glowEffect 1s infinite alternate;
-}
-
-/* Glow Effect Animation */
-@keyframes glowEffect {
-    0% {
-        box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
-    }
-    50% {
-        box-shadow: 0 0 10px #dc3545, 0 0 20px #dc3545, 0 0 30px #dc3545;
-    }
-    100% {
-        box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
-    }
-}
-
-
 /* General Reset */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #3e8c3e, #b22424); /* Festive background */
+    background: linear-gradient(120deg, #06a85c, #141349); /* Cool Background */
     overflow-x: hidden;
 }
-
-/* Section Container */
-.christmas-movie-section {
-    text-align: center;
-    padding: 20px;
-    color: #fff;
-    position: relative;
-}
-
-/* Section Title */
-.section-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #f7e417; /* Gold text */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-/* Movie Grid */
-.movie-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Movie Card */
-.movie-card {
-    background: #ffffff;
-    border: 5px solid #d32f2f;
-    border-radius: 10px;
-    padding: 15px;
-    width: 200px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.movie-card:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Movie Poster */
-.movie-poster {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-/* Movie Title */
-.movie-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #b22424;
-}
-
-/* Watch Now Button */
-.watch-now-btn {
-    background: linear-gradient(45deg, #3e8c3e, #b22424);
-    border: none;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.watch-now-btn:hover {
-    background: linear-gradient(45deg, #b22424, #3e8c3e);
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Make Responsive */
-@media screen and (max-width: 768px) {
-    .movie-card {
-        width: 150px;
-    }
-    .movie-title {
-        font-size: 1rem;
-    }
-    .watch-now-btn {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-    }
-}
-
-
-.watch-now-btn {
-    display: inline-block;
-    background: linear-gradient(45deg, #3e8c3e, #b22424);
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background 0.3s, transform 0.3s;
-    cursor: pointer;
-}
-
-.watch-now-btn:hover {
-    background: linear-gradient(45deg, #b22424, #3e8c3e);
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Section for Christmas Episodes */
-.christmas-episodes-section {
-    background-color: #e7000098;
-    padding: 50px 20px;
-    text-align: center;
-    background-image: url('https://example.com/christmas-background.jpg');
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    position: relative;
-    border: 4px solid #00cc00; /* Green border around the section */
-}
-
-.episode-card {
-    background-color: rgba(207, 207, 207, 0.8);
-    border: 2px solid #ff0000; /* Red border around the episode card */
-    border-radius: 10px;
-    width: 320px; /* Adjusted width for landscape */
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    margin-bottom: 30px; /* Space between cards */
-    margin-left: 10px;
-    margin-right: 10px;
-    display: inline-block; /* To align episodes horizontally */
-}
-
-.episode-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-}
-
-.episode-poster {
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    max-height: 180px; /* Adjust to fit landscape format */
-    object-fit: cover;
-    border-bottom: 2px solid #ff0000;
-    margin-bottom: 15px;
-}
-
-.episode-title {
-    font-size: 1.5rem;
-    color: #ff0000;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0 10px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    margin-bottom: 15px;
-}
-
-.watch-episode-btn {
-    background-color: #00cc00;
-    color: #ffffff;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box; /* Ensures button stays inside the card */
-    margin-top: 10px; /* Adds space above the button */
-}
-
-.watch-episode-btn:hover {
-    background-color: #ff0000;
-}
-
-.watch-episode-btn:focus {
-    outline: none;
-}
-
-/* Container to center the episode cards */
-.episode-card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
     </style>
 </head>
 <body>
@@ -680,9 +363,6 @@ body {
             <span data-index="5"></span>
         </div>
     </section>
-    
-    <div class="snow-container"></div>
-    <div style="height: 200vh;">
 
         <section>
             <h2>All Movies</h2>
@@ -719,6 +399,9 @@ body {
                 </a>
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Beetlejuice Beetlejuice (2024).html">
                     <img src="https://xl.movieposterdb.com/24_10/2024/2049403/xl_beetlejuice-beetlejuice-movie-poster_a21f9e2c.jpeg?v=2024-11-01%2016:33:35" alt="Beetlejuice Beetlejuice (2024)">
+                </a>
+                <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Borderlands (2024).html">
+                    <img src="https://images.theposterdb.com/prod/public/images/posters/optimized/movies/1905753/E689PH8niNmNRiJM0oMjcAQgmUJ0VbAa4NTxbKnD.webp" alt="Borderlands (2024)">
                 </a>
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Click (2006).html">
                     <img src="https://xl.movieposterdb.com/07_12/2006/389860/xl_389860_45cb6fcf.jpg?v=2024-08-02%2014:52:06" alt="Click (2006)">
@@ -849,6 +532,9 @@ body {
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Smile 2 (2024).html">
                     <img src="https://xl.movieposterdb.com/24_06/2024/29268110/xl_smile-2-movie-poster_07452b6b.jpg?v=2024-11-15%2023:36:31" alt="Smile 2 (2024)">
                 </a>
+                <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Sonic The Hedgehog 3 (2024).html">
+                    <img src="https://posters.movieposterdb.com/24_11/2024/18259086/s_sonic-the-hedgehog-3-movie-poster_cb774008.jpg" alt="Sonic The Hedgehog 3 (2024)">
+                </a>
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/South Park The End of Obesity (2024).html">
                 <img src="https://theposterdb.com/api/assets/494624/view" alt="South Park The End of Obesity (2024)">
                 </a>
@@ -903,6 +589,9 @@ body {
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Vacation Friends 2 (2023).html">
                     <img src="https://posters.movieposterdb.com/23_09/2023/15351980/s_vacation-friends-2-movie-poster_90b05ae9.jpg" alt="Vacation Friends 2 (2023)">
                 </a>
+                <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Venom The Last Dance (2024).html">
+                    <img src="https://posters.movieposterdb.com/24_06/2024/16366836/s_venom-the-last-dance-movie-poster_a982082b.jpg" alt="Venom The Last Dance (2024)">
+                </a>
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Violent Night (2022).html">
                     <img src="https://m.media-amazon.com/images/M/MV5BOTU0MDQ0MGUtZjM4Ny00ZjlhLTliYTUtZTRmYTIyOGMzY2QzXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Violent Night (2022)">
                 </a>
@@ -917,6 +606,9 @@ body {
             </a>
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Wicked (2024).html">
                 <img src="https://xl.movieposterdb.com/24_11/2024/1262426/xl_wicked-movie-poster_d65e7d87.jpg?v=2024-12-02%2012:36:50" alt="Wicked (2024)">
+                </a>
+                <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Venom The Last Dance (2024).html">
+                    <img src="https://posters.movieposterdb.com/24_06/2024/16366836/s_venom-the-last-dance-movie-poster_a982082b.jpg" alt="Venom The Last Dance (2024)">
                 </a>
                     <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Dear Santa (2024).html">
                 <img src="https://xl.movieposterdb.com/24_11/2024/2396431/xl_dear-santa-movie-poster_6d7715ae.jpg?v=2024-12-07%2000:58:09" alt="Dear Santa (2024)">
@@ -980,53 +672,6 @@ body {
                 </a>
             </div>
         </section>
-    
-        <div class="christmas-movie-section">
-    <h1 class="section-title">🎄 Christmas Movies 🎅</h1>
-    <div class="movie-grid">
-        <!-- Example Movie -->
-        <div class="movie-card">
-            <img src="https://xl.movieposterdb.com/13_12/1989/97958/xl_97958_1d200186.jpg?v=2024-11-07%2017:40:32" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title">National Lampoon's Christmas Vacation</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/National%20Lampoon's%20Christmas%20Vacation%20(1989).html" class="watch-now-btn">Watch Now</a>
-        </div>
-        <div class="movie-card">
-            <img src="https://xl.movieposterdb.com/15_12/1990/99785/xl_99785_a7ec13a6.jpg" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title">Home Alone</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Home%20Alone%20(1990).html" class="watch-now-btn">Watch Now</a>
-        </div>
-        <div class="movie-card">
-            <img src="https://xl.movieposterdb.com/07_12/1992/104431/xl_104431_510949b3.jpg?v=2024-01-08%2012:25:37" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title">Home Alone 2: Lost in New York</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Home%20Alone%202:%20Lost%20in%20New%20York%20(1992).html" class="watch-now-btn">Watch Now</a>
-        </div>
-        <div class="movie-card">
-            <img src="https://posters.movieposterdb.com/22_02/2003/319343/l_319343_5381fa30.jpg" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title">Elf</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Elf%20(2003).html" class="watch-now-btn">Watch Now</a>
-        </div>
-        <div class="movie-card">
-            <img src="https://github.com/TVGuyX/FreeTV/blob/main/IMG/Movies/Poster/How%20the%20Grinch%20Stole%20Christmas!%20(1966).jpeg?raw=true" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title">How the Grinch Stole Christmas!</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/How%20the%20Grinch%20Stole%20Christmas!%20(1966).html" class="watch-now-btn">Watch Now</a>
-        </div> 
-        <div class="movie-card">
-            <img src="https://xl.movieposterdb.com/23_02/1983/85334/xl_a-christmas-story-movie-poster_99a3b99c.jpg?v=2024-09-15%2021:26:43" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title"> A Christmas Story</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/A Christmas Story (1983).html" class="watch-now-btn">Watch Now</a>
-        </div>
-        <div class="movie-card">
-            <img src="https://theposterdb.com/api/assets/419839/view" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title"> Candy Cane Lane</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Candy Cane Lane (2023).html" class="watch-now-btn">Watch Now</a>
-        </div>
-        <div class="movie-card">
-            <img src="https://xl.movieposterdb.com/22_10/2021/11540284/xl_8-bit-christmas-movie-poster_1f3dbea7.jpg?v=2022-11-26%2019:46:44" alt="Movie Poster" class="movie-poster">
-            <h2 class="movie-title"> 8-Bit Christmas</h2>
-            <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/8-Bit Christmas (2021).html" class="watch-now-btn">Watch Now</a>
-        </div>
-    </div>
-</div>
         
        <section>
             <h2>Unreleased Movies</h2>
@@ -1040,6 +685,12 @@ body {
         <section>
             <h2>Recently Added Movies</h2>
             <div class="row">
+                <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Sonic The Hedgehog 3 (2024).html">
+                    <img src="https://posters.movieposterdb.com/24_11/2024/18259086/s_sonic-the-hedgehog-3-movie-poster_cb774008.jpg" alt="Sonic The Hedgehog 3 (2024)">
+                </a>
+                <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Borderlands (2024).html">
+                    <img src="https://images.theposterdb.com/prod/public/images/posters/optimized/movies/1905753/E689PH8niNmNRiJM0oMjcAQgmUJ0VbAa4NTxbKnD.webp" alt="Borderlands (2024)">
+                </a>
                 <a href="https://tvguyx.github.io/FreeTV/Embed/Movies/Dear Santa (2024).html">
                 <img src="https://xl.movieposterdb.com/24_11/2024/2396431/xl_dear-santa-movie-poster_6d7715ae.jpg?v=2024-12-07%2000:58:09" alt="Dear Santa (2024)">
                 </a>
@@ -1434,87 +1085,5 @@ body {
             showSlide(nextIndex);
         }, 3000);
     </script>
-
-    <script>document.addEventListener("DOMContentLoaded", function () {
-        const snowContainer = document.querySelector(".snow-container");
-    
-        const particlesPerThousandPixels = 0.1;
-        const fallSpeed = 1.25;
-        const pauseWhenNotActive = true;
-        const maxSnowflakes = 200;
-        const snowflakes = [];
-    
-        let snowflakeInterval;
-        let isTabActive = true;
-    
-        function resetSnowflake(snowflake) {
-            const size = Math.random() * 5 + 1;
-            const viewportWidth = window.innerWidth - size; // Adjust for snowflake size
-            const viewportHeight = window.innerHeight;
-    
-            snowflake.style.width = `${size}px`;
-            snowflake.style.height = `${size}px`;
-            snowflake.style.left = `${Math.random() * viewportWidth}px`; // Constrain within viewport width
-            snowflake.style.top = `-${size}px`;
-    
-            const animationDuration = (Math.random() * 3 + 2) / fallSpeed;
-            snowflake.style.animationDuration = `${animationDuration}s`;
-            snowflake.style.animationTimingFunction = "linear";
-            snowflake.style.animationName =
-                Math.random() < 0.5 ? "fall" : "diagonal-fall";
-    
-            setTimeout(() => {
-                if (parseInt(snowflake.style.top, 10) < viewportHeight) {
-                    resetSnowflake(snowflake);
-                } else {
-                    snowflake.remove(); // Remove when it goes off the bottom edge
-                }
-            }, animationDuration * 1000);
-        }
-    
-        function createSnowflake() {
-            if (snowflakes.length < maxSnowflakes) {
-                const snowflake = document.createElement("div");
-                snowflake.classList.add("snowflake");
-                snowflakes.push(snowflake);
-                snowContainer.appendChild(snowflake);
-                resetSnowflake(snowflake);
-            }
-        }
-    
-        function generateSnowflakes() {
-            const numberOfParticles =
-                Math.ceil((window.innerWidth * window.innerHeight) / 1000) *
-                particlesPerThousandPixels;
-            const interval = 5000 / numberOfParticles;
-    
-            clearInterval(snowflakeInterval);
-            snowflakeInterval = setInterval(() => {
-                if (isTabActive && snowflakes.length < maxSnowflakes) {
-                    requestAnimationFrame(createSnowflake);
-                }
-            }, interval);
-        }
-    
-        function handleVisibilityChange() {
-            if (!pauseWhenNotActive) return;
-    
-            isTabActive = !document.hidden;
-            if (isTabActive) {
-                generateSnowflakes();
-            } else {
-                clearInterval(snowflakeInterval);
-            }
-        }
-    
-        generateSnowflakes();
-    
-        window.addEventListener("resize", () => {
-            clearInterval(snowflakeInterval);
-            setTimeout(generateSnowflakes, 1000);
-        });
-    
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-    });</script>
 </body>
 </html>
