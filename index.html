@@ -467,7 +467,7 @@ body {
 
     </header>
 
-    <!-- Popup HTML -->
+   <!-- Popup HTML -->
 <div class="popup-overlay" id="popupOverlay">
     <div class="popup-box">
         <button class="popup-close" id="popupClose">&times;</button>
@@ -1796,10 +1796,29 @@ body {
   });</script>
 
 <script>
+    // Function to show the popup if not already shown today
+    function showPopupOnceADay() {
+        const lastShown = localStorage.getItem('popupLastShown');
+        const now = new Date();
+        const today = now.toDateString(); // Use the date as a string for daily tracking
+
+        if (lastShown !== today) {
+            // Show the popup and update the last shown date
+            document.getElementById('popupOverlay').style.display = 'flex';
+            localStorage.setItem('popupLastShown', today);
+        } else {
+            // Hide the popup if already shown today
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+    }
+
     // Close popup functionality
     document.getElementById('popupClose').addEventListener('click', function() {
         document.getElementById('popupOverlay').style.display = 'none';
     });
+
+    // Call the function to check and show the popup
+    showPopupOnceADay();
 </script>
 </body>
 </html>
