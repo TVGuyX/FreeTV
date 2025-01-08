@@ -373,6 +373,55 @@ body {
   list-style: decimal;
   padding-left: 1.5rem;
 }
+
+/* Popup overlay */
+.popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup box */
+        .popup-box {
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        /* Close button */
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .popup-close:hover {
+            color: red;
+        }
+
+        /* Google Form */
+        .google-form {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -417,6 +466,18 @@ body {
     </div>
 
     </header>
+
+    <!-- Popup HTML -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+        <button class="popup-close" id="popupClose">&times;</button>
+        <h2>Help Make UG24 Better!</h2>
+        <p>Request anything you want by filling out the form below:</p>
+        <iframe class="google-form" 
+                src="https://docs.google.com/forms/d/e/1FAIpQLScEQ39K6l1Q78V8Ydevc3cFhhIpTs4aJll1IX08-PFhcCPy9g/viewform?usp=dialog">
+        </iframe>
+    </div>
+</div>
 
     <section id="featured">
         <!-- Rotating banner for featured content -->
@@ -1733,5 +1794,12 @@ body {
       document.getElementById("addToHomeScreen").style.display = "none";
     }
   });</script>
+
+<script>
+    // Close popup functionality
+    document.getElementById('popupClose').addEventListener('click', function() {
+        document.getElementById('popupOverlay').style.display = 'none';
+    });
+</script>
 </body>
 </html>
